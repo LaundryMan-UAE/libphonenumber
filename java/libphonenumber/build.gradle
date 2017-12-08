@@ -3,6 +3,13 @@ dependencies {
     compile 'com.google.protobuf:protobuf-javanano:3.0.0-alpha-4'
 }
 
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/com', 'src/main/java']
+        }
+    }
+}
 
 task translateLibPhoneNumber(type:Exec) {
     inputs.files sourceSets.main.allJava
