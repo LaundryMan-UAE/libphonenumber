@@ -17,8 +17,17 @@
 cmake_minimum_required (VERSION 2.8)
 
 project (libphonenumber)
-set (libphonenumber_VERSION_MAJOR 7)
-set (libphonenumber_VERSION_MINOR 0)
+set (libphonenumber_VERSION_MAJOR 8)
+set (libphonenumber_VERSION_MINOR 8)
+set (libphonenumber_VERSION_PATCH 0)
+
+if (32BIT)
+  set_property (GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS FALSE)
+  set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
+  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
+  set (CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -m32")
+  set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -m32")
+endif ()
 
 # Helper functions dealing with finding libraries and programs this library
 # depends on.
@@ -76,6 +85,7 @@ option ("USE_ICU_REGEXP" "Use ICU regexp engine" "ON")
 option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
 option ("USE_RE2" "Use RE2" "OFF")
 option ("USE_STD_MAP" "Force the use of std::map" "OFF")
+option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
 
 if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
   add_definitions ("-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS")
@@ -126,6 +136,9 @@ find_required_program (JAVA java
 if (APPLE)
   FIND_LIBRARY (COREFOUNDATION_LIB CoreFoundation)
   FIND_LIBRARY (FOUNDATION_LIB Foundation)
+  set (CMAKE_MACOSX_RPATH "OFF")
+  set (CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS
+    "${CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS} -undefined dynamic_lookup")
 endif ()
 
 if (${USE_STD_MAP} STREQUAL "OFF")
@@ -336,19 +349,28 @@ endif ()
 
 include_directories ("src")
 
-# Build a static library (without -fPIC).
-add_library (phonenumber STATIC ${SOURCES})
-if (${USE_ICU_REGEXP} STREQUAL "ON")
-  if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
-    add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+if (${BUILD_STATIC_LIB} STREQUAL "ON")
+  # Build a static library (without -fPIC).
+  add_library (phonenumber STATIC ${SOURCES})
+  if (${BUILD_GEOCODER} STREQUAL "ON")
+    add_dependencies (phonenumber generate_geocoding_data)
+  endif ()
+  if (${USE_ICU_REGEXP} STREQUAL "ON")
+    if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
+      add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+    endif ()
   endif ()
 endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
-  add_library (geocoding STATIC ${GEOCODING_SOURCES})
+  if (${BUILD_STATIC_LIB} STREQUAL "ON")
+    add_library (geocoding STATIC ${GEOCODING_SOURCES})
+    add_dependencies (geocoding generate_geocoding_data)
+  endif ()
   # The geocoder doesn't use RE2 so there is no reason not to build a shared
   # library for it.
   add_library (geocoding-shared SHARED ${GEOCODING_SOURCES})
+  add_dependencies (geocoding-shared generate_geocoding_data)
   set_target_properties (geocoding-shared
     PROPERTIES
       OUTPUT_NAME "geocoding"
@@ -372,9 +394,12 @@ endif ()
 
 if (BUILD_SHARED_LIB)
   add_library (phonenumber-shared SHARED ${SOURCES})
+  if (${BUILD_GEOCODER} STREQUAL "ON")
+    add_dependencies (phonenumber-shared generate_geocoding_data)
+  endif ()
   if (${USE_ICU_REGEXP} STREQUAL "ON")
     if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
-      add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+      add_dependencies (phonenumber-shared ${ALT_FORMAT_METADATA_TARGET})
     endif ()
   endif ()
   set_target_properties (phonenumber-shared
@@ -404,7 +429,9 @@ endif ()
 
 list (APPEND LIBRARY_DEPS ${COMMON_DEPS})
 
-target_link_libraries (phonenumber ${LIBRARY_DEPS})
+if (${BUILD_STATIC_LIB} STREQUAL "ON")
+  target_link_libraries (phonenumber ${LIBRARY_DEPS})
+endif ()
 
 if (BUILD_SHARED_LIB)
   target_link_libraries (phonenumber-shared ${LIBRARY_DEPS})
@@ -420,6 +447,9 @@ endif ()
 
 # Build a specific library for testing purposes.
 add_library (phonenumber_testing STATIC ${TESTING_LIBRARY_SOURCES})
+if (${BUILD_GEOCODER} STREQUAL "ON")
+  add_dependencies (phonenumber_testing generate_geocoding_data)
+endif ()
 target_link_libraries (phonenumber_testing ${LIBRARY_DEPS})
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
@@ -445,6 +475,7 @@ endif ()
 set (TEST_SOURCES
   "test/phonenumbers/asyoutypeformatter_test.cc"
   "test/phonenumbers/logger_test.cc"
+  "test/phonenumbers/matcher_test.cc"
   "test/phonenumbers/phonenumberutil_test.cc"
   "test/phonenumbers/regexp_adapter_test.cc"
   "test/phonenumbers/regexp_cache_test.cc"
@@ -487,13 +518,13 @@ target_link_libraries (libphonenumber_test ${TEST_LIBS})
 # Unfortunately add_custom_target() can't accept a single command provided as a
 # list of commands.
 if (${BUILD_GEOCODER} STREQUAL "ON")
-  add_custom_target (test
+  add_custom_target (tests
     COMMAND generate_geocoding_data_test
     COMMAND libphonenumber_test
     DEPENDS generate_geocoding_data_test libphonenumber_test
   )
 else ()
-  add_custom_target (test
+  add_custom_target (tests
     COMMAND libphonenumber_test
     DEPENDS libphonenumber_test
   )
@@ -510,6 +541,7 @@ install (FILES
   "src/phonenumbers/phonenumberutil.h"
   "src/phonenumbers/regexp_adapter.h"
   "src/phonenumbers/regexp_cache.h"
+  "src/phonenumbers/region_code.h"
   "src/phonenumbers/shortnumberinfo.h"
   "src/phonenumbers/unicodestring.h"
   DESTINATION include/phonenumbers/
@@ -552,19 +584,30 @@ install (FILES
 )
 
 install (FILES "src/phonenumbers/base/synchronization/lock.h"
+         "src/phonenumbers/base/synchronization/lock_posix.h"
          DESTINATION include/phonenumbers/base/synchronization/)
 
-install (TARGETS phonenumber LIBRARY DESTINATION lib/ ARCHIVE DESTINATION lib/)
+get_property (LIB64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+
+if ("${LIB64}" STREQUAL "TRUE")
+    set (LIBDIR lib64)
+else ()
+    set (LIBDIR lib)
+endif ()
+
+if (${BUILD_STATIC_LIB} STREQUAL "ON")
+  install (TARGETS phonenumber LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
+endif ()
 
 if (BUILD_SHARED_LIB)
-  install (TARGETS phonenumber-shared LIBRARY DESTINATION lib/ ARCHIVE
-           DESTINATION lib/)
+  install (TARGETS phonenumber-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
+           DESTINATION ${LIBDIR})
 endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
-  install (TARGETS geocoding LIBRARY DESTINATION lib/ ARCHIVE DESTINATION lib/)
-  install (TARGETS geocoding-shared LIBRARY DESTINATION lib/ ARCHIVE
-           DESTINATION lib/)
+  install (TARGETS geocoding LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
+  install (TARGETS geocoding-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
+           DESTINATION ${LIBDIR})
 endif ()
 
 # Build an example program using geocoding, mainly to make sure that both
@@ -576,3 +619,17 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
   )
   target_link_libraries (geocoding_test_program geocoding phonenumber)
 endif ()
+
+# Build an RPM
+set (CPACK_PACKAGE_VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR}.${libphonenumber_VERSION_PATCH})
+set (CPACK_GENERATOR "RPM")
+set (CPACK_PACKAGE_NAME "libphonenumber")
+set (CPACK_RPM_PACKAGE_RELEASE 1)
+set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "Google's phone number handling library")
+if (32BIT)
+  set (CPACK_RPM_PACKAGE_ARCHITECTURE i686)
+else ()
+  set (CPACK_RPM_PACKAGE_ARCHITECTURE x86_64)
+endif ()
+set (CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_RPM_PACKAGE_RELEASE}.${CPACK_RPM_PACKAGE_ARCHITECTURE}")
+include (CPack)
