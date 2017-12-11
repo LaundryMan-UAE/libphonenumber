@@ -26,6 +26,7 @@
 #include "java/util/concurrent/atomic/AtomicReference.h"
 #include "java/util/logging/Level.h"
 #include "java/util/logging/Logger.h"
+#include "java/lang/ClassLoader.h"
 
 @interface ComGoogleI18nPhonenumbersMetadataManager ()
 
@@ -417,7 +418,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersMetadataManager_Single
 @implementation ComGoogleI18nPhonenumbersMetadataManager_$1
 
 - (JavaIoInputStream *)loadMetadataWithNSString:(NSString *)metadataFileName {
-  return [ComGoogleI18nPhonenumbersMetadataManager_class_() getResourceAsStream:metadataFileName];
+ JavaLangClassLoader* classLoader = [[JavaLangClassLoader alloc] init];
+    JavaIoInputStream* stream = [classLoader  getResourceAsStreamWithNSString:metadataFileName];
+    return  stream;
+
+//  return [ComGoogleI18nPhonenumbersMetadataManager_class_() getResourceAsStream:metadataFileName];
 }
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
