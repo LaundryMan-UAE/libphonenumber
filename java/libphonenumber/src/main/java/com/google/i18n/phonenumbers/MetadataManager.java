@@ -39,9 +39,9 @@ import java.util.logging.Logger;
  */
 final class MetadataManager {
   static final String MULTI_FILE_PHONE_NUMBER_METADATA_FILE_PREFIX =
-      "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto";
+      "PhoneNumberMetadataProto";
   static final String SINGLE_FILE_PHONE_NUMBER_METADATA_FILE_NAME =
-      "/com/google/i18n/phonenumbers/data/SingleFilePhoneNumberMetadataProto";
+      "SingleFilePhoneNumberMetadataProto";
   private static final String ALTERNATE_FORMATS_FILE_PREFIX =
       "PhoneNumberAlternateFormatsProto";
   private static final String SHORT_NUMBER_METADATA_FILE_PREFIX =

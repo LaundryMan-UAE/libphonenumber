@@ -119,8 +119,8 @@ __attribute__((unused)) static ComGoogleI18nPhonenumbersMetadataManager_$1 *crea
 
 J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersMetadataManager)
 
-NSString *ComGoogleI18nPhonenumbersMetadataManager_MULTI_FILE_PHONE_NUMBER_METADATA_FILE_PREFIX = @"/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProto";
-NSString *ComGoogleI18nPhonenumbersMetadataManager_SINGLE_FILE_PHONE_NUMBER_METADATA_FILE_NAME = @"/com/google/i18n/phonenumbers/data/SingleFilePhoneNumberMetadataProto";
+NSString *ComGoogleI18nPhonenumbersMetadataManager_MULTI_FILE_PHONE_NUMBER_METADATA_FILE_PREFIX = @"PhoneNumberMetadataProto";
+NSString *ComGoogleI18nPhonenumbersMetadataManager_SINGLE_FILE_PHONE_NUMBER_METADATA_FILE_NAME = @"SingleFilePhoneNumberMetadataProto";
 id<ComGoogleI18nPhonenumbersMetadataLoader> ComGoogleI18nPhonenumbersMetadataManager_DEFAULT_METADATA_LOADER;
 
 @implementation ComGoogleI18nPhonenumbersMetadataManager
