@@ -25,7 +25,7 @@
 
 /*!
  @brief Implementation of the matcher API using the regular expressions in the PhoneNumberDesc
- proto message to match numbers.
+  proto message to match numbers.
  */
 @interface ComGoogleI18nPhonenumbersInternalRegexBasedMatcher : NSObject < ComGoogleI18nPhonenumbersInternalMatcherApi >
 
@@ -41,7 +41,7 @@ withComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc:(ComGoogleI18nPhonenu
 
 J2OBJC_EMPTY_STATIC_INIT(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher)
 
-FOUNDATION_EXPORT id<ComGoogleI18nPhonenumbersInternalMatcherApi> ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_create();
+FOUNDATION_EXPORT id<ComGoogleI18nPhonenumbersInternalMatcherApi> ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_create(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher)
 

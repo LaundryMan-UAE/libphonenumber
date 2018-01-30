@@ -28,7 +28,7 @@
 
 /*!
  @brief A utility that maps phone number prefixes to a list of strings describing the time zones to
- which each prefix belongs.
+  which each prefix belongs.
  */
 @interface ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap : NSObject < JavaIoExternalizable >
 
@@ -38,15 +38,15 @@
 
 /*!
  @brief Returns the list of time zones <code>number</code>'s calling country code corresponds to.
- @param number  the phone number to look up
+ @param number the phone number to look up
  @return the list of corresponding time zones
  */
 - (id<JavaUtilList>)lookupCountryLevelTimeZonesForNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
 /*!
  @brief As per <code>lookupTimeZonesForNumber(long)</code>, but receives the number as a PhoneNumber
- instead of a long.
- @param number  the phone number to look up
+  instead of a long.
+ @param number the phone number to look up
  @return the list of corresponding time zones
  */
 - (id<JavaUtilList>)lookupTimeZonesForNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
@@ -54,12 +54,10 @@
 - (void)readExternalWithJavaIoObjectInput:(id<JavaIoObjectInput>)objectInput;
 
 /*!
- @brief Creates a <code>PrefixTimeZonesMap</code> initialized with <code>sortedPrefixTimeZoneMap</code>.
- Note
- that the underlying implementation of this method is expensive thus should not be called by
- time-critical applications.
- @param sortedPrefixTimeZoneMap  a map from phone number prefixes to their corresponding time
- zones, sorted in ascending order of the phone number prefixes as integers.
+ @brief Creates a <code>PrefixTimeZonesMap</code> initialized with <code>sortedPrefixTimeZoneMap</code>.Note
+  that the underlying implementation of this method is expensive thus should not be called by
+  time-critical applications.
+ @param sortedPrefixTimeZoneMap a map from phone number prefixes to their corresponding time  zones, sorted in ascending order of the phone number prefixes as integers.
  */
 - (void)readPrefixTimeZonesMapWithJavaUtilSortedMap:(id<JavaUtilSortedMap>)sortedPrefixTimeZoneMap;
 
@@ -79,9 +77,9 @@ J2OBJC_EMPTY_STATIC_INIT(ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap
 
 FOUNDATION_EXPORT void ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_init(ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap *self);
 
-FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap *new_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_init() NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap *new_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap *create_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_init();
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap *create_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap)
 

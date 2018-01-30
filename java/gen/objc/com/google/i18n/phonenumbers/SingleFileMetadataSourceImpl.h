@@ -41,6 +41,10 @@
 - (instancetype)initWithNSString:(NSString *)phoneNumberMetadataFileName
 withComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadataLoader>)metadataLoader;
 
+// Disallowed inherited constructors, do not use.
+
+- (instancetype)init NS_UNAVAILABLE;
+
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl)

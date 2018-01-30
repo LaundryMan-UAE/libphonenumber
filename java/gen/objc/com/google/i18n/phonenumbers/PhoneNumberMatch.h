@@ -19,14 +19,13 @@
 @class ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber;
 
 /*!
- @brief The immutable match of a phone number within a piece of text.
- Matches may be found using
+ @brief The immutable match of a phone number within a piece of text.Matches may be found using 
  <code>PhoneNumberUtil.findNumbers</code>.
- <p>A match consists of the phone number as well as the
+ <p>A match consists of the number as well as the 
  start and end offsets of the corresponding subsequence
- of the searched text. Use <code>rawString()</code> to obtain a copy of the matched subsequence.
+  of the searched text. Use <code>rawString()</code> to obtain a copy of the matched subsequence. 
  <p>The following annotated example clarifies the relationship between the searched text, the
- match offsets, and the parsed number:
+  match offsets, and the parsed number: 
  @code
 
   CharSequence text = "Call me at +1 425 882-8080 for details.";
@@ -41,7 +40,7 @@
   "+1 425 882-8080".contentEquals(subsequence);
   // number() returns the the same result as PhoneNumberUtil.<code>parse()</code>
   // invoked on rawString().
-  util.parse(m.rawString(), country).equals(m.number());
+  util.parse(m.rawString(), country).equals(m.number()); 
   
 @endcode
  */
@@ -79,13 +78,17 @@
 
 /*!
  @brief Creates a new match.
- @param start  the start index into the target text
- @param rawString  the matched substring of the target text
- @param number  the matched phone number
+ @param start the start index into the target text
+ @param rawString the matched substring of the target text
+ @param number the matched phone number
  */
 - (instancetype)initWithInt:(jint)start
                withNSString:(NSString *)rawString
 withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
+
+// Disallowed inherited constructors, do not use.
+
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 

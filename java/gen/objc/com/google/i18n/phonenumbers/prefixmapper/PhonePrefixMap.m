@@ -30,9 +30,8 @@
 }
 
 /*!
- @brief Gets the size of the provided phone prefix map storage.
- The map storage passed-in will be
- filled as a result.
+ @brief Gets the size of the provided phone prefix map storage.The map storage passed-in will be
+  filled as a result.
  */
 + (jint)getSizeOfPhonePrefixMapStorageWithComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy:(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy *)mapStorage
                                                                                        withJavaUtilSortedMap:(id<JavaUtilSortedMap>)phonePrefixMap;
@@ -43,9 +42,9 @@
 
 /*!
  @brief Does a binary search for <code>value</code> in the provided array from <code>start</code> to <code>end</code>
- (inclusive).
- Returns the position if <code>value</code> is found; otherwise, returns the
- position which has the largest value that is less than <code>value</code>. This means if
+  (inclusive).Returns the position if <code>value</code> is found; otherwise, returns the
+  position which has the largest value that is less than <code>value</code>.
+ This means if 
  <code>value</code> is the smallest, -1 will be returned.
  */
 - (jint)binarySearchWithInt:(jint)start
@@ -57,7 +56,7 @@
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap, phoneUtil_, ComGoogleI18nPhonenumbersPhoneNumberUtil *)
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap, phonePrefixMapStorage_, ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy *)
 
-inline JavaUtilLoggingLogger *ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_get_logger();
+inline JavaUtilLoggingLogger *ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_get_logger(void);
 static JavaUtilLoggingLogger *ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_logger;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap, logger, JavaUtilLoggingLogger *)
 
@@ -106,7 +105,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     return sizeOfFlyweightMapStorage < sizeOfDefaultMapStorage ? flyweightMapStorage : defaultMapStorage;
   }
   @catch (JavaIoIOException *e) {
-    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_logger)) severeWithNSString:[((JavaIoIOException *) nil_chk(e)) getMessage]];
+    [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_logger)) severeWithNSString:[e getMessage]];
     return ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_createFlyweightMapStorage(self);
   }
 }
@@ -141,9 +140,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   id<JavaUtilSortedSet> currentSetOfLengths = [((ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy *) nil_chk(phonePrefixMapStorage_)) getPossibleLengths];
   while ([((id<JavaUtilSortedSet>) nil_chk(currentSetOfLengths)) size] > 0) {
     JavaLangInteger *possibleLength = [currentSetOfLengths last];
-    NSString *phonePrefixStr = NSString_valueOfLong_(phonePrefix);
-    if (((jint) [((NSString *) nil_chk(phonePrefixStr)) length]) > [((JavaLangInteger *) nil_chk(possibleLength)) intValue]) {
-      phonePrefix = JavaLangLong_parseLongWithNSString_([phonePrefixStr substring:0 endIndex:[possibleLength intValue]]);
+    NSString *phonePrefixStr = NSString_java_valueOfLong_(phonePrefix);
+    if ([((NSString *) nil_chk(phonePrefixStr)) java_length] > [((JavaLangInteger *) nil_chk(possibleLength)) intValue]) {
+      phonePrefix = JavaLangLong_parseLongWithNSString_([phonePrefixStr java_substring:0 endIndex:[possibleLength intValue]]);
     }
     currentIndex = ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_binarySearchWithInt_withInt_withLong_(self, 0, currentIndex, phonePrefix);
     if (currentIndex < 0) {

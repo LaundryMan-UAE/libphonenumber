@@ -26,9 +26,8 @@
 
 /*!
  @brief Default phone prefix map storage strategy that is used for data not containing description
- duplications.
- It is mainly intended to avoid the overhead of the string table management when it
- is actually unnecessary (i.e no string duplication).
+  duplications.It is mainly intended to avoid the overhead of the string table management when it
+  is actually unnecessary (i.e no string duplication).
  @author Shaopeng Jia
  */
 @interface ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage : ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy
@@ -53,9 +52,9 @@ J2OBJC_EMPTY_STATIC_INIT(ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage)
 
 FOUNDATION_EXPORT void ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init(ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage *self);
 
-FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage *new_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init() NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage *new_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage *create_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init();
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage *create_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage)
 

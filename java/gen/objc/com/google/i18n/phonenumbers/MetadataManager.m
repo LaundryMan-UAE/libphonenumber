@@ -26,7 +26,6 @@
 #include "java/util/concurrent/atomic/AtomicReference.h"
 #include "java/util/logging/Level.h"
 #include "java/util/logging/Logger.h"
-#include "java/lang/ClassLoader.h"
 
 @interface ComGoogleI18nPhonenumbersMetadataManager ()
 
@@ -37,50 +36,66 @@
 
 /*!
  @brief Loads and returns the metadata from the given stream and closes the stream.
- @param source  the non-null stream from which metadata is to be read
+ @param source the non-null stream from which metadata is to be read
  @return the loaded metadata
  */
 + (ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection *)loadMetadataAndCloseInputWithJavaIoInputStream:(JavaIoInputStream *)source;
 
 @end
 
-inline NSString *ComGoogleI18nPhonenumbersMetadataManager_get_ALTERNATE_FORMATS_FILE_PREFIX();
+inline NSString *ComGoogleI18nPhonenumbersMetadataManager_get_ALTERNATE_FORMATS_FILE_PREFIX(void);
 static NSString *ComGoogleI18nPhonenumbersMetadataManager_ALTERNATE_FORMATS_FILE_PREFIX = @"PhoneNumberAlternateFormatsProto";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersMetadataManager, ALTERNATE_FORMATS_FILE_PREFIX, NSString *)
 
-inline NSString *ComGoogleI18nPhonenumbersMetadataManager_get_SHORT_NUMBER_METADATA_FILE_PREFIX();
+inline NSString *ComGoogleI18nPhonenumbersMetadataManager_get_SHORT_NUMBER_METADATA_FILE_PREFIX(void);
 static NSString *ComGoogleI18nPhonenumbersMetadataManager_SHORT_NUMBER_METADATA_FILE_PREFIX = @"ShortNumberMetadataProto";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersMetadataManager, SHORT_NUMBER_METADATA_FILE_PREFIX, NSString *)
 
-inline JavaUtilLoggingLogger *ComGoogleI18nPhonenumbersMetadataManager_get_logger();
+inline JavaUtilLoggingLogger *ComGoogleI18nPhonenumbersMetadataManager_get_logger(void);
 static JavaUtilLoggingLogger *ComGoogleI18nPhonenumbersMetadataManager_logger;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersMetadataManager, logger, JavaUtilLoggingLogger *)
 
-inline JavaUtilConcurrentConcurrentHashMap *ComGoogleI18nPhonenumbersMetadataManager_get_alternateFormatsMap();
+inline JavaUtilConcurrentConcurrentHashMap *ComGoogleI18nPhonenumbersMetadataManager_get_alternateFormatsMap(void);
 static JavaUtilConcurrentConcurrentHashMap *ComGoogleI18nPhonenumbersMetadataManager_alternateFormatsMap;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersMetadataManager, alternateFormatsMap, JavaUtilConcurrentConcurrentHashMap *)
 
-inline JavaUtilConcurrentConcurrentHashMap *ComGoogleI18nPhonenumbersMetadataManager_get_shortNumberMetadataMap();
+inline JavaUtilConcurrentConcurrentHashMap *ComGoogleI18nPhonenumbersMetadataManager_get_shortNumberMetadataMap(void);
 static JavaUtilConcurrentConcurrentHashMap *ComGoogleI18nPhonenumbersMetadataManager_shortNumberMetadataMap;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersMetadataManager, shortNumberMetadataMap, JavaUtilConcurrentConcurrentHashMap *)
 
-inline id<JavaUtilSet> ComGoogleI18nPhonenumbersMetadataManager_get_alternateFormatsCountryCodes();
+inline id<JavaUtilSet> ComGoogleI18nPhonenumbersMetadataManager_get_alternateFormatsCountryCodes(void);
 static id<JavaUtilSet> ComGoogleI18nPhonenumbersMetadataManager_alternateFormatsCountryCodes;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersMetadataManager, alternateFormatsCountryCodes, id<JavaUtilSet>)
 
-inline id<JavaUtilSet> ComGoogleI18nPhonenumbersMetadataManager_get_shortNumberMetadataRegionCodes();
+inline id<JavaUtilSet> ComGoogleI18nPhonenumbersMetadataManager_get_shortNumberMetadataRegionCodes(void);
 static id<JavaUtilSet> ComGoogleI18nPhonenumbersMetadataManager_shortNumberMetadataRegionCodes;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersMetadataManager, shortNumberMetadataRegionCodes, id<JavaUtilSet>)
 
 __attribute__((unused)) static void ComGoogleI18nPhonenumbersMetadataManager_init(ComGoogleI18nPhonenumbersMetadataManager *self);
 
-__attribute__((unused)) static ComGoogleI18nPhonenumbersMetadataManager *new_ComGoogleI18nPhonenumbersMetadataManager_init() NS_RETURNS_RETAINED;
+__attribute__((unused)) static ComGoogleI18nPhonenumbersMetadataManager *new_ComGoogleI18nPhonenumbersMetadataManager_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static ComGoogleI18nPhonenumbersMetadataManager *create_ComGoogleI18nPhonenumbersMetadataManager_init();
+__attribute__((unused)) static ComGoogleI18nPhonenumbersMetadataManager *create_ComGoogleI18nPhonenumbersMetadataManager_init(void);
 
 __attribute__((unused)) static id<JavaUtilList> ComGoogleI18nPhonenumbersMetadataManager_getMetadataFromSingleFileNameWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(NSString *fileName, id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader);
 
 __attribute__((unused)) static ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection *ComGoogleI18nPhonenumbersMetadataManager_loadMetadataAndCloseInputWithJavaIoInputStream_(JavaIoInputStream *source);
+
+@interface ComGoogleI18nPhonenumbersMetadataManager_1 : NSObject < ComGoogleI18nPhonenumbersMetadataLoader >
+
+- (instancetype)init;
+
+- (JavaIoInputStream *)loadMetadataWithNSString:(NSString *)metadataFileName;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(ComGoogleI18nPhonenumbersMetadataManager_1)
+
+__attribute__((unused)) static void ComGoogleI18nPhonenumbersMetadataManager_1_init(ComGoogleI18nPhonenumbersMetadataManager_1 *self);
+
+__attribute__((unused)) static ComGoogleI18nPhonenumbersMetadataManager_1 *new_ComGoogleI18nPhonenumbersMetadataManager_1_init(void) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static ComGoogleI18nPhonenumbersMetadataManager_1 *create_ComGoogleI18nPhonenumbersMetadataManager_1_init(void);
 
 @interface ComGoogleI18nPhonenumbersMetadataManager_SingleFileMetadataMaps () {
  @public
@@ -101,22 +116,6 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersMetadataManager_Sin
 __attribute__((unused)) static ComGoogleI18nPhonenumbersMetadataManager_SingleFileMetadataMaps *new_ComGoogleI18nPhonenumbersMetadataManager_SingleFileMetadataMaps_initWithJavaUtilMap_withJavaUtilMap_(id<JavaUtilMap> regionCodeToMetadata, id<JavaUtilMap> countryCallingCodeToMetadata) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ComGoogleI18nPhonenumbersMetadataManager_SingleFileMetadataMaps *create_ComGoogleI18nPhonenumbersMetadataManager_SingleFileMetadataMaps_initWithJavaUtilMap_withJavaUtilMap_(id<JavaUtilMap> regionCodeToMetadata, id<JavaUtilMap> countryCallingCodeToMetadata);
-
-@interface ComGoogleI18nPhonenumbersMetadataManager_$1 : NSObject < ComGoogleI18nPhonenumbersMetadataLoader >
-
-- (JavaIoInputStream *)loadMetadataWithNSString:(NSString *)metadataFileName;
-
-- (instancetype)init;
-
-@end
-
-J2OBJC_EMPTY_STATIC_INIT(ComGoogleI18nPhonenumbersMetadataManager_$1)
-
-__attribute__((unused)) static void ComGoogleI18nPhonenumbersMetadataManager_$1_init(ComGoogleI18nPhonenumbersMetadataManager_$1 *self);
-
-__attribute__((unused)) static ComGoogleI18nPhonenumbersMetadataManager_$1 *new_ComGoogleI18nPhonenumbersMetadataManager_$1_init() NS_RETURNS_RETAINED;
-
-__attribute__((unused)) static ComGoogleI18nPhonenumbersMetadataManager_$1 *create_ComGoogleI18nPhonenumbersMetadataManager_$1_init();
 
 J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersMetadataManager)
 
@@ -208,7 +207,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersMetadataManager class]) {
-    JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersMetadataManager_DEFAULT_METADATA_LOADER, new_ComGoogleI18nPhonenumbersMetadataManager_$1_init());
+    JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersMetadataManager_DEFAULT_METADATA_LOADER, new_ComGoogleI18nPhonenumbersMetadataManager_1_init());
     JreStrongAssign(&ComGoogleI18nPhonenumbersMetadataManager_logger, JavaUtilLoggingLogger_getLoggerWithNSString_([ComGoogleI18nPhonenumbersMetadataManager_class_() getName]));
     JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersMetadataManager_alternateFormatsMap, new_JavaUtilConcurrentConcurrentHashMap_init());
     JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersMetadataManager_shortNumberMetadataMap, new_JavaUtilConcurrentConcurrentHashMap_init());
@@ -302,14 +301,14 @@ ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection *ComGoogleI18nPho
       ois = create_JavaIoObjectInputStream_initWithJavaIoInputStream_(source);
     }
     @catch (JavaIoIOException *e) {
-      @throw create_JavaLangRuntimeException_initWithNSString_withNSException_(@"cannot load/parse metadata", e);
+      @throw create_JavaLangRuntimeException_initWithNSString_withJavaLangThrowable_(@"cannot load/parse metadata", e);
     }
     ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection *metadataCollection = create_ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection_init();
     @try {
       [metadataCollection readExternalWithJavaIoObjectInput:ois];
     }
     @catch (JavaIoIOException *e) {
-      @throw create_JavaLangRuntimeException_initWithNSString_withNSException_(@"cannot load/parse metadata", e);
+      @throw create_JavaLangRuntimeException_initWithNSString_withJavaLangThrowable_(@"cannot load/parse metadata", e);
     }
     return metadataCollection;
   }
@@ -323,12 +322,54 @@ ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection *ComGoogleI18nPho
       }
     }
     @catch (JavaIoIOException *e) {
-      [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersMetadataManager_logger)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, WARNING) withNSString:@"error closing input stream (ignored)" withNSException:e];
+      [((JavaUtilLoggingLogger *) nil_chk(ComGoogleI18nPhonenumbersMetadataManager_logger)) logWithJavaUtilLoggingLevel:JreLoadStatic(JavaUtilLoggingLevel, WARNING) withNSString:@"error closing input stream (ignored)" withJavaLangThrowable:e];
     }
   }
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersMetadataManager)
+
+@implementation ComGoogleI18nPhonenumbersMetadataManager_1
+
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype)init {
+  ComGoogleI18nPhonenumbersMetadataManager_1_init(self);
+  return self;
+}
+J2OBJC_IGNORE_DESIGNATED_END
+
+- (JavaIoInputStream *)loadMetadataWithNSString:(NSString *)metadataFileName {
+  return [ComGoogleI18nPhonenumbersMetadataManager_class_() getResourceAsStream:metadataFileName];
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LJavaIoInputStream;", 0x1, 0, 1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(loadMetadataWithNSString:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "loadMetadata", "LNSString;", "LComGoogleI18nPhonenumbersMetadataManager;" };
+  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersMetadataManager_1 = { "", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x8018, 2, 0, 2, -1, -1, -1, -1 };
+  return &_ComGoogleI18nPhonenumbersMetadataManager_1;
+}
+
+@end
+
+void ComGoogleI18nPhonenumbersMetadataManager_1_init(ComGoogleI18nPhonenumbersMetadataManager_1 *self) {
+  NSObject_init(self);
+}
+
+ComGoogleI18nPhonenumbersMetadataManager_1 *new_ComGoogleI18nPhonenumbersMetadataManager_1_init() {
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersMetadataManager_1, init)
+}
+
+ComGoogleI18nPhonenumbersMetadataManager_1 *create_ComGoogleI18nPhonenumbersMetadataManager_1_init() {
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersMetadataManager_1, init)
+}
 
 @implementation ComGoogleI18nPhonenumbersMetadataManager_SingleFileMetadataMaps
 
@@ -414,49 +455,3 @@ ComGoogleI18nPhonenumbersMetadataManager_SingleFileMetadataMaps *create_ComGoogl
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersMetadataManager_SingleFileMetadataMaps)
-
-@implementation ComGoogleI18nPhonenumbersMetadataManager_$1
-
-- (JavaIoInputStream *)loadMetadataWithNSString:(NSString *)metadataFileName {
- JavaLangClassLoader* classLoader = [[JavaLangClassLoader alloc] init];
-    JavaIoInputStream* stream = [classLoader  getResourceAsStreamWithNSString:metadataFileName];
-    return  stream;
-
-//  return [ComGoogleI18nPhonenumbersMetadataManager_class_() getResourceAsStream:metadataFileName];
-}
-
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  ComGoogleI18nPhonenumbersMetadataManager_$1_init(self);
-  return self;
-}
-J2OBJC_IGNORE_DESIGNATED_END
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, "LJavaIoInputStream;", 0x1, 0, 1, -1, -1, -1, -1 },
-    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  methods[0].selector = @selector(loadMetadataWithNSString:);
-  methods[1].selector = @selector(init);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "loadMetadata", "LNSString;", "LComGoogleI18nPhonenumbersMetadataManager;" };
-  static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersMetadataManager_$1 = { "", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x8008, 2, 0, 2, -1, -1, -1, -1 };
-  return &_ComGoogleI18nPhonenumbersMetadataManager_$1;
-}
-
-@end
-
-void ComGoogleI18nPhonenumbersMetadataManager_$1_init(ComGoogleI18nPhonenumbersMetadataManager_$1 *self) {
-  NSObject_init(self);
-}
-
-ComGoogleI18nPhonenumbersMetadataManager_$1 *new_ComGoogleI18nPhonenumbersMetadataManager_$1_init() {
-  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersMetadataManager_$1, init)
-}
-
-ComGoogleI18nPhonenumbersMetadataManager_$1 *create_ComGoogleI18nPhonenumbersMetadataManager_$1_init() {
-  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersMetadataManager_$1, init)
-}

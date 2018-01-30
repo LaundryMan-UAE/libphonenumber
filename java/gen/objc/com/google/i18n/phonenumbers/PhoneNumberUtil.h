@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersPhoneNumberUtil
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersPhoneNumberUtil_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberUtil || defined(INCLUDE_ComGoogleI18nPhonenumbersPhoneNumberUtil))
 #define ComGoogleI18nPhonenumbersPhoneNumberUtil_
 
@@ -38,75 +43,69 @@
 @protocol JavaUtilSet;
 
 /*!
- @brief Utility for international phone numbers.
- Functionality includes formatting, parsing and
- validation.
+ @brief Utility for international phone numbers.Functionality includes formatting, parsing and
+  validation.
  <p>If you use this library, and want to be notified about important changes, please sign up to
- our <a href="https://groups.google.com/forum/#!aboutgroup/libphonenumber-discuss">mailing list</a>.
- NOTE: A lot of methods in this class require Region Code strings. These must be provided using
- CLDR two-letter region-code format. These should be in upper-case. The list of the codes
- can be found here:
- http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
+  our <a href="https://groups.google.com/forum/#!aboutgroup/libphonenumber-discuss">mailing list</a>.
+  NOTE: A lot of methods in this class require Region Code strings. These must be provided using
+  CLDR two-letter region-code format. These should be in upper-case. The list of the codes
+  can be found here:
+  http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
  */
 @interface ComGoogleI18nPhonenumbersPhoneNumberUtil : NSObject
 
 #pragma mark Public
 
 /*!
- @brief Returns true if the number can be dialled from outside the region, or unknown.
- If the number
- can only be dialled from within the region, returns false. Does not check the number is a valid
- number. Note that, at the moment, this method does not handle short numbers (which are
- currently all presumed to not be diallable from outside their country).
- @param number  the phone-number for which we want to know whether it is diallable from
- outside the region
+ @brief Returns true if the number can be dialled from outside the region, or unknown.If the number
+  can only be dialled from within the region, returns false.
+ Does not check the number is a valid
+  number. Note that, at the moment, this method does not handle short numbers (which are
+  currently all presumed to not be diallable from outside their country).
+ @param number the phone-number for which we want to know whether it is diallable from      outside the region
  */
 - (jboolean)canBeInternationallyDialledWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
 /*!
  @brief Converts all alpha characters in a number to their respective digits on a keypad, but retains
- existing formatting.
+  existing formatting.
  */
 + (NSString *)convertAlphaCharactersInNumberWithJavaLangCharSequence:(id<JavaLangCharSequence>)number;
 
 /*!
  @brief Create a new <code>PhoneNumberUtil</code> instance to carry out international phone number
- formatting, parsing, or validation.
- The instance is loaded with all metadata by
- using the metadataLoader specified.
+  formatting, parsing, or validation.The instance is loaded with all metadata by
+  using the metadataLoader specified.
  <p>This method should only be used in the rare case in which you want to manage your own
- metadata loading. Calling this method multiple times is very expensive, as each time
- a new instance is created from scratch. When in doubt, use <code>getInstance</code>.
- @param metadataLoader  customized metadata loader. This should not be null
+  metadata loading. Calling this method multiple times is very expensive, as each time
+  a new instance is created from scratch. When in doubt, use <code>getInstance</code>.
+ @param metadataLoader customized metadata loader. This should not be null
  @return a PhoneNumberUtil instance
  */
 + (ComGoogleI18nPhonenumbersPhoneNumberUtil *)createInstanceWithComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadataLoader>)metadataLoader;
 
 /*!
- @brief Returns an iterable over all <code>PhoneNumberMatches</code> in <code>text</code>.
- This
- is a shortcut for <code>getMatcher(text, defaultRegion, Leniency.VALID, Long.MAX_VALUE)</code>
+ @brief Returns an iterable over all <code>PhoneNumberMatches</code> in <code>text</code>.This
+  is a shortcut for <code>defaultRegion, Leniency.VALID, Long.MAX_VALUE)</code>
  .
- @param text  the text to search for phone numbers, null for no text
- @param defaultRegion  region that we are expecting the number to be from. This is only used if
- the number being parsed is not written in international format. The country_code for the
- number in this case would be stored as that of the default region supplied. May be null if
- only international numbers are expected.
+ @param text the text to search for phone numbers, null for no text
+ @param defaultRegion region that we are expecting the number to be from. This is only used if      the number being parsed is not written in international format. The country_code for the
+       number in this case would be stored as that of the default region supplied. May be null if
+       only international numbers are expected.
  */
 - (id<JavaLangIterable>)findNumbersWithJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                                withNSString:(NSString *)defaultRegion;
 
 /*!
  @brief Returns an iterable over all <code>PhoneNumberMatches</code> in <code>text</code>.
- @param text  the text to search for phone numbers, null for no text
- @param defaultRegion  region that we are expecting the number to be from. This is only used if
- the number being parsed is not written in international format. The country_code for the
- number in this case would be stored as that of the default region supplied. May be null if
- only international numbers are expected.
- @param leniency  the leniency to use when evaluating candidate phone numbers
- @param maxTries  the maximum number of invalid numbers to try before giving up on the text.
- This is to cover degenerate cases where the text has a lot of false positives in it. Must
- be <code>>= 0</code>.
+ @param text the text to search for phone numbers, null for no text
+ @param defaultRegion region that we are expecting the number to be from. This is only used if      the number being parsed is not written in international format. The country_code for the
+       number in this case would be stored as that of the default region supplied. May be null if
+       only international numbers are expected.
+ @param leniency the leniency to use when evaluating candidate phone numbers
+ @param maxTries the maximum number of invalid numbers to try before giving up on the text.      This is to cover degenerate cases where the text has a lot of false positives in it. Must
+       be 
+ <code>>= 0</code> .
  */
 - (id<JavaLangIterable>)findNumbersWithJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                                withNSString:(NSString *)defaultRegion
@@ -114,39 +113,38 @@
                                                    withLong:(jlong)maxTries;
 
 /*!
- @brief Formats a phone number in the specified format using default rules.
- Note that this does not
- promise to produce a phone number that the user can dial from where they are - although we do
- format in either 'national' or 'international' format depending on what the client asks for, we
- do not currently support a more abbreviated format, such as for users in the same "area" who
- could potentially dial the number without area code. Note that if the phone number has a
- country calling code of 0 or an otherwise invalid country calling code, we cannot work out
- which formatting rules to apply so we return the national significant number with no formatting
- applied.
- @param number  the phone number to be formatted
- @param numberFormat  the format the phone number should be formatted into
+ @brief Formats a phone number in the specified format using default rules.Note that this does not
+  promise to produce a phone number that the user can dial from where they are - although we do
+  format in either 'national' or 'international' format depending on what the client asks for, we
+  do not currently support a more abbreviated format, such as for users in the same "area" who
+  could potentially dial the number without area code.
+ Note that if the phone number has a
+  country calling code of 0 or an otherwise invalid country calling code, we cannot work out
+  which formatting rules to apply so we return the national significant number with no formatting
+  applied.
+ @param number the phone number to be formatted
+ @param numberFormat the format the phone number should be formatted into
  @return the formatted phone number
  */
 - (NSString *)formatWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
           withComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat:(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *)numberFormat;
 
 /*!
- @brief Same as <code>format(PhoneNumber,PhoneNumberFormat)</code>, but accepts a mutable StringBuilder as
- a parameter to decrease object creation when invoked many times.
+ @brief Same as <code>PhoneNumberFormat)</code>, but accepts a mutable StringBuilder as
+  a parameter to decrease object creation when invoked many times.
  */
 - (void)formatWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
     withComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat:(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *)numberFormat
                                          withJavaLangStringBuilder:(JavaLangStringBuilder *)formattedNumber;
 
 /*!
- @brief Formats a phone number in the specified format using client-defined formatting rules.
- Note that
- if the phone number has a country calling code of zero or an otherwise invalid country calling
- code, we cannot work out things like whether there should be a national prefix applied, or how
- to format extensions, so we return the national significant number with no formatting applied.
- @param number  the phone number to be formatted
- @param numberFormat  the format the phone number should be formatted into
- @param userDefinedFormats  formatting rules specified by clients
+ @brief Formats a phone number in the specified format using client-defined formatting rules.Note that
+  if the phone number has a country calling code of zero or an otherwise invalid country calling
+  code, we cannot work out things like whether there should be a national prefix applied, or how
+  to format extensions, so we return the national significant number with no formatting applied.
+ @param number the phone number to be formatted
+ @param numberFormat the format the phone number should be formatted into
+ @param userDefinedFormats formatting rules specified by clients
  @return the formatted phone number
  */
 - (NSString *)formatByPatternWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
@@ -156,62 +154,58 @@
 /*!
  @brief Formats a phone number using the original phone number format that the number is parsed from.
  The original format is embedded in the country_code_source field of the PhoneNumber object
- passed in. If such information is missing, the number will be formatted into the NATIONAL
- format by default. When we don't have a formatting pattern for the number, the method returns
- the raw input when it is available.
- Note this method guarantees no digit will be inserted, removed or modified as a result of
- formatting.
- @param number  the phone number that needs to be formatted in its original number format
- @param regionCallingFrom  the region whose IDD needs to be prefixed if the original number
- has one
+  passed in. If such information is missing, the number will be formatted into the NATIONAL
+  format by default. When we don't have a formatting pattern for the number, the method returns
+  the raw input when it is available.
+  Note this method guarantees no digit will be inserted, removed or modified as a result of
+  formatting.
+ @param number the phone number that needs to be formatted in its original number format
+ @param regionCallingFrom the region whose IDD needs to be prefixed if the original number      has one
  @return the formatted phone number in its original number format
  */
 - (NSString *)formatInOriginalFormatWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                             withNSString:(NSString *)regionCallingFrom;
 
 /*!
- @brief Formats a phone number in national format for dialing using the carrier as specified in the
- <code>carrierCode</code>.
- The <code>carrierCode</code> will always be used regardless of whether the
- phone number already has a preferred domestic carrier code stored. If <code>carrierCode</code>
- contains an empty string, returns the number in national format without any carrier code.
- @param number  the phone number to be formatted
- @param carrierCode  the carrier selection code to be used
+ @brief Formats a phone number in national format for dialing using the carrier as specified in the 
+ <code>carrierCode</code>.The <code>carrierCode</code> will always be used regardless of whether the
+  phone number already has a preferred domestic carrier code stored.
+ If <code>carrierCode</code>
+  contains an empty string, returns the number in national format without any carrier code.
+ @param number the phone number to be formatted
+ @param carrierCode the carrier selection code to be used
  @return the formatted phone number in national format for dialing using the carrier as
- specified in the <code>carrierCode</code>
+      specified in the <code>carrierCode</code>
  */
 - (NSString *)formatNationalNumberWithCarrierCodeWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                              withJavaLangCharSequence:(id<JavaLangCharSequence>)carrierCode;
 
 /*!
  @brief Formats a phone number in national format for dialing using the carrier as specified in the
- preferredDomesticCarrierCode field of the PhoneNumber object passed in.
- If that is missing,
- use the <code>fallbackCarrierCode</code> passed in instead. If there is no
+  preferredDomesticCarrierCode field of the PhoneNumber object passed in.If that is missing,
+  use the <code>fallbackCarrierCode</code> passed in instead.
+ If there is no 
  <code>preferredDomesticCarrierCode</code>, and the <code>fallbackCarrierCode</code> contains an empty
- string, return the number in national format without any carrier code.
+  string, return the number in national format without any carrier code. 
  <p>Use <code>formatNationalNumberWithCarrierCode</code> instead if the carrier code passed in
- should take precedence over the number's <code>preferredDomesticCarrierCode</code> when formatting.
- @param number  the phone number to be formatted
- @param fallbackCarrierCode  the carrier selection code to be used, if none is found in the
- phone number itself
+  should take precedence over the number's <code>preferredDomesticCarrierCode</code> when formatting.
+ @param number the phone number to be formatted
+ @param fallbackCarrierCode the carrier selection code to be used, if none is found in the      phone number itself
  @return the formatted phone number in national format for dialing using the number's
- <code>preferredDomesticCarrierCode</code>, or the <code>fallbackCarrierCode</code> passed in if
- none is found
+      <code>preferredDomesticCarrierCode</code>, or the <code>fallbackCarrierCode</code> passed in if
+      none is found
  */
 - (NSString *)formatNationalNumberWithPreferredCarrierCodeWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                                       withJavaLangCharSequence:(id<JavaLangCharSequence>)fallbackCarrierCode;
 
 /*!
  @brief Returns a number formatted in such a way that it can be dialed from a mobile phone in a
- specific region.
- If the number cannot be reached from the region (e.g. some countries block
- toll-free numbers from being called outside of the country), the method returns an empty
- string.
- @param number  the phone number to be formatted
- @param regionCallingFrom  the region where the call is being placed
- @param withFormatting  whether the number should be returned with formatting symbols, such as
- spaces and dashes.
+  specific region.If the number cannot be reached from the region (e.g. some countries block
+  toll-free numbers from being called outside of the country), the method returns an empty
+  string.
+ @param number the phone number to be formatted
+ @param regionCallingFrom the region where the call is being placed
+ @param withFormatting whether the number should be returned with formatting symbols, such as      spaces and dashes.
  @return the formatted phone number
  */
 - (NSString *)formatNumberForMobileDialingWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
@@ -219,18 +213,18 @@
                                                                                    withBoolean:(jboolean)withFormatting;
 
 /*!
- @brief Formats a phone number for out-of-country dialing purposes.
- If no regionCallingFrom is
- supplied, we format the number in its INTERNATIONAL format. If the country calling code is the
- same as that of the region where the number is from, then NATIONAL formatting will be applied.
+ @brief Formats a phone number for out-of-country dialing purposes.If no regionCallingFrom is
+  supplied, we format the number in its INTERNATIONAL format.
+ If the country calling code is the
+  same as that of the region where the number is from, then NATIONAL formatting will be applied. 
  <p>If the number itself has a country calling code of zero or an otherwise invalid country
- calling code, then we return the number with no formatting applied.
+  calling code, then we return the number with no formatting applied. 
  <p>Note this function takes care of the case for calling inside of NANPA and between Russia and
- Kazakhstan (who share the same country calling code). In those cases, no international prefix
- is used. For regions which have multiple international prefixes, the number in its
- INTERNATIONAL format will be returned instead.
- @param number  the phone number to be formatted
- @param regionCallingFrom  the region where the call is being placed
+  Kazakhstan (who share the same country calling code). In those cases, no international prefix
+  is used. For regions which have multiple international prefixes, the number in its
+  INTERNATIONAL format will be returned instead.
+ @param number the phone number to be formatted
+ @param regionCallingFrom the region where the call is being placed
  @return the formatted phone number
  */
 - (NSString *)formatOutOfCountryCallingNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
@@ -239,22 +233,22 @@
 /*!
  @brief Formats a phone number for out-of-country dialing purposes.
  Note that in this version, if the number was entered originally using alpha characters and
- this version of the number is stored in raw_input, this representation of the number will be
- used rather than the digit representation. Grouping information, as specified by characters
- such as "-" and " ", will be retained.
+  this version of the number is stored in raw_input, this representation of the number will be
+  used rather than the digit representation. Grouping information, as specified by characters
+  such as "-" and " ", will be retained. 
  <p><b>Caveats:</b></p>
- <ul>
- <li> This will not produce good results if the country calling code is both present in the raw
- input _and_ is the start of the national number. This is not a problem in the regions
- which typically use alpha numbers.
+  <ul>
+   <li> This will not produce good results if the country calling code is both present in the raw
+        input _and_ is the start of the national number. This is not a problem in the regions
+        which typically use alpha numbers.  
  <li> This will also not produce good results if the raw input has any grouping information
- within the first three digits of the national number, and if the function needs to strip
- preceding digits/words in the raw input before these digits. Normally people group the
- first three digits together so this is not a huge problem - and will be fixed if it
- proves to be so.
+        within the first three digits of the national number, and if the function needs to strip
+        preceding digits/words in the raw input before these digits. Normally people group the
+        first three digits together so this is not a huge problem - and will be fixed if it
+        proves to be so. 
  </ul>
- @param number  the phone number that needs to be formatted
- @param regionCallingFrom  the region where the call is being placed
+ @param number the phone number that needs to be formatted
+ @param regionCallingFrom the region where the call is being placed
  @return the formatted phone number
  */
 - (NSString *)formatOutOfCountryKeepingAlphaCharsWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
@@ -262,65 +256,63 @@
 
 /*!
  @brief Gets an <code>com.google.i18n.phonenumbers.AsYouTypeFormatter</code> for the specific region.
- @param regionCode  the region where the phone number is being entered
+ @param regionCode the region where the phone number is being entered
  @return an <code>com.google.i18n.phonenumbers.AsYouTypeFormatter</code> object, which can be used
- to format phone numbers in the specific region "as you type"
+      to format phone numbers in the specific region "as you type"
  */
 - (ComGoogleI18nPhonenumbersAsYouTypeFormatter *)getAsYouTypeFormatterWithNSString:(NSString *)regionCode;
 
 /*!
- @brief Returns the country calling code for a specific region.
- For example, this would be 1 for the
- United States, and 64 for New Zealand.
- @param regionCode  the region that we want to get the country calling code for
+ @brief Returns the country calling code for a specific region.For example, this would be 1 for the
+  United States, and 64 for New Zealand.
+ @param regionCode the region that we want to get the country calling code for
  @return the country calling code for the region denoted by regionCode
  */
 - (jint)getCountryCodeForRegionWithNSString:(NSString *)regionCode;
 
 /*!
  @brief Returns the mobile token for the provided country calling code if it has one, otherwise
- returns an empty string.
- A mobile token is a number inserted before the area code when dialing
- a mobile number from that country from abroad.
- @param countryCallingCode  the country calling code for which we want the mobile token
+  returns an empty string.A mobile token is a number inserted before the area code when dialing
+  a mobile number from that country from abroad.
+ @param countryCallingCode the country calling code for which we want the mobile token
  @return the mobile token, as a string, for the given country calling code
  */
 + (NSString *)getCountryMobileTokenWithInt:(jint)countryCallingCode;
 
 /*!
  @brief Gets a valid number for the specified region.
- @param regionCode  the region for which an example number is needed
+ @param regionCode the region for which an example number is needed
  @return a valid fixed-line number for the specified region. Returns null when the metadata
- does not contain such information, or the region 001 is passed in. For 001 (representing
- non-geographical numbers), call <code>getExampleNumberForNonGeoEntity</code> instead.
+     does not contain such information, or the region 001 is passed in. For 001 (representing
+     non-geographical numbers), call <code>getExampleNumberForNonGeoEntity</code> instead.
  */
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)getExampleNumberWithNSString:(NSString *)regionCode;
 
 /*!
  @brief Gets a valid number for the specified country calling code for a non-geographical entity.
- @param countryCallingCode  the country calling code for a non-geographical entity
+ @param countryCallingCode the country calling code for a non-geographical entity
  @return a valid number for the non-geographical entity. Returns null when the metadata
- does not contain such information, or the country calling code passed in does not belong
- to a non-geographical entity.
+     does not contain such information, or the country calling code passed in does not belong
+     to a non-geographical entity.
  */
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)getExampleNumberForNonGeoEntityWithInt:(jint)countryCallingCode;
 
 /*!
  @brief Gets a valid number for the specified number type (it may belong to any country).
- @param type  the type of number that is needed
+ @param type the type of number that is needed
  @return a valid number for the specified type. Returns null when the metadata
- does not contain such information. This should only happen when no numbers of this type are
- allocated anywhere in the world anymore.
+      does not contain such information. This should only happen when no numbers of this type are
+      allocated anywhere in the world anymore.
  */
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)getExampleNumberForTypeWithComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType:(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *)type;
 
 /*!
  @brief Gets a valid number for the specified region and number type.
- @param regionCode  the region for which an example number is needed
- @param type  the type of number that is needed
+ @param regionCode the region for which an example number is needed
+ @param type the type of number that is needed
  @return a valid number for the specified region and type. Returns null when the metadata
- does not contain such information or if an invalid region or region 001 was entered.
- For 001 (representing non-geographical numbers), call
+      does not contain such information or if an invalid region or region 001 was entered.
+      For 001 (representing non-geographical numbers), call     
  <code>getExampleNumberForNonGeoEntity</code> instead.
  */
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)getExampleNumberForTypeWithNSString:(NSString *)regionCode
@@ -328,34 +320,33 @@
 
 /*!
  @brief Gets a <code>PhoneNumberUtil</code> instance to carry out international phone number formatting,
- parsing, or validation.
- The instance is loaded with all phone number metadata.
+  parsing, or validation.The instance is loaded with all phone number metadata.
  <p>The <code>PhoneNumberUtil</code> is implemented as a singleton. Therefore, calling getInstance
- multiple times will only result in one instance being created.
+  multiple times will only result in one instance being created.
  @return a PhoneNumberUtil instance
  */
 + (ComGoogleI18nPhonenumbersPhoneNumberUtil *)getInstance;
 
 /*!
- @brief Gets an invalid number for the specified region.
- This is useful for unit-testing purposes,
- where you want to test what will happen with an invalid number. Note that the number that is
- returned will always be able to be parsed and will have the correct country code. It may also
- be a valid *short* number/code for this region. Validity checking such numbers is handled with
+ @brief Gets an invalid number for the specified region.This is useful for unit-testing purposes,
+  where you want to test what will happen with an invalid number.
+ Note that the number that is
+  returned will always be able to be parsed and will have the correct country code. It may also
+  be a valid *short* number/code for this region. Validity checking such numbers is handled with 
  <code>com.google.i18n.phonenumbers.ShortNumberInfo</code>.
- @param regionCode  the region for which an example number is needed
+ @param regionCode the region for which an example number is needed
  @return an invalid number for the specified region. Returns null when an unsupported region or
- the region 001 (Earth) is passed in.
+      the region 001 (Earth) is passed in.
  */
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)getInvalidExampleNumberWithNSString:(NSString *)regionCode;
 
 /*!
  @brief Gets the length of the geographical area code from the
- PhoneNumber object passed in, so that clients could use it
- to split a national significant number into geographical area code and subscriber number.
- It
- works in such a way that the resultant subscriber number should be diallable, at least on some
- devices. An example of how this could be used:
+  PhoneNumber object passed in, so that clients could use it
+  to split a national significant number into geographical area code and subscriber number.It
+  works in such a way that the resultant subscriber number should be diallable, at least on some
+  devices.
+ An example of how this could be used: 
  @code
  PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
   PhoneNumber number = phoneUtil.parse("16502530000", "US");
@@ -363,42 +354,41 @@
   String areaCode;
   String subscriberNumber;
   int areaCodeLength = phoneUtil.getLengthOfGeographicalAreaCode(number);
-  if (areaCodeLength > 0) 
-   areaCode = nationalSignificantNumber.substring(0, areaCodeLength);
-   subscriberNumber = nationalSignificantNumber.substring(areaCodeLength);
+  if (areaCodeLength > 0) {
+    areaCode = nationalSignificantNumber.substring(0, areaCodeLength);
+    subscriberNumber = nationalSignificantNumber.substring(areaCodeLength);
   } else {
-   areaCode = "";
-   subscriberNumber = nationalSignificantNumber;
-  }
-  
+    areaCode = "";
+    subscriberNumber = nationalSignificantNumber;
+  } 
+ 
 @endcode
- N.B.: area code is a very ambiguous concept, so the I18N team generally recommends against
- using it for most purposes, but recommends using the more general <code>national_number</code>
- instead. Read the following carefully before deciding to use this method:
+  N.B.: area code is a very ambiguous concept, so the I18N team generally recommends against
+  using it for most purposes, but recommends using the more general <code>national_number</code>
+  instead. Read the following carefully before deciding to use this method: 
  <ul>
- <li> geographical area codes change over time, and this method honors those changes;
- therefore, it doesn't guarantee the stability of the result it produces.
+   <li> geographical area codes change over time, and this method honors those changes;
+     therefore, it doesn't guarantee the stability of the result it produces.  
  <li> subscriber numbers may not be diallable from all devices (notably mobile devices, which
- typically requires the full national_number to be dialled in most regions).
+     typically requires the full national_number to be dialled in most regions).  
  <li> most non-geographical numbers have no area codes, including numbers from non-geographical
- entities
- <li> some geographical numbers have no area codes.
+     entities  
+ <li> some geographical numbers have no area codes. 
  </ul>
- @param number  the PhoneNumber object for which clients
- want to know the length of the area code
+ @param number the PhoneNumber object for which clients      want to know the length of the area code
  @return the length of area code of the PhoneNumber object
- passed in
+      passed in
  */
 - (jint)getLengthOfGeographicalAreaCodeWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
 /*!
  @brief Gets the length of the national destination code (NDC) from the
- PhoneNumber object passed in, so that clients could use it
- to split a national significant number into NDC and subscriber number.
- The NDC of a phone
- number is normally the first group of digit(s) right after the country calling code when the
- number is formatted in the international format, if there is a subscriber number part that
- follows. An example of how this could be used:
+  PhoneNumber object passed in, so that clients could use it
+  to split a national significant number into NDC and subscriber number.The NDC of a phone
+  number is normally the first group of digit(s) right after the country calling code when the
+  number is formatted in the international format, if there is a subscriber number part that
+  follows.
+ An example of how this could be used: 
  @code
  PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
   PhoneNumber number = phoneUtil.parse("18002530000", "US");
@@ -406,45 +396,43 @@
   String nationalDestinationCode;
   String subscriberNumber;
   int nationalDestinationCodeLength = phoneUtil.getLengthOfNationalDestinationCode(number);
-  if (nationalDestinationCodeLength > 0) 
-   nationalDestinationCode = nationalSignificantNumber.substring(0,
-       nationalDestinationCodeLength);
-   subscriberNumber = nationalSignificantNumber.substring(nationalDestinationCodeLength);
+  if (nationalDestinationCodeLength > 0) {
+    nationalDestinationCode = nationalSignificantNumber.substring(0,
+        nationalDestinationCodeLength);
+    subscriberNumber = nationalSignificantNumber.substring(nationalDestinationCodeLength);
   } else {
-   nationalDestinationCode = "";
-   subscriberNumber = nationalSignificantNumber;
-  }
-  
+    nationalDestinationCode = "";
+    subscriberNumber = nationalSignificantNumber;
+  } 
+ 
 @endcode
- Refer to the unittests to see the difference between this function and
+  Refer to the unittests to see the difference between this function and 
  <code>getLengthOfGeographicalAreaCode</code>.
- @param number  the PhoneNumber object for which clients
- want to know the length of the NDC
+ @param number the PhoneNumber object for which clients      want to know the length of the NDC
  @return the length of NDC of the PhoneNumber object
- passed in
+      passed in
  */
 - (jint)getLengthOfNationalDestinationCodeWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
 /*!
- @brief Gets the national significant number of a phone number.
- Note a national significant number
- doesn't contain a national prefix or any formatting.
- @param number  the phone number for which the national significant number is needed
+ @brief Gets the national significant number of a phone number.Note a national significant number
+  doesn't contain a national prefix or any formatting.
+ @param number the phone number for which the national significant number is needed
  @return the national significant number of the PhoneNumber object passed in
  */
 - (NSString *)getNationalSignificantNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
 /*!
- @brief Returns the national dialling prefix for a specific region.
- For example, this would be 1 for
- the United States, and 0 for New Zealand. Set stripNonDigits to true to strip symbols like "~"
- (which indicates a wait for a dialling tone) from the prefix returned. If no national prefix is
- present, we return null.
+ @brief Returns the national dialling prefix for a specific region.For example, this would be 1 for
+  the United States, and 0 for New Zealand.
+ Set stripNonDigits to true to strip symbols like "~"
+  (which indicates a wait for a dialling tone) from the prefix returned. If no national prefix is
+  present, we return null. 
  <p>Warning: Do not use this method for do-your-own formatting - for some regions, the
- national dialling prefix is used only for certain types of numbers. Use the library's
- formatting functions to prefix the national prefix when required.
- @param regionCode  the region that we want to get the dialling prefix for
- @param stripNonDigits  true to strip non-digits from the national dialling prefix
+  national dialling prefix is used only for certain types of numbers. Use the library's
+  formatting functions to prefix the national prefix when required.
+ @param regionCode the region that we want to get the dialling prefix for
+ @param stripNonDigits true to strip non-digits from the national dialling prefix
  @return the dialling prefix for the region denoted by regionCode
  */
 - (NSString *)getNddPrefixForRegionWithNSString:(NSString *)regionCode
@@ -452,104 +440,99 @@
 
 /*!
  @brief Gets the type of a valid phone number.
- @param number  the phone number that we want to know the type
+ @param number the phone number that we want to know the type
  @return the type of the phone number, or UNKNOWN if it is invalid
  */
 - (ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *)getNumberTypeWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
 /*!
- @brief Returns the region code that matches the specific country calling code.
- In the case of no
- region code being found, ZZ will be returned. In the case of multiple regions, the one
- designated in the metadata as the "main" region for this calling code will be returned. If the
- countryCallingCode entered is valid but doesn't match a specific region (such as in the case of
- non-geographical calling codes like 800) the value "001" will be returned (corresponding to
- the value for World in the UN M.49 schema).
+ @brief Returns the region code that matches the specific country calling code.In the case of no
+  region code being found, ZZ will be returned.
+ In the case of multiple regions, the one
+  designated in the metadata as the "main" region for this calling code will be returned. If the
+  countryCallingCode entered is valid but doesn't match a specific region (such as in the case of
+  non-geographical calling codes like 800) the value "001" will be returned (corresponding to
+  the value for World in the UN M.49 schema).
  */
 - (NSString *)getRegionCodeForCountryCodeWithInt:(jint)countryCallingCode;
 
 /*!
- @brief Returns the region where a phone number is from.
- This could be used for geocoding at the region
- level. Only guarantees correct results for valid, full numbers (not short-codes, or invalid
- numbers).
- @param number  the phone number whose origin we want to know
+ @brief Returns the region where a phone number is from.This could be used for geocoding at the region
+  level.
+ Only guarantees correct results for valid, full numbers (not short-codes, or invalid
+  numbers).
+ @param number the phone number whose origin we want to know
  @return the region where the phone number is from, or null if no region matches this calling
- code
+      code
  */
 - (NSString *)getRegionCodeForNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
 /*!
- @brief Returns a list with the region codes that match the specific country calling code.
- For
- non-geographical country calling codes, the region code 001 is returned. Also, in the case
- of no region code being found, an empty list is returned.
+ @brief Returns a list with the region codes that match the specific country calling code.For
+  non-geographical country calling codes, the region code 001 is returned.
+ Also, in the case
+  of no region code being found, an empty list is returned.
  */
 - (id<JavaUtilList>)getRegionCodesForCountryCodeWithInt:(jint)countryCallingCode;
 
 /*!
  @brief Returns all country calling codes the library has metadata for, covering both non-geographical
- entities (global network calling codes) and those used for geographical entities.
- This could be
- used to populate a drop-down box of country calling codes for a phone-number widget, for
- instance.
+  entities (global network calling codes) and those used for geographical entities.This could be
+  used to populate a drop-down box of country calling codes for a phone-number widget, for
+  instance.
  @return an unordered set of the country calling codes for every geographical and
- non-geographical entity the library supports
+      non-geographical entity the library supports
  */
 - (id<JavaUtilSet>)getSupportedCallingCodes;
 
 /*!
  @brief Returns all global network calling codes the library has metadata for.
  @return an unordered set of the country calling codes for every non-geographical entity the
- library supports
+      library supports
  */
 - (id<JavaUtilSet>)getSupportedGlobalNetworkCallingCodes;
 
 /*!
  @brief Returns all regions the library has metadata for.
  @return an unordered set of the two-letter region codes for every geographical region the
- library supports
+      library supports
  */
 - (id<JavaUtilSet>)getSupportedRegions;
 
 /*!
  @brief Returns the types for a country-code belonging to a non-geographical entity which the library
- has metadata for.
- Will not include FIXED_LINE_OR_MOBILE (if numbers for this non-geographical
- entity could be classified as FIXED_LINE_OR_MOBILE, both FIXED_LINE and MOBILE would be
- present) and UNKNOWN.
+  has metadata for.Will not include FIXED_LINE_OR_MOBILE (if numbers for this non-geographical
+  entity could be classified as FIXED_LINE_OR_MOBILE, both FIXED_LINE and MOBILE would be
+  present) and UNKNOWN.
  No types will be returned for country calling codes that do not map to a known non-geographical
- entity.
+  entity.
  */
 - (id<JavaUtilSet>)getSupportedTypesForNonGeoEntityWithInt:(jint)countryCallingCode;
 
 /*!
- @brief Returns the types for a given region which the library has metadata for.
- Will not include
- FIXED_LINE_OR_MOBILE (if numbers in this region could be classified as FIXED_LINE_OR_MOBILE,
- both FIXED_LINE and MOBILE would be present) and UNKNOWN.
+ @brief Returns the types for a given region which the library has metadata for.Will not include
+  FIXED_LINE_OR_MOBILE (if numbers in this region could be classified as FIXED_LINE_OR_MOBILE,
+  both FIXED_LINE and MOBILE would be present) and UNKNOWN.
  No types will be returned for invalid or unknown region codes.
  */
 - (id<JavaUtilSet>)getSupportedTypesForRegionWithNSString:(NSString *)regionCode;
 
 /*!
- @brief Checks if the number is a valid vanity (alpha) number such as 800 MICROSOFT.
- A valid vanity
- number will start with at least 3 digits and will have three or more alpha characters. This
- does not do region-specific checks - to work out if this number is actually valid for a region,
- it should be parsed and methods such as <code>isPossibleNumberWithReason</code> and
+ @brief Checks if the number is a valid vanity (alpha) number such as 800 MICROSOFT.A valid vanity
+  number will start with at least 3 digits and will have three or more alpha characters.
+ This
+  does not do region-specific checks - to work out if this number is actually valid for a region,
+  it should be parsed and methods such as <code>isPossibleNumberWithReason</code> and 
  <code>isValidNumber</code> should be used.
- @param number  the number that needs to be checked
+ @param number the number that needs to be checked
  @return true if the number is a valid vanity number
  */
 - (jboolean)isAlphaNumberWithJavaLangCharSequence:(id<JavaLangCharSequence>)number;
 
 /*!
- @brief Returns true if the supplied region supports mobile number portability.
- Returns false for
- invalid, unknown or regions that don't support mobile number portability.
- @param regionCode  the region for which we want to know whether it supports mobile number
- portability or not
+ @brief Returns true if the supplied region supports mobile number portability.Returns false for
+  invalid, unknown or regions that don't support mobile number portability.
+ @param regionCode the region for which we want to know whether it supports mobile number      portability or not
  */
 - (jboolean)isMobileNumberPortableRegionWithNSString:(NSString *)regionCode;
 
@@ -560,43 +543,40 @@
 - (jboolean)isNANPACountryWithNSString:(NSString *)regionCode;
 
 /*!
- @brief Tests whether a phone number has a geographical association.
- It checks if the number is
- associated with a certain region in the country to which it belongs. Note that this doesn't
- verify if the number is actually in use.
+ @brief Tests whether a phone number has a geographical association.It checks if the number is
+  associated with a certain region in the country to which it belongs.
+ Note that this doesn't
+  verify if the number is actually in use.
  */
 - (jboolean)isNumberGeographicalWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)phoneNumber;
 
 /*!
  @brief Overload of isNumberGeographical(PhoneNumber), since calculating the phone number type is
- expensive; if we have already done this, we don't want to do it again.
+  expensive; if we have already done this, we don't want to do it again.
  */
 - (jboolean)isNumberGeographicalWithComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType:(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *)phoneNumberType
                                                                                      withInt:(jint)countryCallingCode;
 
 /*!
- @brief Takes two phone numbers as strings and compares them for equality.
- This is a convenience
- wrapper for <code>isNumberMatch(PhoneNumber,PhoneNumber)</code>. No default region is known.
- @param firstNumber  first number to compare. Can contain formatting, and can have country
- calling code specified with + at the start.
- @param secondNumber  second number to compare. Can contain formatting, and can have country
- calling code specified with + at the start.
+ @brief Takes two phone numbers as strings and compares them for equality.This is a convenience
+  wrapper for <code>PhoneNumber)</code>.
+ No default region is known.
+ @param firstNumber first number to compare. Can contain formatting, and can have country      calling code specified with + at the start.
+ @param secondNumber second number to compare. Can contain formatting, and can have country      calling code specified with + at the start.
  @return NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
- <code>isNumberMatch(PhoneNumber,PhoneNumber)</code> for more details.
+      <code>PhoneNumber)</code> for more details.
  */
 - (ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *)isNumberMatchWithJavaLangCharSequence:(id<JavaLangCharSequence>)firstNumber
                                                                      withJavaLangCharSequence:(id<JavaLangCharSequence>)secondNumber;
 
 /*!
- @brief Takes two phone numbers and compares them for equality.
- This is a convenience wrapper for
- <code>isNumberMatch(PhoneNumber,PhoneNumber)</code>. No default region is known.
- @param firstNumber  first number to compare in proto buffer format
- @param secondNumber  second number to compare. Can contain formatting, and can have country
- calling code specified with + at the start.
+ @brief Takes two phone numbers and compares them for equality.This is a convenience wrapper for 
+ <code>PhoneNumber)</code>.
+ No default region is known.
+ @param firstNumber first number to compare in proto buffer format
+ @param secondNumber second number to compare. Can contain formatting, and can have country      calling code specified with + at the start.
  @return NOT_A_NUMBER, NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH, EXACT_MATCH. See
- <code>isNumberMatch(PhoneNumber,PhoneNumber)</code> for more details.
+      <code>PhoneNumber)</code> for more details.
  */
 - (ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *)isNumberMatchWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)firstNumber
                                                                                                  withJavaLangCharSequence:(id<JavaLangCharSequence>)secondNumber;
@@ -604,235 +584,227 @@
 /*!
  @brief Takes two phone numbers and compares them for equality.
  <p>Returns EXACT_MATCH if the country_code, NSN, presence of a leading zero for Italian numbers
- and any extension present are the same.
- Returns NSN_MATCH if either or both has no region specified, and the NSNs and extensions are
- the same.
- Returns SHORT_NSN_MATCH if either or both has no region specified, or the region specified is
- the same, and one NSN could be a shorter version of the other number. This includes the case
- where one has an extension specified, and the other does not.
- Returns NO_MATCH otherwise.
- For example, the numbers +1 345 657 1234 and 657 1234 are a SHORT_NSN_MATCH.
- The numbers +1 345 657 1234 and 345 657 are a NO_MATCH.
- @param firstNumberIn  first number to compare
- @param secondNumberIn  second number to compare
+  and any extension present are the same.
+  Returns NSN_MATCH if either or both has no region specified, and the NSNs and extensions are
+  the same.
+  Returns SHORT_NSN_MATCH if either or both has no region specified, or the region specified is
+  the same, and one NSN could be a shorter version of the other number. This includes the case
+  where one has an extension specified, and the other does not.
+  Returns NO_MATCH otherwise.
+  For example, the numbers +1 345 657 1234 and 657 1234 are a SHORT_NSN_MATCH.
+  The numbers +1 345 657 1234 and 345 657 are a NO_MATCH.
+ @param firstNumberIn first number to compare
+ @param secondNumberIn second number to compare
  @return NO_MATCH, SHORT_NSN_MATCH, NSN_MATCH or EXACT_MATCH depending on the level of equality
- of the two numbers, described in the method definition.
+      of the two numbers, described in the method definition.
  */
 - (ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *)isNumberMatchWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)firstNumberIn
                                                                      withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)secondNumberIn;
 
 /*!
  @brief Check whether a phone number is a possible number given a number in the form of a string, and
- the region where the number could be dialed from.
- It provides a more lenient check than
- <code>isValidNumber</code>. See <code>isPossibleNumber(PhoneNumber)</code> for details.
+  the region where the number could be dialed from.It provides a more lenient check than 
+ <code>isValidNumber</code>.
+ See <code>isPossibleNumber(PhoneNumber)</code> for details. 
  <p>This method first parses the number, then invokes <code>isPossibleNumber(PhoneNumber)</code>
- with the resultant PhoneNumber object.
- @param number  the number that needs to be checked
- @param regionDialingFrom  the region that we are expecting the number to be dialed from.
- Note this is different from the region where the number belongs.  For example, the number
- +1 650 253 0000 is a number that belongs to US. When written in this form, it can be
- dialed from any region. When it is written as 00 1 650 253 0000, it can be dialed from any
- region which uses an international dialling prefix of 00. When it is written as
- 650 253 0000, it can only be dialed from within the US, and when written as 253 0000, it
- can only be dialed from within a smaller area in the US (Mountain View, CA, to be more
- specific).
+  with the resultant PhoneNumber object.
+ @param number the number that needs to be checked
+ @param regionDialingFrom the region that we are expecting the number to be dialed from.      Note this is different from the region where the number belongs.  For example, the number
+       +1 650 253 0000 is a number that belongs to US. When written in this form, it can be
+       dialed from any region. When it is written as 00 1 650 253 0000, it can be dialed from any
+       region which uses an international dialling prefix of 00. When it is written as
+       650 253 0000, it can only be dialed from within the US, and when written as 253 0000, it
+       can only be dialed from within a smaller area in the US (Mountain View, CA, to be more
+       specific).
  @return true if the number is possible
  */
 - (jboolean)isPossibleNumberWithJavaLangCharSequence:(id<JavaLangCharSequence>)number
                                         withNSString:(NSString *)regionDialingFrom;
 
 /*!
- @brief Convenience wrapper around <code>isPossibleNumberWithReason</code>.
- Instead of returning the reason
- for failure, this method returns true if the number is either a possible fully-qualified number
- (containing the area code and country code), or if the number could be a possible local number
- (with a country code, but missing an area code). Local numbers are considered possible if they
- could be possibly dialled in this format: if the area code is needed for a call to connect, the
- number is not considered possible without it.
- @param number  the number that needs to be checked
+ @brief Convenience wrapper around <code>isPossibleNumberWithReason</code>.Instead of returning the reason
+  for failure, this method returns true if the number is either a possible fully-qualified number
+  (containing the area code and country code), or if the number could be a possible local number
+  (with a country code, but missing an area code).
+ Local numbers are considered possible if they
+  could be possibly dialled in this format: if the area code is needed for a call to connect, the
+  number is not considered possible without it.
+ @param number the number that needs to be checked
  @return true if the number is possible
  */
 - (jboolean)isPossibleNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
 /*!
- @brief Convenience wrapper around <code>isPossibleNumberForTypeWithReason</code>.
- Instead of returning the
- reason for failure, this method returns true if the number is either a possible fully-qualified
- number (containing the area code and country code), or if the number could be a possible local
- number (with a country code, but missing an area code). Local numbers are considered possible
- if they could be possibly dialled in this format: if the area code is needed for a call to
- connect, the number is not considered possible without it.
- @param number  the number that needs to be checked
- @param type  the type we are interested in
+ @brief Convenience wrapper around <code>isPossibleNumberForTypeWithReason</code>.Instead of returning the
+  reason for failure, this method returns true if the number is either a possible fully-qualified
+  number (containing the area code and country code), or if the number could be a possible local
+  number (with a country code, but missing an area code).
+ Local numbers are considered possible
+  if they could be possibly dialled in this format: if the area code is needed for a call to
+  connect, the number is not considered possible without it.
+ @param number the number that needs to be checked
+ @param type the type we are interested in
  @return true if the number is possible for this particular type
  */
 - (jboolean)isPossibleNumberForTypeWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                            withComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType:(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *)type;
 
 /*!
- @brief Check whether a phone number is a possible number of a particular type.
- For types that don't
- exist in a particular region, this will return a result that isn't so useful; it is recommended
- that you use <code>getSupportedTypesForRegion</code> or <code>getSupportedTypesForNonGeoEntity</code>
- respectively before calling this method to determine whether you should call it for this number
- at all.
- This provides a more lenient check than <code>isValidNumber</code> in the following sense:
+ @brief Check whether a phone number is a possible number of a particular type.For types that don't
+  exist in a particular region, this will return a result that isn't so useful; it is recommended
+  that you use <code>getSupportedTypesForRegion</code> or <code>getSupportedTypesForNonGeoEntity</code>
+  respectively before calling this method to determine whether you should call it for this number
+  at all.
+ This provides a more lenient check than <code>isValidNumber</code> in the following sense: 
  <ol>
- <li> It only checks the length of phone numbers. In particular, it doesn't check starting
- digits of the number.
+    <li> It only checks the length of phone numbers. In particular, it doesn't check starting
+         digits of the number.   
  <li> For some numbers (particularly fixed-line), many regions have the concept of area code,
- which together with subscriber number constitute the national significant number. It is
- sometimes okay to dial only the subscriber number when dialing in the same area. This
- function will return IS_POSSIBLE_LOCAL_ONLY if the subscriber-number-only version is
- passed in. On the other hand, because isValidNumber validates using information on both
- starting digits (for fixed line numbers, that would most likely be area codes) and
- length (obviously includes the length of area codes for fixed line numbers), it will
- return false for the subscriber-number-only version.
+         which together with subscriber number constitute the national significant number. It is
+         sometimes okay to dial only the subscriber number when dialing in the same area. This
+         function will return IS_POSSIBLE_LOCAL_ONLY if the subscriber-number-only version is
+         passed in. On the other hand, because isValidNumber validates using information on both
+         starting digits (for fixed line numbers, that would most likely be area codes) and
+         length (obviously includes the length of area codes for fixed line numbers), it will
+         return false for the subscriber-number-only version. 
  </ol>
- @param number  the number that needs to be checked
- @param type  the type we are interested in
+ @param number the number that needs to be checked
+ @param type the type we are interested in
  @return a ValidationResult object which indicates whether the number is possible
  */
 - (ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *)isPossibleNumberForTypeWithReasonWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                                         withComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType:(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *)type;
 
 /*!
- @brief Check whether a phone number is a possible number.
- It provides a more lenient check than
- <code>isValidNumber</code> in the following sense:
+ @brief Check whether a phone number is a possible number.It provides a more lenient check than 
+ <code>isValidNumber</code> in the following sense: 
  <ol>
- <li> It only checks the length of phone numbers. In particular, it doesn't check starting
- digits of the number.
+    <li> It only checks the length of phone numbers.
+ In particular, it doesn't check starting
+         digits of the number.   
  <li> It doesn't attempt to figure out the type of the number, but uses general rules which
- applies to all types of phone numbers in a region. Therefore, it is much faster than
- isValidNumber.
+         applies to all types of phone numbers in a region. Therefore, it is much faster than
+         isValidNumber.   
  <li> For some numbers (particularly fixed-line), many regions have the concept of area code,
- which together with subscriber number constitute the national significant number. It is
- sometimes okay to dial only the subscriber number when dialing in the same area. This
- function will return IS_POSSIBLE_LOCAL_ONLY if the subscriber-number-only version is
- passed in. On the other hand, because isValidNumber validates using information on both
- starting digits (for fixed line numbers, that would most likely be area codes) and
- length (obviously includes the length of area codes for fixed line numbers), it will
- return false for the subscriber-number-only version.
+         which together with subscriber number constitute the national significant number. It is
+         sometimes okay to dial only the subscriber number when dialing in the same area. This
+         function will return IS_POSSIBLE_LOCAL_ONLY if the subscriber-number-only version is
+         passed in. On the other hand, because isValidNumber validates using information on both
+         starting digits (for fixed line numbers, that would most likely be area codes) and
+         length (obviously includes the length of area codes for fixed line numbers), it will
+         return false for the subscriber-number-only version. 
  </ol>
- @param number  the number that needs to be checked
+ @param number the number that needs to be checked
  @return a ValidationResult object which indicates whether the number is possible
  */
 - (ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *)isPossibleNumberWithReasonWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
 /*!
- @brief Tests whether a phone number matches a valid pattern.
- Note this doesn't verify the number
- is actually in use, which is impossible to tell by just looking at a number itself. It only
- verifies whether the parsed, canonicalised number is valid: not whether a particular series of
- digits entered by the user is diallable from the region provided when parsing. For example, the
- number +41 (0) 78 927 2696 can be parsed into a number with country code "41" and national
- significant number "789272696". This is valid, while the original string is not diallable.
- @param number  the phone number that we want to validate
+ @brief Tests whether a phone number matches a valid pattern.Note this doesn't verify the number
+  is actually in use, which is impossible to tell by just looking at a number itself.
+ It only
+  verifies whether the parsed, canonicalised number is valid: not whether a particular series of
+  digits entered by the user is diallable from the region provided when parsing. For example, the
+  number +41 (0) 78 927 2696 can be parsed into a number with country code "41" and national
+  significant number "789272696". This is valid, while the original string is not diallable.
+ @param number the phone number that we want to validate
  @return a boolean that indicates whether the number is of a valid pattern
  */
 - (jboolean)isValidNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
 
 /*!
- @brief Tests whether a phone number is valid for a certain region.
- Note this doesn't verify the number
- is actually in use, which is impossible to tell by just looking at a number itself. If the
- country calling code is not the same as the country calling code for the region, this
- immediately exits with false. After this, the specific number pattern rules for the region are
- examined. This is useful for determining for example whether a particular number is valid for
- Canada, rather than just a valid NANPA number.
- Warning: In most cases, you want to use <code>isValidNumber</code> instead. For example, this
- method will mark numbers from British Crown dependencies such as the Isle of Man as invalid for
- the region "GB" (United Kingdom), since it has its own region code, "IM", which may be
- undesirable.
- @param number  the phone number that we want to validate
- @param regionCode  the region that we want to validate the phone number for
+ @brief Tests whether a phone number is valid for a certain region.Note this doesn't verify the number
+  is actually in use, which is impossible to tell by just looking at a number itself.
+ If the
+  country calling code is not the same as the country calling code for the region, this
+  immediately exits with false. After this, the specific number pattern rules for the region are
+  examined. This is useful for determining for example whether a particular number is valid for
+  Canada, rather than just a valid NANPA number.
+  Warning: In most cases, you want to use <code>isValidNumber</code> instead. For example, this
+  method will mark numbers from British Crown dependencies such as the Isle of Man as invalid for
+  the region "GB" (United Kingdom), since it has its own region code, "IM", which may be
+  undesirable.
+ @param number the phone number that we want to validate
+ @param regionCode the region that we want to validate the phone number for
  @return a boolean that indicates whether the number is of a valid pattern
  */
 - (jboolean)isValidNumberForRegionWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                           withNSString:(NSString *)regionCode;
 
 /*!
- @brief Normalizes a string of characters representing a phone number.
- This strips all characters which
- are not diallable on a mobile phone keypad (including all non-ASCII digits).
- @param number  a string of characters representing a phone number
+ @brief Normalizes a string of characters representing a phone number.This strips all characters which
+  are not diallable on a mobile phone keypad (including all non-ASCII digits).
+ @param number a string of characters representing a phone number
  @return the normalized string version of the phone number
  */
 + (NSString *)normalizeDiallableCharsOnlyWithJavaLangCharSequence:(id<JavaLangCharSequence>)number;
 
 /*!
- @brief Normalizes a string of characters representing a phone number.
- This converts wide-ascii and
- arabic-indic numerals to European numerals, and strips punctuation and alpha characters.
- @param number  a string of characters representing a phone number
+ @brief Normalizes a string of characters representing a phone number.This converts wide-ascii and
+  arabic-indic numerals to European numerals, and strips punctuation and alpha characters.
+ @param number a string of characters representing a phone number
  @return the normalized string version of the phone number
  */
 + (NSString *)normalizeDigitsOnlyWithJavaLangCharSequence:(id<JavaLangCharSequence>)number;
 
 /*!
- @brief Parses a string and returns it as a phone number in proto buffer format.
- The method is quite
- lenient and looks for a number in the input text (raw input) and does not check whether the
- string is definitely only a phone number. To do this, it ignores punctuation and white-space,
- as well as any text before the number (e.g. a leading "Tel: ") and trims the non-number bits.
- It will accept a number in any format (E164, national, international etc), assuming it can be
- interpreted with the defaultRegion supplied. It also attempts to convert any alpha characters
- into digits if it thinks this is a vanity number of the type "1800 MICROSOFT".
+ @brief Parses a string and returns it as a phone number in proto buffer format.The method is quite
+  lenient and looks for a number in the input text (raw input) and does not check whether the
+  string is definitely only a phone number.
+ To do this, it ignores punctuation and white-space,
+  as well as any text before the number (e.g. a leading "Tel: ") and trims the non-number bits.
+  It will accept a number in any format (E164, national, international etc), assuming it can be
+  interpreted with the defaultRegion supplied. It also attempts to convert any alpha characters
+  into digits if it thinks this is a vanity number of the type "1800 MICROSOFT". 
  <p> This method will throw a <code>com.google.i18n.phonenumbers.NumberParseException</code> if the
- number is not considered to be a possible number. Note that validation of whether the number
- is actually a valid number for a particular region is not performed. This can be done
- separately with <code>isValidNumber</code>.
+  number is not considered to be a possible number. Note that validation of whether the number
+  is actually a valid number for a particular region is not performed. This can be done
+  separately with <code>isValidNumber</code>.
+  
  <p> Note this method canonicalizes the phone number such that different representations can be
- easily compared, no matter what form it was originally entered in (e.g. national,
- international). If you want to record context about the number being parsed, such as the raw
- input that was entered, how the country code was derived etc. then call <code>parseAndKeepRawInput</code>
+  easily compared, no matter what form it was originally entered in (e.g. national,
+  international). If you want to record context about the number being parsed, such as the raw
+  input that was entered, how the country code was derived etc. then call <code>parseAndKeepRawInput</code>
   instead.
- @param numberToParse  number that we are attempting to parse. This can contain formatting such
- as +, ( and -, as well as a phone number extension. It can also be provided in RFC3966
- format.
- @param defaultRegion  region that we are expecting the number to be from. This is only used if
- the number being parsed is not written in international format. The country_code for the
- number in this case would be stored as that of the default region supplied. If the number
- is guaranteed to start with a '+' followed by the country calling code, then RegionCode.ZZ
- or null can be supplied.
+ @param numberToParse number that we are attempting to parse. This can contain formatting such      as +, ( and -, as well as a phone number extension. It can also be provided in RFC3966
+       format.
+ @param defaultRegion region that we are expecting the number to be from. This is only used if      the number being parsed is not written in international format. The country_code for the
+       number in this case would be stored as that of the default region supplied. If the number
+       is guaranteed to start with a '+' followed by the country calling code, then RegionCode.ZZ
+       or null can be supplied.
  @return a phone number proto buffer filled with the parsed number
- @throws NumberParseException  if the string is not considered to be a viable phone number (e.g.
- too few or too many digits) or if no default region was supplied and the number is not in
- international format (does not start with +)
+ @throw NumberParseExceptionif the string is not considered to be a viable phone number (e.g.
+      too few or too many digits) or if no default region was supplied and the number is not in
+      international format (does not start with +)
  */
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)parseWithJavaLangCharSequence:(id<JavaLangCharSequence>)numberToParse
                                                                        withNSString:(NSString *)defaultRegion;
 
 /*!
- @brief Same as <code>parse(CharSequence,String)</code>, but accepts mutable PhoneNumber as a
- parameter to decrease object creation when invoked many times.
+ @brief Same as <code>String)</code>, but accepts mutable PhoneNumber as a
+  parameter to decrease object creation when invoked many times.
  */
 - (void)parseWithJavaLangCharSequence:(id<JavaLangCharSequence>)numberToParse
                          withNSString:(NSString *)defaultRegion
 withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)phoneNumber;
 
 /*!
- @brief Parses a string and returns it in proto buffer format.
- This method differs from <code>parse</code>
- in that it always populates the raw_input field of the protocol buffer with numberToParse as
- well as the country_code_source field.
- @param numberToParse  number that we are attempting to parse. This can contain formatting such
- as +, ( and -, as well as a phone number extension.
- @param defaultRegion  region that we are expecting the number to be from. This is only used if
- the number being parsed is not written in international format. The country calling code
- for the number in this case would be stored as that of the default region supplied.
+ @brief Parses a string and returns it in proto buffer format.This method differs from <code>parse</code>
+  in that it always populates the raw_input field of the protocol buffer with numberToParse as
+  well as the country_code_source field.
+ @param numberToParse number that we are attempting to parse. This can contain formatting such      as +, ( and -, as well as a phone number extension.
+ @param defaultRegion region that we are expecting the number to be from. This is only used if      the number being parsed is not written in international format. The country calling code
+       for the number in this case would be stored as that of the default region supplied.
  @return a phone number proto buffer filled with the parsed number
- @throws NumberParseException  if the string is not considered to be a viable phone number or if
- no default region was supplied
+ @throw NumberParseExceptionif the string is not considered to be a viable phone number or if
+      no default region was supplied
  */
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)parseAndKeepRawInputWithJavaLangCharSequence:(id<JavaLangCharSequence>)numberToParse
                                                                                       withNSString:(NSString *)defaultRegion;
 
 /*!
- @brief Same as<code>parseAndKeepRawInput(CharSequence,String)</code>, but accepts a mutable
- PhoneNumber as a parameter to decrease object creation when invoked many times.
+ @brief Same as<code>String)</code>, but accepts a mutable
+  PhoneNumber as a parameter to decrease object creation when invoked many times.
  */
 - (void)parseAndKeepRawInputWithJavaLangCharSequence:(id<JavaLangCharSequence>)numberToParse
                                         withNSString:(NSString *)defaultRegion
@@ -840,10 +812,9 @@ withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersP
 
 /*!
  @brief Attempts to extract a valid number from a phone number that is too long to be valid, and resets
- the PhoneNumber object passed in to that valid version.
- If no valid number could be extracted,
- the PhoneNumber object passed in will not be modified.
- @param number  a PhoneNumber object which contains a number that is too long to be valid
+  the PhoneNumber object passed in to that valid version.If no valid number could be extracted,
+  the PhoneNumber object passed in will not be modified.
+ @param number a PhoneNumber object which contains a number that is too long to be valid
  @return true if a valid phone number can be successfully extracted
  */
 - (jboolean)truncateTooLongNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
@@ -863,19 +834,19 @@ withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersP
                           withJavaLangStringBuilder:(JavaLangStringBuilder *)nationalNumber;
 
 /*!
- @brief Attempts to extract a possible number from the string passed in.
- This currently strips all
- leading characters that cannot be used to start a phone number. Characters that can be used to
- start a phone number are defined in the VALID_START_CHAR_PATTERN. If none of these characters
- are found in the number passed in, an empty string is returned. This function also attempts to
- strip off any alternative extensions or endings if two or more are present, such as in the case
- of: (530) 583-6985 x302/x2303. The second extension here makes this actually two phone numbers,
- (530) 583-6985 x302 and (530) 583-6985 x2303. We remove the second extension so that the first
- number is parsed correctly.
- @param number  the string that might contain a phone number
+ @brief Attempts to extract a possible number from the string passed in.This currently strips all
+  leading characters that cannot be used to start a phone number.
+ Characters that can be used to
+  start a phone number are defined in the VALID_START_CHAR_PATTERN. If none of these characters
+  are found in the number passed in, an empty string is returned. This function also attempts to
+  strip off any alternative extensions or endings if two or more are present, such as in the case
+  of: (530) 583-6985 x302/x2303. The second extension here makes this actually two phone numbers,
+  (530) 583-6985 x302 and (530) 583-6985 x2303. We remove the second extension so that the first
+  number is parsed correctly.
+ @param number the string that might contain a phone number
  @return the number, stripped of any non-phone-number prefix (such as "Tel:") or an empty
- string if no character used to start phone numbers (such as + or any digit) is found in the
- number
+      string if no character used to start phone numbers (such as + or any digit) is found in the
+      number
  */
 + (id<JavaLangCharSequence>)extractPossibleNumberWithJavaLangCharSequence:(id<JavaLangCharSequence>)number;
 
@@ -885,7 +856,7 @@ withComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat:(ComGoogleI18nPho
 
 /*!
  @brief Helper function to check if the national prefix formatting rule has the first group only, i.e.,
- does not start with the national prefix.
+  does not start with the national prefix.
  */
 + (jboolean)formattingRuleHasFirstGroupOnlyWithNSString:(NSString *)nationalPrefixFormattingRule;
 
@@ -893,7 +864,7 @@ withComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat:(ComGoogleI18nPho
 
 /*!
  @brief Returns the metadata for the given region code or <code>null</code> if the region code is invalid
- or unknown.
+  or unknown.
  */
 - (ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata *)getMetadataForRegionWithNSString:(NSString *)regionCode;
 
@@ -904,46 +875,41 @@ withComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat:(ComGoogleI18nPho
 withComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc:(ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc *)numberDesc;
 
 /*!
- @brief Checks to see if the string of characters could possibly be a phone number at all.
- At the
- moment, checks to see that the string begins with at least 2 digits, ignoring any punctuation
- commonly found in phone numbers.
+ @brief Checks to see if the string of characters could possibly be a phone number at all.At the
+  moment, checks to see that the string begins with at least 2 digits, ignoring any punctuation
+  commonly found in phone numbers.
  This method does not require the number to be normalized in advance - but does assume that
- leading non-number symbols have been removed, such as by the method extractPossibleNumber.
- @param number  string to be checked for viability as a phone number
+  leading non-number symbols have been removed, such as by the method extractPossibleNumber.
+ @param number string to be checked for viability as a phone number
  @return true if the number could be a phone number of some sort, otherwise false
  */
 + (jboolean)isViablePhoneNumberWithJavaLangCharSequence:(id<JavaLangCharSequence>)number;
 
 /*!
- @brief Tries to extract a country calling code from a number.
- This method will return zero if no
- country calling code is considered to be present. Country calling codes are extracted in the
- following ways:
+ @brief Tries to extract a country calling code from a number.This method will return zero if no
+  country calling code is considered to be present.
+ Country calling codes are extracted in the
+  following ways: 
  <ul>
- <li> by stripping the international dialing prefix of the region the person is dialing from,
- if this is present in the number, and looking at the next digits
+   <li> by stripping the international dialing prefix of the region the person is dialing from,
+        if this is present in the number, and looking at the next digits  
  <li> by stripping the '+' sign if present and then looking at the next digits
- <li> by comparing the start of the number and the country calling code of the default region.
- If the number is not considered possible for the numbering plan of the default region
- initially, but starts with the country calling code of this region, validation will be
- reattempted after stripping this country calling code. If this number is considered a
- possible number, then the first digits will be considered the country calling code and
- removed as such.
+   <li> by comparing the start of the number and the country calling code of the default region.
+        If the number is not considered possible for the numbering plan of the default region
+        initially, but starts with the country calling code of this region, validation will be
+        reattempted after stripping this country calling code. If this number is considered a
+        possible number, then the first digits will be considered the country calling code and
+        removed as such. 
  </ul>
- It will throw a NumberParseException if the number starts with a '+' but the country calling
- code supplied after this does not match that of any known region.
- @param number  non-normalized telephone number that we wish to extract a country calling
- code from - may begin with '+'
- @param defaultRegionMetadata  metadata about the region this number may be from
- @param nationalNumber  a string buffer to store the national significant number in, in the case
- that a country calling code was extracted. The number is appended to any existing contents.
- If no country calling code was extracted, this will be left unchanged.
- @param keepRawInput  true if the country_code_source and preferred_carrier_code fields of
- phoneNumber should be populated.
- @param phoneNumber  the PhoneNumber object where the country_code and country_code_source need
- to be populated. Note the country_code is always populated, whereas country_code_source is
- only populated when keepCountryCodeSource is true.
+  It will throw a NumberParseException if the number starts with a '+' but the country calling
+  code supplied after this does not match that of any known region.
+ @param number non-normalized telephone number that we wish to extract a country calling      code from - may begin with '+'
+ @param defaultRegionMetadata metadata about the region this number may be from
+ @param nationalNumber a string buffer to store the national significant number in, in the case      that a country calling code was extracted. The number is appended to any existing contents.
+       If no country calling code was extracted, this will be left unchanged.
+ @param keepRawInput true if the country_code_source and preferred_carrier_code fields of      phoneNumber should be populated.
+ @param phoneNumber the PhoneNumber object where the country_code and country_code_source need      to be populated. Note the country_code is always populated, whereas country_code_source is
+       only populated when keepCountryCodeSource is true.
  @return the country calling code extracted or 0 if none could be extracted
  */
 - (jint)maybeExtractCountryCodeWithJavaLangCharSequence:(id<JavaLangCharSequence>)number
@@ -954,32 +920,29 @@ withComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata:(ComGoogleI18nPhonenumb
 
 /*!
  @brief Strips any extension (as in, the part of the number dialled after the call is connected,
- usually indicated with extn, ext, x or similar) from the end of the number, and returns it.
- @param number  the non-normalized telephone number that we wish to strip the extension from
+  usually indicated with extn, ext, x or similar) from the end of the number, and returns it.
+ @param number the non-normalized telephone number that we wish to strip the extension from
  @return the phone extension
  */
 - (NSString *)maybeStripExtensionWithJavaLangStringBuilder:(JavaLangStringBuilder *)number;
 
 /*!
  @brief Strips any international prefix (such as +, 00, 011) present in the number provided, normalizes
- the resulting number, and indicates if an international prefix was present.
- @param number  the non-normalized telephone number that we wish to strip any international
- dialing prefix from
- @param possibleIddPrefix  the international direct dialing prefix from the region we
- think this number may be dialed in
+  the resulting number, and indicates if an international prefix was present.
+ @param number the non-normalized telephone number that we wish to strip any international      dialing prefix from
+ @param possibleIddPrefix the international direct dialing prefix from the region we      think this number may be dialed in
  @return the corresponding CountryCodeSource if an international dialing prefix could be
- removed from the number, otherwise CountryCodeSource.FROM_DEFAULT_COUNTRY if the number did
- not seem to be in international format
+      removed from the number, otherwise CountryCodeSource.FROM_DEFAULT_COUNTRY if the number did
+      not seem to be in international format
  */
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *)maybeStripInternationalPrefixAndNormalizeWithJavaLangStringBuilder:(JavaLangStringBuilder *)number
                                                                                                                               withNSString:(NSString *)possibleIddPrefix;
 
 /*!
  @brief Strips any national prefix (such as 0, 1) present in the number provided.
- @param number  the normalized telephone number that we wish to strip any national
- dialing prefix from
- @param metadata  the metadata for the region that we think this number is from
- @param carrierCode  a place to insert the carrier code if one is extracted
+ @param number the normalized telephone number that we wish to strip any national      dialing prefix from
+ @param metadata the metadata for the region that we think this number is from
+ @param carrierCode a place to insert the carrier code if one is extracted
  @return true if a national prefix or carrier code (or both) could be extracted
  */
 - (jboolean)maybeStripNationalPrefixAndCarrierCodeWithJavaLangStringBuilder:(JavaLangStringBuilder *)number
@@ -987,20 +950,18 @@ withComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata:(ComGoogleI18nPhonenumb
                                                   withJavaLangStringBuilder:(JavaLangStringBuilder *)carrierCode;
 
 /*!
- @brief Normalizes a string of characters representing a phone number.
- This performs the following
- conversions:
- - Punctuation is stripped.
+ @brief Normalizes a string of characters representing a phone number.This performs the following
+  conversions:
+    - Punctuation is stripped.
  For ALPHA/VANITY numbers:
- - Letters are converted to their numeric representation on a telephone keypad. The keypad
- used here is the one defined in ITU Recommendation E.161. This is only done if there are 3
- or more letters in the number, to lessen the risk that such letters are typos.
- For other numbers:
- - Wide-ascii digits are converted to normal ASCII (European) digits.
- - Arabic-Indic numerals are converted to European numerals.
- - Spurious alpha characters are stripped.
- @param number  a StringBuilder of characters representing a phone number that will be
- normalized in place
+    - Letters are converted to their numeric representation on a telephone keypad. The keypad
+      used here is the one defined in ITU Recommendation E.161. This is only done if there are 3
+      or more letters in the number, to lessen the risk that such letters are typos.
+    For other numbers:
+    - Wide-ascii digits are converted to normal ASCII (European) digits.
+    - Arabic-Indic numerals are converted to European numerals.
+    - Spurious alpha characters are stripped.
+ @param number a StringBuilder of characters representing a phone number that will be      normalized in place
  */
 + (JavaLangStringBuilder *)normalizeWithJavaLangStringBuilder:(JavaLangStringBuilder *)number;
 
@@ -1008,8 +969,7 @@ withComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata:(ComGoogleI18nPhonenumb
                                                        withBoolean:(jboolean)keepNonDigits;
 
 /*!
- @brief Sets or resets the PhoneNumberUtil singleton instance.
- If set to null, the next call to
+ @brief Sets or resets the PhoneNumberUtil singleton instance.If set to null, the next call to 
  <code>getInstance()</code> will load (and return) the default instance.
  */
 + (void)setInstanceWithComGoogleI18nPhonenumbersPhoneNumberUtil:(ComGoogleI18nPhonenumbersPhoneNumberUtil *)util;
@@ -1020,6 +980,10 @@ withComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata:(ComGoogleI18nPhonenumb
 + (void)setItalianLeadingZerosForPhoneNumberWithJavaLangCharSequence:(id<JavaLangCharSequence>)nationalNumber
                 withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)phoneNumber;
 
+// Disallowed inherited constructors, do not use.
+
+- (instancetype)init NS_UNAVAILABLE;
+
 @end
 
 J2OBJC_STATIC_INIT(ComGoogleI18nPhonenumbersPhoneNumberUtil)
@@ -1027,58 +991,58 @@ J2OBJC_STATIC_INIT(ComGoogleI18nPhonenumbersPhoneNumberUtil)
 /*!
  @brief Flags to use when compiling regular expressions for phone numbers.
  */
-inline jint ComGoogleI18nPhonenumbersPhoneNumberUtil_get_REGEX_FLAGS();
+inline jint ComGoogleI18nPhonenumbersPhoneNumberUtil_get_REGEX_FLAGS(void);
 #define ComGoogleI18nPhonenumbersPhoneNumberUtil_REGEX_FLAGS 66
 J2OBJC_STATIC_FIELD_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil, REGEX_FLAGS, jint)
 
-inline jint ComGoogleI18nPhonenumbersPhoneNumberUtil_get_MAX_LENGTH_FOR_NSN();
+inline jint ComGoogleI18nPhonenumbersPhoneNumberUtil_get_MAX_LENGTH_FOR_NSN(void);
 #define ComGoogleI18nPhonenumbersPhoneNumberUtil_MAX_LENGTH_FOR_NSN 17
 J2OBJC_STATIC_FIELD_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil, MAX_LENGTH_FOR_NSN, jint)
 
-inline jint ComGoogleI18nPhonenumbersPhoneNumberUtil_get_MAX_LENGTH_COUNTRY_CODE();
+inline jint ComGoogleI18nPhonenumbersPhoneNumberUtil_get_MAX_LENGTH_COUNTRY_CODE(void);
 #define ComGoogleI18nPhonenumbersPhoneNumberUtil_MAX_LENGTH_COUNTRY_CODE 3
 J2OBJC_STATIC_FIELD_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil, MAX_LENGTH_COUNTRY_CODE, jint)
 
-inline jchar ComGoogleI18nPhonenumbersPhoneNumberUtil_get_PLUS_SIGN();
+inline jchar ComGoogleI18nPhonenumbersPhoneNumberUtil_get_PLUS_SIGN(void);
 #define ComGoogleI18nPhonenumbersPhoneNumberUtil_PLUS_SIGN '+'
 J2OBJC_STATIC_FIELD_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil, PLUS_SIGN, jchar)
 
-inline NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_VALID_PUNCTUATION();
+inline NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_VALID_PUNCTUATION(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_VALID_PUNCTUATION;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersPhoneNumberUtil, VALID_PUNCTUATION, NSString *)
 
-inline NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_PLUS_CHARS();
+inline NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_PLUS_CHARS(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_PLUS_CHARS;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersPhoneNumberUtil, PLUS_CHARS, NSString *)
 
-inline JavaUtilRegexPattern *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_PLUS_CHARS_PATTERN();
+inline JavaUtilRegexPattern *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_PLUS_CHARS_PATTERN(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT JavaUtilRegexPattern *ComGoogleI18nPhonenumbersPhoneNumberUtil_PLUS_CHARS_PATTERN;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersPhoneNumberUtil, PLUS_CHARS_PATTERN, JavaUtilRegexPattern *)
 
-inline JavaUtilRegexPattern *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_SECOND_NUMBER_START_PATTERN();
+inline JavaUtilRegexPattern *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_SECOND_NUMBER_START_PATTERN(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT JavaUtilRegexPattern *ComGoogleI18nPhonenumbersPhoneNumberUtil_SECOND_NUMBER_START_PATTERN;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersPhoneNumberUtil, SECOND_NUMBER_START_PATTERN, JavaUtilRegexPattern *)
 
-inline JavaUtilRegexPattern *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_UNWANTED_END_CHAR_PATTERN();
+inline JavaUtilRegexPattern *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_UNWANTED_END_CHAR_PATTERN(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT JavaUtilRegexPattern *ComGoogleI18nPhonenumbersPhoneNumberUtil_UNWANTED_END_CHAR_PATTERN;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersPhoneNumberUtil, UNWANTED_END_CHAR_PATTERN, JavaUtilRegexPattern *)
 
-inline NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_EXTN_PATTERNS_FOR_MATCHING();
+inline NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_EXTN_PATTERNS_FOR_MATCHING(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_EXTN_PATTERNS_FOR_MATCHING;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersPhoneNumberUtil, EXTN_PATTERNS_FOR_MATCHING, NSString *)
 
-inline JavaUtilRegexPattern *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_NON_DIGITS_PATTERN();
+inline JavaUtilRegexPattern *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_NON_DIGITS_PATTERN(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT JavaUtilRegexPattern *ComGoogleI18nPhonenumbersPhoneNumberUtil_NON_DIGITS_PATTERN;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersPhoneNumberUtil, NON_DIGITS_PATTERN, JavaUtilRegexPattern *)
 
-inline NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_REGION_CODE_FOR_NON_GEO_ENTITY();
+inline NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_get_REGION_CODE_FOR_NON_GEO_ENTITY(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_REGION_CODE_FOR_NON_GEO_ENTITY;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersPhoneNumberUtil, REGION_CODE_FOR_NON_GEO_ENTITY, NSString *)
@@ -1107,7 +1071,7 @@ FOUNDATION_EXPORT NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_getCountryM
 
 FOUNDATION_EXPORT void ComGoogleI18nPhonenumbersPhoneNumberUtil_setInstanceWithComGoogleI18nPhonenumbersPhoneNumberUtil_(ComGoogleI18nPhonenumbersPhoneNumberUtil *util);
 
-FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberUtil *ComGoogleI18nPhonenumbersPhoneNumberUtil_getInstance();
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberUtil *ComGoogleI18nPhonenumbersPhoneNumberUtil_getInstance(void);
 
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberUtil *ComGoogleI18nPhonenumbersPhoneNumberUtil_createInstanceWithComGoogleI18nPhonenumbersMetadataLoader_(id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader);
 
@@ -1137,28 +1101,24 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumber
 
 /*!
  @brief INTERNATIONAL and NATIONAL formats are consistent with the definition in ITU-T Recommendation
- E.123.
- However we follow local conventions such as using '-' instead of whitespace as
- separators. For example, the number of the Google Switzerland office will be written as
- "+41 44 668 1800" in INTERNATIONAL format, and as "044 668 1800" in NATIONAL format. E164
- format is as per INTERNATIONAL format but with no formatting applied, e.g. "+41446681800".
- RFC3966 is as per INTERNATIONAL format, but with all spaces and other separating symbols
- replaced with a hyphen, and with any phone number extension appended with ";ext=". It also
- will have a prefix of "tel:" added, e.g. "tel:+41-44-668-1800".
- Note: If you are considering storing the number in a neutral format, you are highly advised to
- use the PhoneNumber class.
+  E.123.However we follow local conventions such as using '-' instead of whitespace as
+  separators.
+ For example, the number of the Google Switzerland office will be written as
+  "+41 44 668 1800" in INTERNATIONAL format, and as "044 668 1800" in NATIONAL format. E164
+  format is as per INTERNATIONAL format but with no formatting applied, e.g. "+41446681800".
+  RFC3966 is as per INTERNATIONAL format, but with all spaces and other separating symbols
+  replaced with a hyphen, and with any phone number extension appended with ";ext=". It also
+  will have a prefix of "tel:" added, e.g. "tel:+41-44-668-1800".
+  Note: If you are considering storing the number in a neutral format, you are highly advised to
+  use the PhoneNumber class.
  */
-@interface ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat : JavaLangEnum < NSCopying >
+@interface ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat : JavaLangEnum
 
 #pragma mark Public
 
 + (ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
-
-#pragma mark Package-Private
-
-- (id)copyWithZone:(NSZone *)zone;
 
 @end
 
@@ -1167,19 +1127,19 @@ J2OBJC_STATIC_INIT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat)
 /*! INTERNAL ONLY - Use enum accessors declared below. */
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_values_[];
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_get_E164();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_get_E164(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat, E164)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_get_INTERNATIONAL();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_get_INTERNATIONAL(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat, INTERNATIONAL)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_get_NATIONAL();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_get_NATIONAL(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat, NATIONAL)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_get_RFC3966();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_get_RFC3966(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat, RFC3966)
 
-FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_values();
+FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_values(void);
 
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_valueOfWithNSString_(NSString *name);
 
@@ -1216,17 +1176,13 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumber
 /*!
  @brief Type of phone numbers.
  */
-@interface ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType : JavaLangEnum < NSCopying >
+@interface ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType : JavaLangEnum
 
 #pragma mark Public
 
 + (ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
-
-#pragma mark Package-Private
-
-- (id)copyWithZone:(NSZone *)zone;
 
 @end
 
@@ -1235,43 +1191,43 @@ J2OBJC_STATIC_INIT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType)
 /*! INTERNAL ONLY - Use enum accessors declared below. */
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_values_[];
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_FIXED_LINE();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_FIXED_LINE(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType, FIXED_LINE)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_MOBILE();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_MOBILE(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType, MOBILE)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_FIXED_LINE_OR_MOBILE();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_FIXED_LINE_OR_MOBILE(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType, FIXED_LINE_OR_MOBILE)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_TOLL_FREE();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_TOLL_FREE(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType, TOLL_FREE)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_PREMIUM_RATE();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_PREMIUM_RATE(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType, PREMIUM_RATE)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_SHARED_COST();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_SHARED_COST(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType, SHARED_COST)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_VOIP();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_VOIP(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType, VOIP)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_PERSONAL_NUMBER();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_PERSONAL_NUMBER(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType, PERSONAL_NUMBER)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_PAGER();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_PAGER(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType, PAGER)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_UAN();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_UAN(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType, UAN)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_VOICEMAIL();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_VOICEMAIL(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType, VOICEMAIL)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_UNKNOWN();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_get_UNKNOWN(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType, UNKNOWN)
 
-FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_values();
+FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_values(void);
 
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_valueOfWithNSString_(NSString *name);
 
@@ -1299,20 +1255,15 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_E
 };
 
 /*!
- @brief Types of phone number matches.
- See detailed description beside the isNumberMatch() method.
+ @brief Types of phone number matches.See detailed description beside the isNumberMatch() method.
  */
-@interface ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType : JavaLangEnum < NSCopying >
+@interface ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType : JavaLangEnum
 
 #pragma mark Public
 
 + (ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
-
-#pragma mark Package-Private
-
-- (id)copyWithZone:(NSZone *)zone;
 
 @end
 
@@ -1321,22 +1272,22 @@ J2OBJC_STATIC_INIT(ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType)
 /*! INTERNAL ONLY - Use enum accessors declared below. */
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_values_[];
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_get_NOT_A_NUMBER();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_get_NOT_A_NUMBER(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType, NOT_A_NUMBER)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_get_NO_MATCH();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_get_NO_MATCH(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType, NO_MATCH)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_get_SHORT_NSN_MATCH();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_get_SHORT_NSN_MATCH(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType, SHORT_NSN_MATCH)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_get_NSN_MATCH();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_get_NSN_MATCH(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType, NSN_MATCH)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_get_EXACT_MATCH();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_get_EXACT_MATCH(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType, EXACT_MATCH)
 
-FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_values();
+FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_values(void);
 
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_valueOfWithNSString_(NSString *name);
 
@@ -1367,17 +1318,13 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationR
 /*!
  @brief Possible outcomes when testing if a PhoneNumber is possible.
  */
-@interface ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult : JavaLangEnum < NSCopying >
+@interface ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult : JavaLangEnum
 
 #pragma mark Public
 
 + (ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
-
-#pragma mark Package-Private
-
-- (id)copyWithZone:(NSZone *)zone;
 
 @end
 
@@ -1389,47 +1336,46 @@ FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *Com
 /*!
  @brief The number length matches that of valid numbers for this region.
  */
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_get_IS_POSSIBLE();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_get_IS_POSSIBLE(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult, IS_POSSIBLE)
 
 /*!
- @brief The number length matches that of local numbers for this region only (i.e. numbers that may
- be able to be dialled within an area, but do not have all the information to be dialled from
- anywhere inside or outside the country).
+ @brief The number length matches that of local numbers for this region only (i.e.numbers that may
+  be able to be dialled within an area, but do not have all the information to be dialled from
+  anywhere inside or outside the country).
  */
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_get_IS_POSSIBLE_LOCAL_ONLY();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_get_IS_POSSIBLE_LOCAL_ONLY(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult, IS_POSSIBLE_LOCAL_ONLY)
 
 /*!
  @brief The number has an invalid country calling code.
  */
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_get_INVALID_COUNTRY_CODE();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_get_INVALID_COUNTRY_CODE(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult, INVALID_COUNTRY_CODE)
 
 /*!
  @brief The number is shorter than all valid numbers for this region.
  */
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_get_TOO_SHORT();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_get_TOO_SHORT(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult, TOO_SHORT)
 
 /*!
  @brief The number is longer than the shortest valid numbers for this region, shorter than the
- longest valid numbers for this region, and does not itself have a number length that matches
- valid numbers for this region.
- This can also be returned in the case where
- isPossibleNumberForTypeWithReason was called, and there are no numbers of this type at all
- for this region.
+  longest valid numbers for this region, and does not itself have a number length that matches
+  valid numbers for this region.This can also be returned in the case where
+  isPossibleNumberForTypeWithReason was called, and there are no numbers of this type at all
+  for this region.
  */
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_get_INVALID_LENGTH();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_get_INVALID_LENGTH(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult, INVALID_LENGTH)
 
 /*!
  @brief The number is longer than all valid numbers for this region.
  */
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_get_TOO_LONG();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_get_TOO_LONG(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult, TOO_LONG)
 
-FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_values();
+FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_values(void);
 
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_valueOfWithNSString_(NSString *name);
 
@@ -1460,10 +1406,9 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_En
 
 /*!
  @brief Leniency when finding potential phone numbers in text
- segments.
- The levels here are ordered in increasing strictness.
+  segments.The levels here are ordered in increasing strictness.
  */
-@interface ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency : JavaLangEnum < NSCopying >
+@interface ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency : JavaLangEnum
 
 #pragma mark Public
 
@@ -1480,8 +1425,6 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_En
                                               withJavaLangCharSequence:(id<JavaLangCharSequence>)candidate
                           withComGoogleI18nPhonenumbersPhoneNumberUtil:(ComGoogleI18nPhonenumbersPhoneNumberUtil *)util;
 
-- (id)copyWithZone:(NSZone *)zone;
-
 @end
 
 J2OBJC_STATIC_INIT(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency)
@@ -1493,51 +1436,48 @@ FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *ComGoogleI1
  @brief Phone numbers accepted are possible
  , but not necessarily valid.
  */
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_get_POSSIBLE();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_get_POSSIBLE(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency, POSSIBLE)
 
 /*!
  @brief Phone numbers accepted are possible
-  and valid.
- Numbers written
- in national format must have their national-prefix present if it is usually written for a
- number of this type.
+  and valid.Numbers written
+  in national format must have their national-prefix present if it is usually written for a
+  number of this type.
  */
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_get_VALID();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_get_VALID(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency, VALID)
 
 /*!
  @brief Phone numbers accepted are valid and
- are grouped in a possible way for this locale.
- For example, a US number written as
- "65 02 53 00 00" and "650253 0000" are not accepted at this leniency level, whereas
- "650 253 0000", "650 2530000" or "6502530000" are.
+  are grouped in a possible way for this locale.For example, a US number written as
+  "65 02 53 00 00" and "650253 0000" are not accepted at this leniency level, whereas
+  "650 253 0000", "650 2530000" or "6502530000" are.
  Numbers with more than one '/' symbol in the national significant number are also dropped at
- this level.
+  this level. 
  <p>
- Warning: This level might result in lower coverage especially for regions outside of country
- code "+1". If you are not sure about which level to use, email the discussion group
- libphonenumber-discuss@@googlegroups.com.
+  Warning: This level might result in lower coverage especially for regions outside of country
+  code "+1". If you are not sure about which level to use, email the discussion group
+  libphonenumber-discuss@@googlegroups.com.
  */
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_get_STRICT_GROUPING();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_get_STRICT_GROUPING(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency, STRICT_GROUPING)
 
 /*!
  @brief Phone numbers accepted are valid and
- are grouped in the same way that we would have formatted it, or as a single block.
- For
- example, a US number written as "650 2530000" is not accepted at this leniency level, whereas
- "650 253 0000" or "6502530000" are.
- Numbers with more than one '/' symbol are also dropped at this level.
+  are grouped in the same way that we would have formatted it, or as a single block.For
+  example, a US number written as "650 2530000" is not accepted at this leniency level, whereas
+  "650 253 0000" or "6502530000" are.
+ Numbers with more than one '/' symbol are also dropped at this level. 
  <p>
- Warning: This level might result in lower coverage especially for regions outside of country
- code "+1". If you are not sure about which level to use, email the discussion group
- libphonenumber-discuss@@googlegroups.com.
+  Warning: This level might result in lower coverage especially for regions outside of country
+  code "+1". If you are not sure about which level to use, email the discussion group
+  libphonenumber-discuss@@googlegroups.com.
  */
-inline ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_get_EXACT_GROUPING();
+inline ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_get_EXACT_GROUPING(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency, EXACT_GROUPING)
 
-FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_values();
+FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_values(void);
 
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_valueOfWithNSString_(NSString *name);
 
@@ -1547,4 +1487,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhoneNumberUtil")

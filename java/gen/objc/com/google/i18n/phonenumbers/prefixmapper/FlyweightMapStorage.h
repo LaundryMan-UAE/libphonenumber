@@ -26,9 +26,8 @@
 
 /*!
  @brief Flyweight phone prefix map storage strategy that uses a table to store unique strings and shorts
- to store the prefix and description indexes when possible.
- It is particularly space-efficient
- when the provided phone prefix map contains a lot of redundant descriptions.
+  to store the prefix and description indexes when possible.It is particularly space-efficient
+  when the provided phone prefix map contains a lot of redundant descriptions.
  @author Philippe Liard
  */
 @interface ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage : ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy
@@ -37,7 +36,7 @@
 
 /*!
  @brief This implementation returns the same string (same identity) when called for multiple indexes
- corresponding to prefixes that have the same description.
+  corresponding to prefixes that have the same description.
  */
 - (NSString *)getDescriptionWithInt:(jint)index;
 
@@ -59,9 +58,9 @@ J2OBJC_EMPTY_STATIC_INIT(ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorag
 
 FOUNDATION_EXPORT void ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init(ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage *self);
 
-FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage *new_ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init() NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage *new_ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage *create_ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init();
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage *create_ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage)
 

@@ -3,7 +3,6 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/libphonenumber/java/carrier/src/main/java/com/google/i18n/phonenumbers/PhoneNumberToCarrierMapper.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "com/google/i18n/phonenumbers/PhoneNumberToCarrierMapper.h"
 #include "com/google/i18n/phonenumbers/PhoneNumberUtil.h"
@@ -27,12 +26,12 @@
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper, prefixFileReader_, ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader *)
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper, phoneUtil_, ComGoogleI18nPhonenumbersPhoneNumberUtil *)
 
-inline ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_get_instance();
+inline ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_get_instance(void);
 inline ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_set_instance(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *value);
 static ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance;
 J2OBJC_STATIC_FIELD_OBJ(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper, instance, ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *)
 
-inline NSString *ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_get_MAPPING_DATA_DIRECTORY();
+inline NSString *ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_get_MAPPING_DATA_DIRECTORY(void);
 static NSString *ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_MAPPING_DATA_DIRECTORY = @"/com/google/i18n/phonenumbers/carrier/data/";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper, MAPPING_DATA_DIRECTORY, NSString *)
 
@@ -145,7 +144,7 @@ ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper *ComGoogleI18nPhonenumbersPh
     if (ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance == nil) {
       JreStrongAssignAndConsume(&ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance, new_ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_initWithNSString_(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_MAPPING_DATA_DIRECTORY));
     }
-    return ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance;
+    return JreRetainedLocalValue(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_instance);
   }
 }
 

@@ -30,20 +30,22 @@
 
 /*!
  @brief Returns a text description in the given language for the given phone number.
- @param number  the phone number for which we want to get a text description
- @param language  two or three-letter lowercase ISO language codes as defined by ISO 639. Note
- that where two different language codes exist (e.g. 'he' and 'iw' for Hebrew) we use the
- one that Java/Android canonicalized on ('iw' in this case).
- @param script  four-letter titlecase (the first letter is uppercase and the rest of the letters
- are lowercase) ISO script code as defined in ISO 15924
- @param region  two-letter uppercase ISO country code as defined by ISO 3166-1
+ @param number the phone number for which we want to get a text description
+ @param language two or three-letter lowercase ISO language codes as defined by ISO 639. Note      that where two different language codes exist (e.g. 'he' and 'iw' for Hebrew) we use the
+       one that Java/Android canonicalized on ('iw' in this case).
+ @param script four-letter titlecase (the first letter is uppercase and the rest of the letters      are lowercase) ISO script code as defined in ISO 15924
+ @param region two-letter uppercase ISO country code as defined by ISO 3166-1
  @return a text description in the given language for the given phone number, or an empty
- string if a description is not available
+      string if a description is not available
  */
 - (NSString *)getDescriptionForNumberWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
                                                                              withNSString:(NSString *)language
                                                                              withNSString:(NSString *)script
                                                                              withNSString:(NSString *)region;
+
+// Disallowed inherited constructors, do not use.
+
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 

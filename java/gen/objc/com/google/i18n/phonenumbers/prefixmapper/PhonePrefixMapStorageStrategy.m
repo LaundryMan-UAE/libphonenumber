@@ -13,6 +13,13 @@
 
 @implementation ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype)init {
+  ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy_init(self);
+  return self;
+}
+J2OBJC_IGNORE_DESIGNATED_END
+
 - (jint)getPrefixWithInt:(jint)index {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
@@ -57,13 +64,6 @@
   return [output description];
 }
 
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy_init(self);
-  return self;
-}
-J2OBJC_IGNORE_DESIGNATED_END
-
 - (void)dealloc {
   RELEASE_(possibleLengths_);
   [super dealloc];
@@ -71,6 +71,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x401, 0, 1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x401, 2, 1, -1, -1, -1, -1 },
     { NULL, "V", 0x401, 3, 4, -1, 5, -1, -1 },
@@ -79,19 +80,18 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LJavaUtilTreeSet;", 0x1, -1, -1, -1, 11, -1, -1 },
     { NULL, "LNSString;", 0x1, 12, -1, -1, -1, -1, -1 },
-    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  methods[0].selector = @selector(getPrefixWithInt:);
-  methods[1].selector = @selector(getDescriptionWithInt:);
-  methods[2].selector = @selector(readFromSortedMapWithJavaUtilSortedMap:);
-  methods[3].selector = @selector(readExternalWithJavaIoObjectInput:);
-  methods[4].selector = @selector(writeExternalWithJavaIoObjectOutput:);
-  methods[5].selector = @selector(getNumOfEntries);
-  methods[6].selector = @selector(getPossibleLengths);
-  methods[7].selector = @selector(description);
-  methods[8].selector = @selector(init);
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getPrefixWithInt:);
+  methods[2].selector = @selector(getDescriptionWithInt:);
+  methods[3].selector = @selector(readFromSortedMapWithJavaUtilSortedMap:);
+  methods[4].selector = @selector(readExternalWithJavaIoObjectInput:);
+  methods[5].selector = @selector(writeExternalWithJavaIoObjectOutput:);
+  methods[6].selector = @selector(getNumOfEntries);
+  methods[7].selector = @selector(getPossibleLengths);
+  methods[8].selector = @selector(description);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "numOfEntries_", "I", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },

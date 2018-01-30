@@ -3,12 +3,6 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/libphonenumber/java/libphonenumber/src/main/java/com/google/i18n/phonenumbers/Phonenumber.java
 //
 
-/*!
- @brief Definition of the class representing international telephone numbers.
- This class is hand-created
- based on the class file compiled from phonenumber.proto. Please refer to that file for detailed
- descriptions of the meaning of each field.
- */
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhonenumber")
@@ -18,6 +12,11 @@
 #define INCLUDE_ALL_ComGoogleI18nPhonenumbersPhonenumber 1
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersPhonenumber
+
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
 
 #if !defined (ComGoogleI18nPhonenumbersPhonenumber_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhonenumber || defined(INCLUDE_ComGoogleI18nPhonenumbersPhonenumber))
 #define ComGoogleI18nPhonenumbersPhonenumber_
@@ -129,9 +128,9 @@ J2OBJC_EMPTY_STATIC_INIT(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber)
 
 FOUNDATION_EXPORT void ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *self);
 
-FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init() NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *create_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init();
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *create_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber)
 
@@ -154,17 +153,13 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_Cou
   ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_Enum_UNSPECIFIED = 4,
 };
 
-@interface ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource : JavaLangEnum < NSCopying >
+@interface ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource : JavaLangEnum
 
 #pragma mark Public
 
 + (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
-
-#pragma mark Package-Private
-
-- (id)copyWithZone:(NSZone *)zone;
 
 @end
 
@@ -173,22 +168,22 @@ J2OBJC_STATIC_INIT(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeS
 /*! INTERNAL ONLY - Use enum accessors declared below. */
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_values_[];
 
-inline ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_get_FROM_NUMBER_WITH_PLUS_SIGN();
+inline ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_get_FROM_NUMBER_WITH_PLUS_SIGN(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_NUMBER_WITH_PLUS_SIGN)
 
-inline ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_get_FROM_NUMBER_WITH_IDD();
+inline ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_get_FROM_NUMBER_WITH_IDD(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_NUMBER_WITH_IDD)
 
-inline ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_get_FROM_NUMBER_WITHOUT_PLUS_SIGN();
+inline ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_get_FROM_NUMBER_WITHOUT_PLUS_SIGN(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_NUMBER_WITHOUT_PLUS_SIGN)
 
-inline ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_get_FROM_DEFAULT_COUNTRY();
+inline ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_get_FROM_DEFAULT_COUNTRY(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_DEFAULT_COUNTRY)
 
-inline ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_get_UNSPECIFIED();
+inline ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_get_UNSPECIFIED(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, UNSPECIFIED)
 
-FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_values();
+FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_values(void);
 
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_valueOfWithNSString_(NSString *name);
 
@@ -198,4 +193,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_Coun
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhonenumber")

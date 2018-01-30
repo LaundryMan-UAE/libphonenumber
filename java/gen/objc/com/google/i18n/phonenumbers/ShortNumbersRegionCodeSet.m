@@ -10,10 +10,6 @@
 
 @implementation ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet
 
-+ (id<JavaUtilSet>)getRegionCodeSet {
-  return ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_getRegionCodeSet();
-}
-
 J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init(self);
@@ -21,15 +17,19 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
++ (id<JavaUtilSet>)getRegionCodeSet {
+  return ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_getRegionCodeSet();
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
-    { NULL, "LJavaUtilSet;", 0x8, -1, -1, -1, 0, -1, -1 },
     { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilSet;", 0x8, -1, -1, -1, 0, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  methods[0].selector = @selector(getRegionCodeSet);
-  methods[1].selector = @selector(init);
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getRegionCodeSet);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "()Ljava/util/Set<Ljava/lang/String;>;" };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet = { "ShortNumbersRegionCodeSet", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x1, 2, 0, -1, -1, -1, -1, -1 };
@@ -37,6 +37,18 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 @end
+
+void ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *self) {
+  NSObject_init(self);
+}
+
+ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *new_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init() {
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet, init)
+}
+
+ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *create_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init() {
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet, init)
+}
 
 id<JavaUtilSet> ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_getRegionCodeSet() {
   ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_initialize();
@@ -281,18 +293,6 @@ id<JavaUtilSet> ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_getRegionCode
   [regionCodeSet addWithId:@"ZM"];
   [regionCodeSet addWithId:@"ZW"];
   return regionCodeSet;
-}
-
-void ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *self) {
-  NSObject_init(self);
-}
-
-ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *new_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init() {
-  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet, init)
-}
-
-ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *create_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init() {
-  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet)

@@ -21,13 +21,13 @@
 
 /*!
  @brief Internal phonenumber matching API used to isolate the underlying implementation of the
- matcher and allow different implementations to be swapped in easily.
+  matcher and allow different implementations to be swapped in easily.
  */
 @protocol ComGoogleI18nPhonenumbersInternalMatcherApi < JavaObject >
 
 /*!
  @brief Returns whether the given national number (a string containing only decimal digits) matches
- the national number pattern defined in the given <code>PhoneNumberDesc</code> message.
+  the national number pattern defined in the given <code>PhoneNumberDesc</code> message.
  */
 - (jboolean)matchNationalNumberWithJavaLangCharSequence:(id<JavaLangCharSequence>)number
 withComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc:(ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc *)numberDesc

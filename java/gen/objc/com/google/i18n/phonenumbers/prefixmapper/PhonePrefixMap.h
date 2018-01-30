@@ -28,7 +28,7 @@
 
 /*!
  @brief A utility that maps phone number prefixes to a description string, which may be, for example,
- the geographical area the prefix covers.
+  the geographical area the prefix covers.
  @author Shaopeng Jia
  */
 @interface ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap : NSObject < JavaIoExternalizable >
@@ -36,16 +36,16 @@
 #pragma mark Public
 
 /*!
- @brief Creates an empty <code>PhonePrefixMap</code>.
- The default constructor is necessary for implementing
- <code>Externalizable</code>. The empty map could later be populated by
+ @brief Creates an empty <code>PhonePrefixMap</code>.The default constructor is necessary for implementing 
+ <code>Externalizable</code>.
+ The empty map could later be populated by 
  <code>readPhonePrefixMap(java.util.SortedMap)</code> or <code>readExternal(java.io.ObjectInput)</code>.
  */
 - (instancetype)init;
 
 /*!
  @brief As per <code>lookup(long)</code>, but receives the number as a PhoneNumber instead of a long.
- @param number  the phone number to look up
+ @param number the phone number to look up
  @return the description corresponding to the prefix that best matches this phone number
  */
 - (NSString *)lookupWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number;
@@ -56,12 +56,10 @@
 - (void)readExternalWithJavaIoObjectInput:(id<JavaIoObjectInput>)objectInput;
 
 /*!
- @brief Creates an <code>PhonePrefixMap</code> initialized with <code>sortedPhonePrefixMap</code>.
- Note that the
- underlying implementation of this method is expensive thus should not be called by
- time-critical applications.
- @param sortedPhonePrefixMap  a map from phone number prefixes to descriptions of those prefixes
- sorted in ascending order of the phone number prefixes as integers.
+ @brief Creates an <code>PhonePrefixMap</code> initialized with <code>sortedPhonePrefixMap</code>.Note that the
+  underlying implementation of this method is expensive thus should not be called by
+  time-critical applications.
+ @param sortedPhonePrefixMap a map from phone number prefixes to descriptions of those prefixes  sorted in ascending order of the phone number prefixes as integers.
  */
 - (void)readPhonePrefixMapWithJavaUtilSortedMap:(id<JavaUtilSortedMap>)sortedPhonePrefixMap;
 
@@ -82,17 +80,17 @@
 /*!
  @brief Gets the smaller phone prefix map storage strategy according to the provided phone prefix map.
  It actually uses (outputs the data to a stream) both strategies and retains the best one which
- make this method quite expensive.
+  make this method quite expensive.
  */
 - (ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy *)getSmallerMapStorageWithJavaUtilSortedMap:(id<JavaUtilSortedMap>)phonePrefixMap;
 
 /*!
- @brief Returns the description of the <code>number</code>.
- This method distinguishes the case of an invalid
- prefix and a prefix for which the name is not available in the current language. If the
- description is not available in the current language an empty string is returned. If no
- description was found for the provided number, null is returned.
- @param number  the phone number to look up
+ @brief Returns the description of the <code>number</code>.This method distinguishes the case of an invalid
+  prefix and a prefix for which the name is not available in the current language.
+ If the
+  description is not available in the current language an empty string is returned. If no
+  description was found for the provided number, null is returned.
+ @param number the phone number to look up
  @return the description of the number
  */
 - (NSString *)lookupWithLong:(jlong)number;
@@ -103,9 +101,9 @@ J2OBJC_STATIC_INIT(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap)
 
 FOUNDATION_EXPORT void ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_init(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap *self);
 
-FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap *new_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_init() NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap *new_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap *create_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_init();
+FOUNDATION_EXPORT ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap *create_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap)
 

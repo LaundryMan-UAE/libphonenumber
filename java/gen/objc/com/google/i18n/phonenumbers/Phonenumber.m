@@ -20,9 +20,9 @@
 
 __attribute__((unused)) static void ComGoogleI18nPhonenumbersPhonenumber_init(ComGoogleI18nPhonenumbersPhonenumber *self);
 
-__attribute__((unused)) static ComGoogleI18nPhonenumbersPhonenumber *new_ComGoogleI18nPhonenumbersPhonenumber_init() NS_RETURNS_RETAINED;
+__attribute__((unused)) static ComGoogleI18nPhonenumbersPhonenumber *new_ComGoogleI18nPhonenumbersPhonenumber_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static ComGoogleI18nPhonenumbersPhonenumber *create_ComGoogleI18nPhonenumbersPhonenumber_init();
+__attribute__((unused)) static ComGoogleI18nPhonenumbersPhonenumber *create_ComGoogleI18nPhonenumbersPhonenumber_init(void);
 
 @interface ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber () {
  @public
@@ -51,7 +51,7 @@ J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber, rawInput__
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber, countryCodeSource__, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *)
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber, preferredDomesticCarrierCode__, NSString *)
 
-inline jlong ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_get_serialVersionUID();
+inline jlong ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_get_serialVersionUID(void);
 #define ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_serialVersionUID 1LL
 J2OBJC_STATIC_FIELD_CONSTANT(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber, serialVersionUID, jlong)
 
@@ -520,10 +520,6 @@ ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18
   return ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_valueOfWithNSString_(name);
 }
 
-- (id)copyWithZone:(NSZone *)zone {
-  return self;
-}
-
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, "[LComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource;", 0x9, -1, -1, -1, -1, -1, -1 },
@@ -552,12 +548,9 @@ ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18
     size_t allocSize = 5 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    id names[] = {
-      @"FROM_NUMBER_WITH_PLUS_SIGN", @"FROM_NUMBER_WITH_IDD", @"FROM_NUMBER_WITHOUT_PLUS_SIGN", @"FROM_DEFAULT_COUNTRY", @"UNSPECIFIED",
-    };
     for (jint i = 0; i < 5; i++) {
       (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-      ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(e, names[i], i);
+      ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(e, JreEnumConstantName(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_class_(), i), i);
     }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource)
   }

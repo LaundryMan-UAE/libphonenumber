@@ -13,10 +13,6 @@
 
 @implementation ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap
 
-+ (id<JavaUtilMap>)getCountryCodeToRegionCodeMap {
-  return ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_getCountryCodeToRegionCodeMap();
-}
-
 J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_init(self);
@@ -24,15 +20,19 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
++ (id<JavaUtilMap>)getCountryCodeToRegionCodeMap {
+  return ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_getCountryCodeToRegionCodeMap();
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
-    { NULL, "LJavaUtilMap;", 0x8, -1, -1, -1, 0, -1, -1 },
     { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilMap;", 0x8, -1, -1, -1, 0, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  methods[0].selector = @selector(getCountryCodeToRegionCodeMap);
-  methods[1].selector = @selector(init);
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getCountryCodeToRegionCodeMap);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "()Ljava/util/Map<Ljava/lang/Integer;Ljava/util/List<Ljava/lang/String;>;>;" };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap = { "CountryCodeToRegionCodeMap", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x1, 2, 0, -1, -1, -1, -1, -1 };
@@ -40,6 +40,18 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 @end
+
+void ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_init(ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap *self) {
+  NSObject_init(self);
+}
+
+ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap *new_ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_init() {
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap, init)
+}
+
+ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap *create_ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_init() {
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap, init)
+}
 
 id<JavaUtilMap> ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_getCountryCodeToRegionCodeMap() {
   ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_initialize();
@@ -727,18 +739,6 @@ id<JavaUtilMap> ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_getCountryCo
   [listWithRegionCode addWithId:@"UZ"];
   [countryCodeToRegionCodeMap putWithId:JavaLangInteger_valueOfWithInt_(998) withId:listWithRegionCode];
   return countryCodeToRegionCodeMap;
-}
-
-void ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_init(ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap *self) {
-  NSObject_init(self);
-}
-
-ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap *new_ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_init() {
-  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap, init)
-}
-
-ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap *create_ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_init() {
-  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap)

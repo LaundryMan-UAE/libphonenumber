@@ -52,7 +52,7 @@ withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersP
 }
 
 - (jint)end {
-  return start_ + ((jint) [((NSString *) nil_chk(rawString_)) length]);
+  return start_ + [((NSString *) nil_chk(rawString_)) java_length];
 }
 
 - (NSString *)rawString {

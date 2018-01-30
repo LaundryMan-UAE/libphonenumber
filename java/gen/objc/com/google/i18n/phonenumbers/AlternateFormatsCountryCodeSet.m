@@ -11,10 +11,6 @@
 
 @implementation ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet
 
-+ (id<JavaUtilSet>)getCountryCodeSet {
-  return ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_getCountryCodeSet();
-}
-
 J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_init(self);
@@ -22,15 +18,19 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
++ (id<JavaUtilSet>)getCountryCodeSet {
+  return ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_getCountryCodeSet();
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
-    { NULL, "LJavaUtilSet;", 0x8, -1, -1, -1, 0, -1, -1 },
     { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilSet;", 0x8, -1, -1, -1, 0, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  methods[0].selector = @selector(getCountryCodeSet);
-  methods[1].selector = @selector(init);
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getCountryCodeSet);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "()Ljava/util/Set<Ljava/lang/Integer;>;" };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet = { "AlternateFormatsCountryCodeSet", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x1, 2, 0, -1, -1, -1, -1, -1 };
@@ -38,6 +38,18 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 @end
+
+void ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_init(ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet *self) {
+  NSObject_init(self);
+}
+
+ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet *new_ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_init() {
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet, init)
+}
+
+ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet *create_ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_init() {
+  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet, init)
+}
 
 id<JavaUtilSet> ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_getCountryCodeSet() {
   ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_initialize();
@@ -90,18 +102,6 @@ id<JavaUtilSet> ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_getCount
   [countryCodeSet addWithId:JavaLangInteger_valueOfWithInt_(972)];
   [countryCodeSet addWithId:JavaLangInteger_valueOfWithInt_(995)];
   return countryCodeSet;
-}
-
-void ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_init(ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet *self) {
-  NSObject_init(self);
-}
-
-ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet *new_ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_init() {
-  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet, init)
-}
-
-ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet *create_ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_init() {
-  J2OBJC_CREATE_IMPL(ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet)

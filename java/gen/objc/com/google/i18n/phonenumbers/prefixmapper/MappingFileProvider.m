@@ -49,7 +49,7 @@
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider, countryCallingCodes_, IOSIntArray *)
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider, availableLanguages_, id<JavaUtilList>)
 
-inline id<JavaUtilMap> ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_get_LOCALE_NORMALIZATION_MAP();
+inline id<JavaUtilMap> ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_get_LOCALE_NORMALIZATION_MAP(void);
 static id<JavaUtilMap> ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_LOCALE_NORMALIZATION_MAP;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider, LOCALE_NORMALIZATION_MAP, id<JavaUtilMap>)
 
@@ -135,7 +135,7 @@ J2OBJC_IGNORE_DESIGNATED_END
                     withNSString:(NSString *)language
                     withNSString:(NSString *)script
                     withNSString:(NSString *)region {
-  if (((jint) [((NSString *) nil_chk(language)) length]) == 0) {
+  if ([((NSString *) nil_chk(language)) java_length] == 0) {
     return @"";
   }
   jint index = JavaUtilArrays_binarySearchWithIntArray_withInt_(countryCallingCodes_, countryCallingCode);
@@ -145,7 +145,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   id<JavaUtilSet> setOfLangs = [((id<JavaUtilList>) nil_chk(availableLanguages_)) getWithInt:index];
   if ([((id<JavaUtilSet>) nil_chk(setOfLangs)) size] > 0) {
     NSString *languageCode = ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_findBestMatchingLanguageCodeWithJavaUtilSet_withNSString_withNSString_withNSString_(self, setOfLangs, language, script, region);
-    if (((jint) [((NSString *) nil_chk(languageCode)) length]) > 0) {
+    if ([((NSString *) nil_chk(languageCode)) java_length] > 0) {
       JavaLangStringBuilder *fileName = create_JavaLangStringBuilder_init();
       [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([fileName appendWithInt:countryCallingCode])) appendWithChar:'_'])) appendWithNSString:languageCode];
       return [fileName description];
@@ -265,7 +265,7 @@ NSString *ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_findBestMatch
       return language;
     }
   }
-  else if (((jint) [((NSString *) nil_chk(script)) length]) > 0 && ((jint) [((NSString *) nil_chk(region)) length]) > 0) {
+  else if ([((NSString *) nil_chk(script)) java_length] > 0 && [((NSString *) nil_chk(region)) java_length] > 0) {
     JavaLangStringBuilder *langWithScript = [((JavaLangStringBuilder *) nil_chk([create_JavaLangStringBuilder_initWithNSString_(language) appendWithChar:'_'])) appendWithNSString:script];
     NSString *langWithScriptStr = [((JavaLangStringBuilder *) nil_chk(langWithScript)) description];
     if ([setOfLangs containsWithId:langWithScriptStr]) {
@@ -284,7 +284,7 @@ NSString *ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_findBestMatch
 }
 
 jboolean ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_onlyOneOfScriptOrRegionIsEmptyWithNSString_withNSString_(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider *self, NSString *script, NSString *region) {
-  return (((jint) [((NSString *) nil_chk(script)) length]) == 0 && ((jint) [((NSString *) nil_chk(region)) length]) > 0) || (((jint) [((NSString *) nil_chk(region)) length]) == 0 && ((jint) [script length]) > 0);
+  return ([((NSString *) nil_chk(script)) java_length] == 0 && [((NSString *) nil_chk(region)) java_length] > 0) || ([((NSString *) nil_chk(region)) java_length] == 0 && [script java_length] > 0);
 }
 
 JavaLangStringBuilder *ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_constructFullLocaleWithNSString_withNSString_withNSString_(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider *self, NSString *language, NSString *script, NSString *region) {
@@ -295,7 +295,7 @@ JavaLangStringBuilder *ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_
 }
 
 void ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_appendSubsequentLocalePartWithNSString_withJavaLangStringBuilder_(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider *self, NSString *subsequentLocalePart, JavaLangStringBuilder *fullLocale) {
-  if (((jint) [((NSString *) nil_chk(subsequentLocalePart)) length]) > 0) {
+  if ([((NSString *) nil_chk(subsequentLocalePart)) java_length] > 0) {
     [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk(fullLocale)) appendWithChar:'_'])) appendWithNSString:subsequentLocalePart];
   }
 }

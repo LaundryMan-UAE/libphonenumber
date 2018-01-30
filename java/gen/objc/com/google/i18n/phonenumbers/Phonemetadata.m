@@ -3,7 +3,6 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/libphonenumber/java/libphonenumber/src/com/google/i18n/phonenumbers/Phonemetadata.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "com/google/i18n/phonenumbers/Phonemetadata.h"
 #include "java/io/ObjectInput.h"
@@ -21,9 +20,9 @@
 
 __attribute__((unused)) static void ComGoogleI18nPhonenumbersPhonemetadata_init(ComGoogleI18nPhonenumbersPhonemetadata *self);
 
-__attribute__((unused)) static ComGoogleI18nPhonenumbersPhonemetadata *new_ComGoogleI18nPhonenumbersPhonemetadata_init() NS_RETURNS_RETAINED;
+__attribute__((unused)) static ComGoogleI18nPhonenumbersPhonemetadata *new_ComGoogleI18nPhonenumbersPhonemetadata_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static ComGoogleI18nPhonenumbersPhonemetadata *create_ComGoogleI18nPhonenumbersPhonemetadata_init();
+__attribute__((unused)) static ComGoogleI18nPhonenumbersPhonemetadata *create_ComGoogleI18nPhonenumbersPhonemetadata_init(void);
 
 @interface ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat () {
  @public
@@ -48,7 +47,7 @@ J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat, leading
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat, nationalPrefixFormattingRule__, NSString *)
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat, domesticCarrierCodeFormattingRule__, NSString *)
 
-inline jlong ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat_get_serialVersionUID();
+inline jlong ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat_get_serialVersionUID(void);
 #define ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat_serialVersionUID 1LL
 J2OBJC_STATIC_FIELD_CONSTANT(ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat, serialVersionUID, jlong)
 
@@ -69,7 +68,7 @@ J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc, poss
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc, possibleLengthLocalOnly__, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc, exampleNumber__, NSString *)
 
-inline jlong ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc_get_serialVersionUID();
+inline jlong ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc_get_serialVersionUID(void);
 #define ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc_serialVersionUID 1LL
 J2OBJC_STATIC_FIELD_CONSTANT(ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc, serialVersionUID, jlong)
 
@@ -169,7 +168,7 @@ J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata, number
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata, intlNumberFormat__, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata, leadingDigits__, NSString *)
 
-inline jlong ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata_get_serialVersionUID();
+inline jlong ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata_get_serialVersionUID(void);
 #define ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata_serialVersionUID 1LL
 J2OBJC_STATIC_FIELD_CONSTANT(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata, serialVersionUID, jlong)
 
@@ -182,7 +181,7 @@ J2OBJC_STATIC_FIELD_CONSTANT(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadat
 
 J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection, metadata__, id<JavaUtilList>)
 
-inline jlong ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection_get_serialVersionUID();
+inline jlong ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection_get_serialVersionUID(void);
 #define ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection_serialVersionUID 1LL
 J2OBJC_STATIC_FIELD_CONSTANT(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection, serialVersionUID, jlong)
 
@@ -479,6 +478,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata_NumberFo
 
 @implementation ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat_Builder
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype)init {
+  ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat_Builder_init(self);
+  return self;
+}
+J2OBJC_IGNORE_DESIGNATED_END
+
 - (ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat *)build {
   return self;
 }
@@ -505,24 +511,17 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata_NumberFo
   return self;
 }
 
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat_Builder_init(self);
-  return self;
-}
-J2OBJC_IGNORE_DESIGNATED_END
-
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LComGoogleI18nPhonenumbersPhonemetadata_NumberFormat;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LComGoogleI18nPhonenumbersPhonemetadata_NumberFormat_Builder;", 0x1, 0, 1, -1, -1, -1, -1 },
-    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  methods[0].selector = @selector(build);
-  methods[1].selector = @selector(mergeFromWithComGoogleI18nPhonenumbersPhonemetadata_NumberFormat:);
-  methods[2].selector = @selector(init);
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(build);
+  methods[2].selector = @selector(mergeFromWithComGoogleI18nPhonenumbersPhonemetadata_NumberFormat:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "mergeFrom", "LComGoogleI18nPhonenumbersPhonemetadata_NumberFormat;" };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat_Builder = { "Builder", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x19, 3, 0, 1, -1, -1, -1, -1 };
@@ -785,6 +784,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata_PhoneNum
 
 @implementation ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc_Builder
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype)init {
+  ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc_Builder_init(self);
+  return self;
+}
+J2OBJC_IGNORE_DESIGNATED_END
+
 - (ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc *)build {
   return self;
 }
@@ -805,24 +811,17 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata_PhoneNum
   return self;
 }
 
-J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
-  ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc_Builder_init(self);
-  return self;
-}
-J2OBJC_IGNORE_DESIGNATED_END
-
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc_Builder;", 0x1, 0, 1, -1, -1, -1, -1 },
-    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  methods[0].selector = @selector(build);
-  methods[1].selector = @selector(mergeFromWithComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc:);
-  methods[2].selector = @selector(init);
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(build);
+  methods[2].selector = @selector(mergeFromWithComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "mergeFrom", "LComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc;" };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc_Builder = { "Builder", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x19, 3, 0, 1, -1, -1, -1, -1 };
@@ -2072,10 +2071,6 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMet
 
 @implementation ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata_Builder
 
-- (ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata *)build {
-  return self;
-}
-
 J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata_Builder_init(self);
@@ -2083,15 +2078,19 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
+- (ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata *)build {
+  return self;
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
-    { NULL, "LComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata;", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  methods[0].selector = @selector(build);
-  methods[1].selector = @selector(init);
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(build);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "LComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata;" };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata_Builder = { "Builder", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x19, 2, 0, 0, -1, -1, -1, -1 };
@@ -2225,10 +2224,6 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMet
 
 @implementation ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection_Builder
 
-- (ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection *)build {
-  return self;
-}
-
 J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection_Builder_init(self);
@@ -2236,15 +2231,19 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
+- (ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection *)build {
+  return self;
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
-    { NULL, "LComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection;", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  methods[0].selector = @selector(build);
-  methods[1].selector = @selector(init);
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(build);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "LComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection;" };
   static const J2ObjcClassInfo _ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection_Builder = { "Builder", "com.google.i18n.phonenumbers", ptrTable, methods, NULL, 7, 0x19, 2, 0, 0, -1, -1, -1, -1 };

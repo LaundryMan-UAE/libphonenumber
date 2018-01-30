@@ -98,10 +98,6 @@ ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbe
   return ComGoogleI18nPhonenumbersNumberParseException_ErrorType_valueOfWithNSString_(name);
 }
 
-- (id)copyWithZone:(NSZone *)zone {
-  return self;
-}
-
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, "[LComGoogleI18nPhonenumbersNumberParseException_ErrorType;", 0x9, -1, -1, -1, -1, -1, -1 },
@@ -130,12 +126,9 @@ ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbe
     size_t allocSize = 5 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    id names[] = {
-      @"INVALID_COUNTRY_CODE", @"NOT_A_NUMBER", @"TOO_SHORT_AFTER_IDD", @"TOO_SHORT_NSN", @"TOO_LONG",
-    };
     for (jint i = 0; i < 5; i++) {
       (ComGoogleI18nPhonenumbersNumberParseException_ErrorType_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
-      ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(e, names[i], i);
+      ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(e, JreEnumConstantName(ComGoogleI18nPhonenumbersNumberParseException_ErrorType_class_(), i), i);
     }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersNumberParseException_ErrorType)
   }

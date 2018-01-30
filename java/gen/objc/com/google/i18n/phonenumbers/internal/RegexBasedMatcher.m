@@ -29,9 +29,9 @@ J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher, regexCac
 
 __attribute__((unused)) static void ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *self);
 
-__attribute__((unused)) static ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *new_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init() NS_RETURNS_RETAINED;
+__attribute__((unused)) static ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *new_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init(void) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *create_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init();
+__attribute__((unused)) static ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *create_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init(void);
 
 __attribute__((unused)) static jboolean ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_matchWithJavaLangCharSequence_withJavaUtilRegexPattern_withBoolean_(id<JavaLangCharSequence> number, JavaUtilRegexPattern *pattern, jboolean allowPrefixMatch);
 
@@ -52,7 +52,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 withComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc:(ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc *)numberDesc
                                             withBoolean:(jboolean)allowPrefixMatch {
   NSString *nationalNumberPattern = [((ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc *) nil_chk(numberDesc)) getNationalNumberPattern];
-  if (((jint) [((NSString *) nil_chk(nationalNumberPattern)) length]) == 0) {
+  if ([((NSString *) nil_chk(nationalNumberPattern)) java_length] == 0) {
     return false;
   }
   return ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_matchWithJavaLangCharSequence_withJavaUtilRegexPattern_withBoolean_(number, [((ComGoogleI18nPhonenumbersInternalRegexCache *) nil_chk(regexCache_)) getPatternForRegexWithNSString:nationalNumberPattern], allowPrefixMatch);

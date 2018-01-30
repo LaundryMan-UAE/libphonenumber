@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersNumberParseException
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersNumberParseException_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersNumberParseException || defined(INCLUDE_ComGoogleI18nPhonenumbersNumberParseException))
 #define ComGoogleI18nPhonenumbersNumberParseException_
 
@@ -21,6 +26,7 @@
 #include "java/lang/Exception.h"
 
 @class ComGoogleI18nPhonenumbersNumberParseException_ErrorType;
+@class JavaLangThrowable;
 
 /*!
  @brief Generic exception class for errors encountered when parsing phone numbers.
@@ -38,6 +44,22 @@
 - (ComGoogleI18nPhonenumbersNumberParseException_ErrorType *)getErrorType;
 
 - (NSString *)description;
+
+// Disallowed inherited constructors, do not use.
+
+- (instancetype)init NS_UNAVAILABLE;
+
+- (instancetype)initWithJavaLangThrowable:(JavaLangThrowable *)arg0 NS_UNAVAILABLE;
+
+- (instancetype)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
+
+- (instancetype)initWithNSString:(NSString *)arg0
+           withJavaLangThrowable:(JavaLangThrowable *)arg1 NS_UNAVAILABLE;
+
+- (instancetype)initWithNSString:(NSString *)arg0
+           withJavaLangThrowable:(JavaLangThrowable *)arg1
+                     withBoolean:(jboolean)arg2
+                     withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
 
 @end
 
@@ -73,17 +95,13 @@ typedef NS_ENUM(NSUInteger, ComGoogleI18nPhonenumbersNumberParseException_ErrorT
 /*!
  @brief The reason that a string could not be interpreted as a phone number.
  */
-@interface ComGoogleI18nPhonenumbersNumberParseException_ErrorType : JavaLangEnum < NSCopying >
+@interface ComGoogleI18nPhonenumbersNumberParseException_ErrorType : JavaLangEnum
 
 #pragma mark Public
 
 + (ComGoogleI18nPhonenumbersNumberParseException_ErrorType *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
-
-#pragma mark Package-Private
-
-- (id)copyWithZone:(NSZone *)zone;
 
 @end
 
@@ -95,40 +113,39 @@ FOUNDATION_EXPORT ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGo
 /*!
  @brief The country code supplied did not belong to a supported country or non-geographical entity.
  */
-inline ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_get_INVALID_COUNTRY_CODE();
+inline ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_get_INVALID_COUNTRY_CODE(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, INVALID_COUNTRY_CODE)
 
 /*!
- @brief This generally indicates the string passed in had less than 3 digits in it.
- More
- specifically, the number failed to match the regular expression VALID_PHONE_NUMBER in
- PhoneNumberUtil.java.
+ @brief This generally indicates the string passed in had less than 3 digits in it.More
+  specifically, the number failed to match the regular expression VALID_PHONE_NUMBER in
+  PhoneNumberUtil.java.
  */
-inline ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_get_NOT_A_NUMBER();
+inline ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_get_NOT_A_NUMBER(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, NOT_A_NUMBER)
 
 /*!
  @brief This indicates the string started with an international dialing prefix, but after this was
- stripped from the number, had less digits than any valid phone number (including country
- code) could have.
+  stripped from the number, had less digits than any valid phone number (including country
+  code) could have.
  */
-inline ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_get_TOO_SHORT_AFTER_IDD();
+inline ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_get_TOO_SHORT_AFTER_IDD(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_SHORT_AFTER_IDD)
 
 /*!
  @brief This indicates the string, after any country code has been stripped, had less digits than any
- valid phone number could have.
+  valid phone number could have.
  */
-inline ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_get_TOO_SHORT_NSN();
+inline ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_get_TOO_SHORT_NSN(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_SHORT_NSN)
 
 /*!
  @brief This indicates the string had more digits than any valid phone number could have.
  */
-inline ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_get_TOO_LONG();
+inline ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_get_TOO_LONG(void);
 J2OBJC_ENUM_CONSTANT(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_LONG)
 
-FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_values();
+FOUNDATION_EXPORT IOSObjectArray *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_values(void);
 
 FOUNDATION_EXPORT ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_valueOfWithNSString_(NSString *name);
 
@@ -138,4 +155,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersNumberParseException_ErrorTy
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersNumberParseException")
