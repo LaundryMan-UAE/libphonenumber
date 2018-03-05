@@ -56,7 +56,6 @@ subprojects {
 
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     maven { url "http://repo.maven.apache.org/maven2" }
-    maven { url "file:///Users/marcussmith/HambroPerks/hambroperks_org/libphonenumber/java/lib" }
     maven { url "http://mvnrepository.com/artifact/" }
   }
 
@@ -75,5 +74,5 @@ subprojects {
     args inputs.files
   }
 
-  task translateAll(dependsOn: [':carrier:translateCarrier', ':prefixmapper:translatePrefixMapper', ':libphonenumber:translateLibPhoneNumber']) {}
+  task translateAll(dependsOn: [':carrier:translateCarrier', ':prefixmapper:translatePrefixMapper',':libphonenumber:translateLibPhoneNumber']) {}
 }

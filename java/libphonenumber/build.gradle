@@ -6,7 +6,7 @@ dependencies {
 sourceSets {
     main {
         java {
-            srcDirs = ['src/com', 'src/main/java']
+            srcDirs = ['src/main/java', 'src/com']
         }
     }
 }
@@ -21,12 +21,13 @@ task translateLibPhoneNumber(type:Exec) {
         }
     }.flatten())
 
-
     // the classpath is built from the runtime dependencies for the sourcesets ...
     executable "${J2OBJC_HOME_LATEST}/j2objc"
     //args '--prefixes', file('main/resources/prefixes.properties').path
 //    args '--mapping', file('mapping.properties').path
     args '--doc-comments'
+    args '--nullability'
+    args '--strip-reflection'
     args '-d', file('../gen/objc').path
     args '-sourcepath', (sourceSets.main.allJava.srcDirs).join(':')
     args '-classpath', sourceSets.main.runtimeClasspath.collect { it.absolutePath }.join(':')

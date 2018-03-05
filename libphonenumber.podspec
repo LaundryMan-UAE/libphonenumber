@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
   s.header_mappings_dir = 'java/gen/objc'
   s.compiler_flags = '-Wno-nullability-completeness'
 
-  s.xcconfig = { 'HEADER_SEARCH_PATHS' => "\"${PODS_ROOT}/J2ObjC/dist/include\"" }
+  #s.xcconfig = { 'HEADER_SEARCH_PATHS' => "\"${PODS_ROOT}/J2ObjC/dist/include\"" }
 end

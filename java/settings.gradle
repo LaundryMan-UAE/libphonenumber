@@ -5,8 +5,8 @@ include ':carrier'
 include ':geocoder'
 include ':demo'
 
-project(':libphonenumber').projectDir = "$rootDir/libphonenumber" as File
-project(':prefixmapper').projectDir = "$rootDir/internal/prefixmapper" as File
-project(':carrier').projectDir = "$rootDir/carrier" as File
-project(':geocoder').projectDir = "$rootDir/geocoder" as File
-project(':demo').projectDir = "$rootDir/demo" as File
+project(':libphonenumber').projectDir = new File("libphonenumber")
+project(':prefixmapper').projectDir = new File("internal/prefixmapper")
+project(':carrier').projectDir = new File("carrier")
+project(':geocoder').projectDir = new File("geocoder")
+project(':demo').projectDir = new File("demo")

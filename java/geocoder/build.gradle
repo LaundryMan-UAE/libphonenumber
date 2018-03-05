@@ -22,6 +22,8 @@ task translateGeocoder(type:Exec) {
   //args '--prefixes', file('main/resources/prefixes.properties').path
 //    args '--mapping', file('mapping.properties').path
   args '--doc-comments'
+  args '--nullability'
+  args '--strip-reflection'
   args '-d', file('../gen/objc').path
   args '-sourcepath', (sourceSets.main.allJava.srcDirs).join(':')
   args '-classpath', sourceSets.main.runtimeClasspath.collect { it.absolutePath }.join(':')
