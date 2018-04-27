@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet || defined(INCLUDE_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet))
 #define ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_
 
@@ -22,7 +27,7 @@
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 #pragma mark Package-Private
 
@@ -44,4 +49,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet")

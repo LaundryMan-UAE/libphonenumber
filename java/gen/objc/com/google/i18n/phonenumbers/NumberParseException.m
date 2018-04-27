@@ -25,8 +25,8 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersNumberParseExceptio
 
 @implementation ComGoogleI18nPhonenumbersNumberParseException
 
-- (instancetype)initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType:(ComGoogleI18nPhonenumbersNumberParseException_ErrorType *)errorType
-                                                                   withNSString:(NSString *)message {
+- (instancetype __nonnull)initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType:(ComGoogleI18nPhonenumbersNumberParseException_ErrorType *)errorType
+                                                                             withNSString:(NSString *)message {
   ComGoogleI18nPhonenumbersNumberParseException_initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType_withNSString_(self, errorType, message);
   return self;
 }
@@ -87,7 +87,7 @@ ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbe
       @"INVALID_COUNTRY_CODE", @"NOT_A_NUMBER", @"TOO_SHORT_AFTER_IDD", @"TOO_SHORT_NSN", @"TOO_LONG",
     };
     for (jint i = 0; i < 5; i++) {
-      (ComGoogleI18nPhonenumbersNumberParseException_ErrorType_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ((void)(ComGoogleI18nPhonenumbersNumberParseException_ErrorType_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(e, names[i], i);
     }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersNumberParseException_ErrorType)

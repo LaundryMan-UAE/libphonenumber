@@ -200,7 +200,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata)
 @implementation ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat_init(self);
   return self;
 }
@@ -380,7 +380,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata_NumberFo
 @implementation ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat_Builder
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat_Builder_init(self);
   return self;
 }
@@ -431,7 +431,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata_NumberFo
 @implementation ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc_init(self);
   return self;
 }
@@ -603,7 +603,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata_PhoneNum
 @implementation ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc_Builder
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc_Builder_init(self);
   return self;
 }
@@ -648,7 +648,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata_PhoneNum
 @implementation ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata_init(self);
   return self;
 }
@@ -1573,7 +1573,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMet
 @implementation ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata_Builder
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata_Builder_init(self);
   return self;
 }
@@ -1602,7 +1602,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMet
 @implementation ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection_init(self);
   return self;
 }
@@ -1680,7 +1680,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMet
 @implementation ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection_Builder
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection_Builder_init(self);
   return self;
 }

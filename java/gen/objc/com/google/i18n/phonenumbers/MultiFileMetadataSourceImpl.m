@@ -34,13 +34,13 @@ __attribute__((unused)) static jboolean ComGoogleI18nPhonenumbersMultiFileMetada
 
 @implementation ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl
 
-- (instancetype)initWithNSString:(NSString *)phoneNumberMetadataFilePrefix
+- (instancetype __nonnull)initWithNSString:(NSString *)phoneNumberMetadataFilePrefix
 withComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadataLoader>)metadataLoader {
   ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(self, phoneNumberMetadataFilePrefix, metadataLoader);
   return self;
 }
 
-- (instancetype)initWithComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadataLoader>)metadataLoader {
+- (instancetype __nonnull)initWithComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadataLoader>)metadataLoader {
   ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithComGoogleI18nPhonenumbersMetadataLoader_(self, metadataLoader);
   return self;
 }

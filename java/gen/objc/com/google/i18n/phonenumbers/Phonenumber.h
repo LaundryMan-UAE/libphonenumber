@@ -44,7 +44,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonenumber)
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clear;
 

@@ -48,7 +48,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader)
 
 @implementation ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader
 
-- (instancetype)initWithNSString:(NSString *)phonePrefixDataDirectory {
+- (instancetype __nonnull)initWithNSString:(NSString *)phonePrefixDataDirectory {
   ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_initWithNSString_(self, phonePrefixDataDirectory);
   return self;
 }

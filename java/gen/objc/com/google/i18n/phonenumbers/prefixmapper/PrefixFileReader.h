@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader || defined(INCLUDE_ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader))
 #define ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader_
 
@@ -26,7 +31,7 @@
 
 #pragma mark Public
 
-- (instancetype)initWithNSString:(NSString *)phonePrefixDataDirectory;
+- (instancetype __nonnull)initWithNSString:(NSString *)phonePrefixDataDirectory;
 
 /*!
  @brief Returns a text description in the given language for the given phone number.
@@ -45,7 +50,7 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -61,4 +66,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperPrefixFileReader")

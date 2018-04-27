@@ -61,7 +61,7 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersPrefixmapperFlyweig
 @implementation ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersPrefixmapperFlyweightMapStorage_init(self);
   return self;
 }

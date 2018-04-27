@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersMetadataLoader
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersMetadataLoader_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataLoader || defined(INCLUDE_ComGoogleI18nPhonenumbersMetadataLoader))
 #define ComGoogleI18nPhonenumbersMetadataLoader_
 
@@ -45,4 +50,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersMetadataLoader)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersMetadataLoader")

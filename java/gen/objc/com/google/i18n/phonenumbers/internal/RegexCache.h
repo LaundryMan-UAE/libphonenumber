@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersInternalRegexCache
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersInternalRegexCache_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalRegexCache || defined(INCLUDE_ComGoogleI18nPhonenumbersInternalRegexCache))
 #define ComGoogleI18nPhonenumbersInternalRegexCache_
 
@@ -26,7 +31,7 @@
 
 #pragma mark Public
 
-- (instancetype)initWithInt:(jint)size;
+- (instancetype __nonnull)initWithInt:(jint)size;
 
 - (JavaUtilRegexPattern *)getPatternForRegexWithNSString:(NSString *)regex;
 
@@ -36,7 +41,7 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -52,4 +57,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersInternalRegexCache)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalRegexCache")

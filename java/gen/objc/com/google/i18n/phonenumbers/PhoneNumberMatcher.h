@@ -72,11 +72,11 @@
        be 
  <code>>= 0</code> .
  */
-- (instancetype)initWithComGoogleI18nPhonenumbersPhoneNumberUtil:(ComGoogleI18nPhonenumbersPhoneNumberUtil *)util
-                                        withJavaLangCharSequence:(id<JavaLangCharSequence>)text
-                                                    withNSString:(NSString *)country
-           withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency:(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *)leniency
-                                                        withLong:(jlong)maxTries;
+- (instancetype __nonnull)initWithComGoogleI18nPhonenumbersPhoneNumberUtil:(ComGoogleI18nPhonenumbersPhoneNumberUtil *)util
+                                                  withJavaLangCharSequence:(id<JavaLangCharSequence>)text
+                                                              withNSString:(NSString *)country
+                     withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency:(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *)leniency
+                                                                  withLong:(jlong)maxTries;
 
 + (jboolean)allNumberGroupsAreExactlyPresentWithComGoogleI18nPhonenumbersPhoneNumberUtil:(ComGoogleI18nPhonenumbersPhoneNumberUtil *)util
                                     withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number
@@ -112,7 +112,7 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 

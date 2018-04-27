@@ -11,7 +11,7 @@
 @implementation ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_init(self);
   return self;
 }

@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy || defined(INCLUDE_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy))
 #define ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy_
 
@@ -88,7 +93,7 @@
 
 #pragma mark Package-Private
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 @end
 
@@ -102,4 +107,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapSt
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy")

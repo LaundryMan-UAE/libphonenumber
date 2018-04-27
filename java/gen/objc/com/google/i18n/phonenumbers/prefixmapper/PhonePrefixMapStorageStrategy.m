@@ -14,7 +14,7 @@
 @implementation ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMapStorageStrategy_init(self);
   return self;
 }

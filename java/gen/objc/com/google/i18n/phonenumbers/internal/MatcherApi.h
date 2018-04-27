@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersInternalMatcherApi
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersInternalMatcherApi_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalMatcherApi || defined(INCLUDE_ComGoogleI18nPhonenumbersInternalMatcherApi))
 #define ComGoogleI18nPhonenumbersInternalMatcherApi_
 
@@ -41,4 +46,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersInternalMatcherApi)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalMatcherApi")

@@ -77,7 +77,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersShortNumberInfo)
   return ComGoogleI18nPhonenumbersShortNumberInfo_getInstance();
 }
 
-- (instancetype)initWithComGoogleI18nPhonenumbersInternalMatcherApi:(id<ComGoogleI18nPhonenumbersInternalMatcherApi>)matcherApi {
+- (instancetype __nonnull)initWithComGoogleI18nPhonenumbersInternalMatcherApi:(id<ComGoogleI18nPhonenumbersInternalMatcherApi>)matcherApi {
   ComGoogleI18nPhonenumbersShortNumberInfo_initWithComGoogleI18nPhonenumbersInternalMatcherApi_(self, matcherApi);
   return self;
 }
@@ -402,7 +402,7 @@ ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost *ComGoogleI18nPhonenumb
       @"TOLL_FREE", @"STANDARD_RATE", @"PREMIUM_RATE", @"UNKNOWN_COST",
     };
     for (jint i = 0; i < 4; i++) {
-      (ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ((void)(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost_initWithNSString_withInt_(e, names[i], i);
     }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost)

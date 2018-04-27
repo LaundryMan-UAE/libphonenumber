@@ -412,8 +412,8 @@ NSString *ComGoogleI18nPhonenumbersPhoneNumberUtil_REGION_CODE_FOR_NON_GEO_ENTIT
 
 @implementation ComGoogleI18nPhonenumbersPhoneNumberUtil
 
-- (instancetype)initWithComGoogleI18nPhonenumbersMetadataSource:(id<ComGoogleI18nPhonenumbersMetadataSource>)metadataSource
-                                                withJavaUtilMap:(id<JavaUtilMap>)countryCallingCodeToRegionCodeMap {
+- (instancetype __nonnull)initWithComGoogleI18nPhonenumbersMetadataSource:(id<ComGoogleI18nPhonenumbersMetadataSource>)metadataSource
+                                                          withJavaUtilMap:(id<JavaUtilMap>)countryCallingCodeToRegionCodeMap {
   ComGoogleI18nPhonenumbersPhoneNumberUtil_initWithComGoogleI18nPhonenumbersMetadataSource_withJavaUtilMap_(self, metadataSource, countryCallingCodeToRegionCodeMap);
   return self;
 }
@@ -2232,7 +2232,7 @@ ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat *ComGoogleI18nPhonenu
       @"E164", @"INTERNATIONAL", @"NATIONAL", @"RFC3966",
     };
     for (jint i = 0; i < 4; i++) {
-      (ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ((void)(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat_initWithNSString_withInt_(e, names[i], i);
     }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberFormat)
@@ -2296,7 +2296,7 @@ ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType *ComGoogleI18nPhonenumb
       @"FIXED_LINE", @"MOBILE", @"FIXED_LINE_OR_MOBILE", @"TOLL_FREE", @"PREMIUM_RATE", @"SHARED_COST", @"VOIP", @"PERSONAL_NUMBER", @"PAGER", @"UAN", @"VOICEMAIL", @"UNKNOWN",
     };
     for (jint i = 0; i < 12; i++) {
-      (ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ((void)(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType_initWithNSString_withInt_(e, names[i], i);
     }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhoneNumberUtil_PhoneNumberType)
@@ -2360,7 +2360,7 @@ ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType *ComGoogleI18nPhonenumbersPho
       @"NOT_A_NUMBER", @"NO_MATCH", @"SHORT_NSN_MATCH", @"NSN_MATCH", @"EXACT_MATCH",
     };
     for (jint i = 0; i < 5; i++) {
-      (ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ((void)(ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType_initWithNSString_withInt_(e, names[i], i);
     }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhoneNumberUtil_MatchType)
@@ -2424,7 +2424,7 @@ ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult *ComGoogleI18nPhonenum
       @"IS_POSSIBLE", @"IS_POSSIBLE_LOCAL_ONLY", @"INVALID_COUNTRY_CODE", @"TOO_SHORT", @"INVALID_LENGTH", @"TOO_LONG",
     };
     for (jint i = 0; i < 6; i++) {
-      (ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ((void)(ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult_initWithNSString_withInt_(e, names[i], i);
     }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhoneNumberUtil_ValidationResult)
@@ -2491,13 +2491,13 @@ ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *ComGoogleI18nPhonenumbersPhon
     allocSize += objSize_EXACT_GROUPING;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency, POSSIBLE) = e = objc_constructInstance([ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_1 class], (void *)ptr), ptr += objSize_POSSIBLE);
+    ((void) (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency, POSSIBLE) = e = objc_constructInstance([ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_1 class], (void *)ptr)), ptr += objSize_POSSIBLE);
     ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_1_initWithNSString_withInt_(e, @"POSSIBLE", 0);
-    (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency, VALID) = e = objc_constructInstance([ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_2 class], (void *)ptr), ptr += objSize_VALID);
+    ((void) (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency, VALID) = e = objc_constructInstance([ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_2 class], (void *)ptr)), ptr += objSize_VALID);
     ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_2_initWithNSString_withInt_(e, @"VALID", 1);
-    (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency, STRICT_GROUPING) = e = objc_constructInstance([ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_3 class], (void *)ptr), ptr += objSize_STRICT_GROUPING);
+    ((void) (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency, STRICT_GROUPING) = e = objc_constructInstance([ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_3 class], (void *)ptr)), ptr += objSize_STRICT_GROUPING);
     ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_3_initWithNSString_withInt_(e, @"STRICT_GROUPING", 2);
-    (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency, EXACT_GROUPING) = e = objc_constructInstance([ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_4 class], (void *)ptr), ptr += objSize_EXACT_GROUPING);
+    ((void) (JreEnum(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency, EXACT_GROUPING) = e = objc_constructInstance([ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_4 class], (void *)ptr)), ptr += objSize_EXACT_GROUPING);
     ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_4_initWithNSString_withInt_(e, @"EXACT_GROUPING", 3);
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency)
   }
@@ -2684,7 +2684,7 @@ ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_4_1 *create_ComGoogleI18nPhone
 }
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(__unsafe_unretained id *)stackbuf count:(NSUInteger)len {
-  return JreDefaultFastEnumeration(self, state, stackbuf, len);
+  return JreDefaultFastEnumeration(self, state, stackbuf);
 }
 
 - (void)dealloc {

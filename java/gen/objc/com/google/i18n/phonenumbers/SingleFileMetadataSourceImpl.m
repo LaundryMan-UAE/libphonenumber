@@ -25,13 +25,13 @@ J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl, phone
 
 @implementation ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl
 
-- (instancetype)initWithNSString:(NSString *)phoneNumberMetadataFileName
+- (instancetype __nonnull)initWithNSString:(NSString *)phoneNumberMetadataFileName
 withComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadataLoader>)metadataLoader {
   ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(self, phoneNumberMetadataFileName, metadataLoader);
   return self;
 }
 
-- (instancetype)initWithComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadataLoader>)metadataLoader {
+- (instancetype __nonnull)initWithComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadataLoader>)metadataLoader {
   ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_initWithComGoogleI18nPhonenumbersMetadataLoader_(self, metadataLoader);
   return self;
 }

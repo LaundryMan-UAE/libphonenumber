@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage || defined(INCLUDE_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage))
 #define ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_
 
@@ -34,7 +39,7 @@
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (NSString *)getDescriptionWithInt:(jint)index;
 
@@ -60,4 +65,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorag
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage")

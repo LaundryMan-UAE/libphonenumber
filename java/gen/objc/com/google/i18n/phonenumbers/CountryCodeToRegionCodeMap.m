@@ -14,7 +14,7 @@
 @implementation ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersCountryCodeToRegionCodeMap_init(self);
   return self;
 }

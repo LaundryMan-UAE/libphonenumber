@@ -36,7 +36,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper)
 
 @implementation ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper
 
-- (instancetype)initWithNSString:(NSString *)phonePrefixDataDirectory {
+- (instancetype __nonnull)initWithNSString:(NSString *)phonePrefixDataDirectory {
   ComGoogleI18nPhonenumbersPhoneNumberToCarrierMapper_initWithNSString_(self, phonePrefixDataDirectory);
   return self;
 }

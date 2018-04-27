@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider || defined(INCLUDE_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider))
 #define ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_
 
@@ -40,7 +45,7 @@
  The empty provider could later be populated by 
  <code>readFileConfigs(java.util.SortedMap)</code> or <code>readExternal(java.io.ObjectInput)</code>.
  */
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 /*!
  @brief Supports Java Serialization.
@@ -98,4 +103,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvi
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider")

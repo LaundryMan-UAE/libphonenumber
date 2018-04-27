@@ -824,8 +824,8 @@ withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersP
 /*!
  @brief This class implements a singleton, the constructor is only visible to facilitate testing.
  */
-- (instancetype)initWithComGoogleI18nPhonenumbersMetadataSource:(id<ComGoogleI18nPhonenumbersMetadataSource>)metadataSource
-                                                withJavaUtilMap:(id<JavaUtilMap>)countryCallingCodeToRegionCodeMap;
+- (instancetype __nonnull)initWithComGoogleI18nPhonenumbersMetadataSource:(id<ComGoogleI18nPhonenumbersMetadataSource>)metadataSource
+                                                          withJavaUtilMap:(id<JavaUtilMap>)countryCallingCodeToRegionCodeMap;
 
 - (ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat *)chooseFormattingPatternForNumberWithJavaUtilList:(id<JavaUtilList>)availableFormats
                                                                                              withNSString:(NSString *)nationalNumber;
@@ -982,7 +982,7 @@ withComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata:(ComGoogleI18nPhonenumb
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 

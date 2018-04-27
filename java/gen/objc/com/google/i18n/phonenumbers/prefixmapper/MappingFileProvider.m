@@ -51,7 +51,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider
 @implementation ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersPrefixmapperMappingFileProvider_init(self);
   return self;
 }

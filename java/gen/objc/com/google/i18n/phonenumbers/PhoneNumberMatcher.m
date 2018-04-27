@@ -215,11 +215,11 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersPhoneNumberMatcher)
 
 @implementation ComGoogleI18nPhonenumbersPhoneNumberMatcher
 
-- (instancetype)initWithComGoogleI18nPhonenumbersPhoneNumberUtil:(ComGoogleI18nPhonenumbersPhoneNumberUtil *)util
-                                        withJavaLangCharSequence:(id<JavaLangCharSequence>)text
-                                                    withNSString:(NSString *)country
-           withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency:(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *)leniency
-                                                        withLong:(jlong)maxTries {
+- (instancetype __nonnull)initWithComGoogleI18nPhonenumbersPhoneNumberUtil:(ComGoogleI18nPhonenumbersPhoneNumberUtil *)util
+                                                  withJavaLangCharSequence:(id<JavaLangCharSequence>)text
+                                                              withNSString:(NSString *)country
+                     withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency:(ComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency *)leniency
+                                                                  withLong:(jlong)maxTries {
   ComGoogleI18nPhonenumbersPhoneNumberMatcher_initWithComGoogleI18nPhonenumbersPhoneNumberUtil_withJavaLangCharSequence_withNSString_withComGoogleI18nPhonenumbersPhoneNumberUtil_Leniency_withLong_(self, util, text, country, leniency, maxTries);
   return self;
 }
@@ -650,7 +650,7 @@ ComGoogleI18nPhonenumbersPhoneNumberMatcher_State *ComGoogleI18nPhonenumbersPhon
       @"NOT_READY", @"READY", @"DONE",
     };
     for (jint i = 0; i < 3; i++) {
-      (ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ((void)(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ComGoogleI18nPhonenumbersPhoneNumberMatcher_State_initWithNSString_withInt_(e, names[i], i);
     }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhoneNumberMatcher_State)

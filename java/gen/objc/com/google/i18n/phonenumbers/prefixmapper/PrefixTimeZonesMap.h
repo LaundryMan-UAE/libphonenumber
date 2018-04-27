@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap || defined(INCLUDE_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap))
 #define ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap_
 
@@ -34,7 +39,7 @@
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 /*!
  @brief Returns the list of time zones <code>number</code>'s calling country code corresponds to.
@@ -85,4 +90,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesM
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperPrefixTimeZonesMap")

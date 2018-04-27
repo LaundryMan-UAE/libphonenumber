@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher || defined(INCLUDE_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher))
 #define ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_
 
@@ -47,4 +52,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher")

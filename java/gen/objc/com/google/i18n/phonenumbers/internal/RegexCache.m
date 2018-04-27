@@ -66,7 +66,7 @@ __attribute__((unused)) static ComGoogleI18nPhonenumbersInternalRegexCache_LRUCa
 
 @implementation ComGoogleI18nPhonenumbersInternalRegexCache
 
-- (instancetype)initWithInt:(jint)size {
+- (instancetype __nonnull)initWithInt:(jint)size {
   ComGoogleI18nPhonenumbersInternalRegexCache_initWithInt_(self, size);
   return self;
 }

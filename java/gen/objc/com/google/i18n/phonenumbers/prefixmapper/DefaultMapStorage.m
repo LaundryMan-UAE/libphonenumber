@@ -32,7 +32,7 @@ J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage, desc
 @implementation ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersPrefixmapperDefaultMapStorage_init(self);
   return self;
 }

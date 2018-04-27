@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap || defined(INCLUDE_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap))
 #define ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap_
 
@@ -41,7 +46,7 @@
  The empty map could later be populated by 
  <code>readPhonePrefixMap(java.util.SortedMap)</code> or <code>readExternal(java.io.ObjectInput)</code>.
  */
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 /*!
  @brief As per <code>lookup(long)</code>, but receives the number as a PhoneNumber instead of a long.
@@ -109,4 +114,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPrefixmapperPhonePrefixMap")

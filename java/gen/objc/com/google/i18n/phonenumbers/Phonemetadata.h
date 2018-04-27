@@ -25,6 +25,11 @@
 #define INCLUDE_ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat 1
 #endif
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersPhonemetadata_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersPhonemetadata || defined(INCLUDE_ComGoogleI18nPhonenumbersPhonemetadata))
 #define ComGoogleI18nPhonenumbersPhonemetadata_
 
@@ -54,7 +59,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonemetadata)
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat *)addLeadingDigitsPatternWithNSString:(NSString *)value;
 
@@ -132,7 +137,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat)
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat *)build;
 
@@ -168,7 +173,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat_B
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc *)addPossibleLengthWithInt:(jint)value;
 
@@ -243,7 +248,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDes
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc *)build;
 
@@ -281,7 +286,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDes
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata *)addIntlNumberFormatWithComGoogleI18nPhonenumbersPhonemetadata_NumberFormat:(ComGoogleI18nPhonenumbersPhonemetadata_NumberFormat *)value;
 
@@ -534,7 +539,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata)
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata *)build;
 
@@ -569,7 +574,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata_
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection *)addMetadataWithComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata:(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadata *)value;
 
@@ -614,7 +619,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataC
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataCollection *)build;
 
@@ -632,4 +637,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersPhonemetadata_PhoneMetadataC
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersPhonemetadata")

@@ -141,7 +141,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleI18nPhonenumbersAsYouTypeFormatter)
 
 @implementation ComGoogleI18nPhonenumbersAsYouTypeFormatter
 
-- (instancetype)initWithNSString:(NSString *)regionCode {
+- (instancetype __nonnull)initWithNSString:(NSString *)regionCode {
   ComGoogleI18nPhonenumbersAsYouTypeFormatter_initWithNSString_(self, regionCode);
   return self;
 }

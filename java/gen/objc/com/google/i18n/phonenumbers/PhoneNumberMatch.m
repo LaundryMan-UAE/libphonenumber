@@ -36,8 +36,8 @@ J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersPhoneNumberMatch, number_, ComGoogl
 
 @implementation ComGoogleI18nPhonenumbersPhoneNumberMatch
 
-- (instancetype)initWithInt:(jint)start
-               withNSString:(NSString *)rawString
+- (instancetype __nonnull)initWithInt:(jint)start
+                         withNSString:(NSString *)rawString
 withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)number {
   ComGoogleI18nPhonenumbersPhoneNumberMatch_initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(self, start, rawString, number);
   return self;

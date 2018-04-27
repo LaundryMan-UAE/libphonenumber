@@ -72,7 +72,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersPhonenumber)
 @implementation ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init(self);
   return self;
 }
@@ -396,7 +396,7 @@ ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18
       @"FROM_NUMBER_WITH_PLUS_SIGN", @"FROM_NUMBER_WITH_IDD", @"FROM_NUMBER_WITHOUT_PLUS_SIGN", @"FROM_DEFAULT_COUNTRY", @"UNSPECIFIED",
     };
     for (jint i = 0; i < 5; i++) {
-      (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ((void)(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(e, names[i], i);
     }
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource)

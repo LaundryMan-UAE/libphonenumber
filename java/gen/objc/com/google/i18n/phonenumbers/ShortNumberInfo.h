@@ -214,7 +214,7 @@
 
 #pragma mark Package-Private
 
-- (instancetype)initWithComGoogleI18nPhonenumbersInternalMatcherApi:(id<ComGoogleI18nPhonenumbersInternalMatcherApi>)matcherApi;
+- (instancetype __nonnull)initWithComGoogleI18nPhonenumbersInternalMatcherApi:(id<ComGoogleI18nPhonenumbersInternalMatcherApi>)matcherApi;
 
 /*!
  @brief Gets a valid short number for the specified region.
@@ -241,7 +241,7 @@ withComGoogleI18nPhonenumbersShortNumberInfo_ShortNumberCost:(ComGoogleI18nPhone
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 

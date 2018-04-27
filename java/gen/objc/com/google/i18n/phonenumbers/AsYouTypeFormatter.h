@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_ComGoogleI18nPhonenumbersAsYouTypeFormatter
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (ComGoogleI18nPhonenumbersAsYouTypeFormatter_) && (INCLUDE_ALL_ComGoogleI18nPhonenumbersAsYouTypeFormatter || defined(INCLUDE_ComGoogleI18nPhonenumbersAsYouTypeFormatter))
 #define ComGoogleI18nPhonenumbersAsYouTypeFormatter_
 
@@ -65,7 +70,7 @@
  .
  @param regionCode the country/region where the phone number is being entered
  */
-- (instancetype)initWithNSString:(NSString *)regionCode;
+- (instancetype __nonnull)initWithNSString:(NSString *)regionCode;
 
 /*!
  @brief Checks to see if there is an exact pattern match for these digits.If so, we should use this
@@ -77,7 +82,7 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -93,4 +98,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleI18nPhonenumbersAsYouTypeFormatter)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_ComGoogleI18nPhonenumbersAsYouTypeFormatter")
