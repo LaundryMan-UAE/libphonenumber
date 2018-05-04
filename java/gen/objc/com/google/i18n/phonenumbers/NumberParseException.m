@@ -23,6 +23,8 @@ J2OBJC_FIELD_SETTER(ComGoogleI18nPhonenumbersNumberParseException, message_, NSS
 
 __attribute__((unused)) static void ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(ComGoogleI18nPhonenumbersNumberParseException_ErrorType *self, NSString *__name, jint __ordinal);
 
+__attribute__((unused)) static ComGoogleI18nPhonenumbersNumberParseException_ErrorType *new_ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(NSString *__name, jint __ordinal) NS_RETURNS_RETAINED;
+
 @implementation ComGoogleI18nPhonenumbersNumberParseException
 
 - (instancetype __nonnull)initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType:(ComGoogleI18nPhonenumbersNumberParseException_ErrorType *)errorType
@@ -39,18 +41,12 @@ __attribute__((unused)) static void ComGoogleI18nPhonenumbersNumberParseExceptio
   return JreStrcat("$@$$", @"Error type: ", errorType_, @". ", message_);
 }
 
-- (void)dealloc {
-  RELEASE_(errorType_);
-  RELEASE_(message_);
-  [super dealloc];
-}
-
 @end
 
 void ComGoogleI18nPhonenumbersNumberParseException_initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType_withNSString_(ComGoogleI18nPhonenumbersNumberParseException *self, ComGoogleI18nPhonenumbersNumberParseException_ErrorType *errorType, NSString *message) {
   JavaLangException_initWithNSString_(self, message);
-  JreStrongAssign(&self->message_, message);
-  JreStrongAssign(&self->errorType_, errorType);
+  self->message_ = message;
+  self->errorType_ = errorType;
 }
 
 ComGoogleI18nPhonenumbersNumberParseException *new_ComGoogleI18nPhonenumbersNumberParseException_initWithComGoogleI18nPhonenumbersNumberParseException_ErrorType_withNSString_(ComGoogleI18nPhonenumbersNumberParseException_ErrorType *errorType, NSString *message) {
@@ -79,17 +75,11 @@ ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbe
 
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersNumberParseException_ErrorType class]) {
-    size_t objSize = class_getInstanceSize(self);
-    size_t allocSize = 5 * objSize;
-    uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
-    id e;
-    id names[] = {
-      @"INVALID_COUNTRY_CODE", @"NOT_A_NUMBER", @"TOO_SHORT_AFTER_IDD", @"TOO_SHORT_NSN", @"TOO_LONG",
-    };
-    for (jint i = 0; i < 5; i++) {
-      ((void)(ComGoogleI18nPhonenumbersNumberParseException_ErrorType_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
-      ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(e, names[i], i);
-    }
+    JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, INVALID_COUNTRY_CODE) = new_ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(JreEnumConstantName(ComGoogleI18nPhonenumbersNumberParseException_ErrorType_class_(), 0), 0);
+    JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, NOT_A_NUMBER) = new_ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(JreEnumConstantName(ComGoogleI18nPhonenumbersNumberParseException_ErrorType_class_(), 1), 1);
+    JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_SHORT_AFTER_IDD) = new_ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(JreEnumConstantName(ComGoogleI18nPhonenumbersNumberParseException_ErrorType_class_(), 2), 2);
+    JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_SHORT_NSN) = new_ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(JreEnumConstantName(ComGoogleI18nPhonenumbersNumberParseException_ErrorType_class_(), 3), 3);
+    JreEnum(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, TOO_LONG) = new_ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(JreEnumConstantName(ComGoogleI18nPhonenumbersNumberParseException_ErrorType_class_(), 4), 4);
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersNumberParseException_ErrorType)
   }
 }
@@ -98,6 +88,10 @@ ComGoogleI18nPhonenumbersNumberParseException_ErrorType *ComGoogleI18nPhonenumbe
 
 void ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(ComGoogleI18nPhonenumbersNumberParseException_ErrorType *self, NSString *__name, jint __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
+}
+
+ComGoogleI18nPhonenumbersNumberParseException_ErrorType *new_ComGoogleI18nPhonenumbersNumberParseException_ErrorType_initWithNSString_withInt_(NSString *__name, jint __ordinal) {
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersNumberParseException_ErrorType, initWithNSString_withInt_, __name, __ordinal)
 }
 
 IOSObjectArray *ComGoogleI18nPhonenumbersNumberParseException_ErrorType_values() {

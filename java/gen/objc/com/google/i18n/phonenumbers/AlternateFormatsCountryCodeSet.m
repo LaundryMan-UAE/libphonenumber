@@ -38,7 +38,7 @@ ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet *create_ComGoogleI18nPho
 
 id<JavaUtilSet> ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_getCountryCodeSet() {
   ComGoogleI18nPhonenumbersAlternateFormatsCountryCodeSet_initialize();
-  id<JavaUtilSet> countryCodeSet = create_JavaUtilHashSet_initWithInt_(62);
+  id<JavaUtilSet> countryCodeSet = new_JavaUtilHashSet_initWithInt_(62);
   [countryCodeSet addWithId:JavaLangInteger_valueOfWithInt_(7)];
   [countryCodeSet addWithId:JavaLangInteger_valueOfWithInt_(27)];
   [countryCodeSet addWithId:JavaLangInteger_valueOfWithInt_(30)];

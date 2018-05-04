@@ -44,20 +44,13 @@ withComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadat
   return [((ComGoogleI18nPhonenumbersMetadataManager_SingleFileMetadataMaps *) nil_chk(ComGoogleI18nPhonenumbersMetadataManager_getSingleFileMetadataMapsWithJavaUtilConcurrentAtomicAtomicReference_withNSString_withComGoogleI18nPhonenumbersMetadataLoader_(phoneNumberMetadataRef_, phoneNumberMetadataFileName_, metadataLoader_))) getWithInt:countryCallingCode];
 }
 
-- (void)dealloc {
-  RELEASE_(phoneNumberMetadataFileName_);
-  RELEASE_(metadataLoader_);
-  RELEASE_(phoneNumberMetadataRef_);
-  [super dealloc];
-}
-
 @end
 
 void ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl *self, NSString *phoneNumberMetadataFileName, id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {
   NSObject_init(self);
-  JreStrongAssignAndConsume(&self->phoneNumberMetadataRef_, new_JavaUtilConcurrentAtomicAtomicReference_init());
-  JreStrongAssign(&self->phoneNumberMetadataFileName_, phoneNumberMetadataFileName);
-  JreStrongAssign(&self->metadataLoader_, metadataLoader);
+  self->phoneNumberMetadataRef_ = new_JavaUtilConcurrentAtomicAtomicReference_init();
+  self->phoneNumberMetadataFileName_ = phoneNumberMetadataFileName;
+  self->metadataLoader_ = metadataLoader;
 }
 
 ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl *new_ComGoogleI18nPhonenumbersSingleFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(NSString *phoneNumberMetadataFileName, id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {

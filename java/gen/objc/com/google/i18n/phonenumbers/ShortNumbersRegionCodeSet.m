@@ -37,7 +37,7 @@ ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet *create_ComGoogleI18nPhonenum
 
 id<JavaUtilSet> ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_getRegionCodeSet() {
   ComGoogleI18nPhonenumbersShortNumbersRegionCodeSet_initialize();
-  id<JavaUtilSet> regionCodeSet = create_JavaUtilHashSet_initWithInt_(320);
+  id<JavaUtilSet> regionCodeSet = new_JavaUtilHashSet_initWithInt_(320);
   [regionCodeSet addWithId:@"AC"];
   [regionCodeSet addWithId:@"AD"];
   [regionCodeSet addWithId:@"AE"];

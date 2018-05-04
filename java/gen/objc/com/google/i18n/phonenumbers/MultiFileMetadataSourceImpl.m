@@ -56,22 +56,14 @@ withComGoogleI18nPhonenumbersMetadataLoader:(id<ComGoogleI18nPhonenumbersMetadat
   return ComGoogleI18nPhonenumbersMetadataManager_getMetadataFromMultiFilePrefixWithId_withJavaUtilConcurrentConcurrentHashMap_withNSString_withComGoogleI18nPhonenumbersMetadataLoader_(JavaLangInteger_valueOfWithInt_(countryCallingCode), nonGeographicalRegions_, phoneNumberMetadataFilePrefix_, metadataLoader_);
 }
 
-- (void)dealloc {
-  RELEASE_(phoneNumberMetadataFilePrefix_);
-  RELEASE_(metadataLoader_);
-  RELEASE_(geographicalRegions_);
-  RELEASE_(nonGeographicalRegions_);
-  [super dealloc];
-}
-
 @end
 
 void ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl *self, NSString *phoneNumberMetadataFilePrefix, id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {
   NSObject_init(self);
-  JreStrongAssignAndConsume(&self->geographicalRegions_, new_JavaUtilConcurrentConcurrentHashMap_init());
-  JreStrongAssignAndConsume(&self->nonGeographicalRegions_, new_JavaUtilConcurrentConcurrentHashMap_init());
-  JreStrongAssign(&self->phoneNumberMetadataFilePrefix_, phoneNumberMetadataFilePrefix);
-  JreStrongAssign(&self->metadataLoader_, metadataLoader);
+  self->geographicalRegions_ = new_JavaUtilConcurrentConcurrentHashMap_init();
+  self->nonGeographicalRegions_ = new_JavaUtilConcurrentConcurrentHashMap_init();
+  self->phoneNumberMetadataFilePrefix_ = phoneNumberMetadataFilePrefix;
+  self->metadataLoader_ = metadataLoader;
 }
 
 ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl *new_ComGoogleI18nPhonenumbersMultiFileMetadataSourceImpl_initWithNSString_withComGoogleI18nPhonenumbersMetadataLoader_(NSString *phoneNumberMetadataFilePrefix, id<ComGoogleI18nPhonenumbersMetadataLoader> metadataLoader) {

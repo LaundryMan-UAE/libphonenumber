@@ -60,7 +60,7 @@ withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersP
 }
 
 - (NSUInteger)hash {
-  return JavaUtilArrays_hashCodeWithNSObjectArray_([IOSObjectArray arrayWithObjects:(id[]){ JavaLangInteger_valueOfWithInt_(start_), rawString_, number_ } count:3 type:NSObject_class_()]);
+  return JavaUtilArrays_hashCodeWithNSObjectArray_([IOSObjectArray newArrayWithObjects:(id[]){ JavaLangInteger_valueOfWithInt_(start_), rawString_, number_ } count:3 type:NSObject_class_()]);
 }
 
 - (jboolean)isEqual:(id)obj {
@@ -78,25 +78,19 @@ withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersP
   return JreStrcat("$ICI$$", @"PhoneNumberMatch [", [self start], ',', [self end], @") ", rawString_);
 }
 
-- (void)dealloc {
-  RELEASE_(rawString_);
-  RELEASE_(number_);
-  [super dealloc];
-}
-
 @end
 
 void ComGoogleI18nPhonenumbersPhoneNumberMatch_initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(ComGoogleI18nPhonenumbersPhoneNumberMatch *self, jint start, NSString *rawString, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *number) {
   NSObject_init(self);
   if (start < 0) {
-    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"Start index must be >= 0.");
+    @throw new_JavaLangIllegalArgumentException_initWithNSString_(@"Start index must be >= 0.");
   }
   if (rawString == nil || number == nil) {
-    @throw create_JavaLangNullPointerException_init();
+    @throw new_JavaLangNullPointerException_init();
   }
   self->start_ = start;
-  JreStrongAssign(&self->rawString_, rawString);
-  JreStrongAssign(&self->number_, number);
+  self->rawString_ = rawString;
+  self->number_ = number;
 }
 
 ComGoogleI18nPhonenumbersPhoneNumberMatch *new_ComGoogleI18nPhonenumbersPhoneNumberMatch_initWithInt_withNSString_withComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_(jint start, NSString *rawString, ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *number) {

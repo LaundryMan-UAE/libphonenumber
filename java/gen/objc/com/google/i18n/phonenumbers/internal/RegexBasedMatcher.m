@@ -45,21 +45,16 @@ withComGoogleI18nPhonenumbersPhonemetadata_PhoneNumberDesc:(ComGoogleI18nPhonenu
   return ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_matchWithJavaLangCharSequence_withJavaUtilRegexPattern_withBoolean_(number, [((ComGoogleI18nPhonenumbersInternalRegexCache *) nil_chk(regexCache_)) getPatternForRegexWithNSString:nationalNumberPattern], allowPrefixMatch);
 }
 
-- (void)dealloc {
-  RELEASE_(regexCache_);
-  [super dealloc];
-}
-
 @end
 
 id<ComGoogleI18nPhonenumbersInternalMatcherApi> ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_create() {
   ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_initialize();
-  return create_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init();
+  return new_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init();
 }
 
 void ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init(ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *self) {
   NSObject_init(self);
-  JreStrongAssignAndConsume(&self->regexCache_, new_ComGoogleI18nPhonenumbersInternalRegexCache_initWithInt_(100));
+  self->regexCache_ = new_ComGoogleI18nPhonenumbersInternalRegexCache_initWithInt_(100);
 }
 
 ComGoogleI18nPhonenumbersInternalRegexBasedMatcher *new_ComGoogleI18nPhonenumbersInternalRegexBasedMatcher_init() {

@@ -51,6 +51,8 @@ J2OBJC_STATIC_FIELD_CONSTANT(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber, s
 
 __attribute__((unused)) static void ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *self, NSString *__name, jint __ordinal);
 
+__attribute__((unused)) static ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(NSString *__name, jint __ordinal) NS_RETURNS_RETAINED;
+
 @implementation ComGoogleI18nPhonenumbersPhonenumber
 
 @end
@@ -128,16 +130,16 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)setExtensionWithNSString:(NSString *)value {
   if (value == nil) {
-    @throw create_JavaLangNullPointerException_init();
+    @throw new_JavaLangNullPointerException_init();
   }
   hasExtension_ = true;
-  JreStrongAssign(&extension__, value);
+  extension__ = value;
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clearExtension {
   hasExtension_ = false;
-  JreStrongAssign(&extension__, @"");
+  extension__ = @"";
   return self;
 }
 
@@ -191,16 +193,16 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)setRawInputWithNSString:(NSString *)value {
   if (value == nil) {
-    @throw create_JavaLangNullPointerException_init();
+    @throw new_JavaLangNullPointerException_init();
   }
   hasRawInput_ = true;
-  JreStrongAssign(&rawInput__, value);
+  rawInput__ = value;
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clearRawInput {
   hasRawInput_ = false;
-  JreStrongAssign(&rawInput__, @"");
+  rawInput__ = @"";
   return self;
 }
 
@@ -214,16 +216,16 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)setCountryCodeSourceWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *)value {
   if (value == nil) {
-    @throw create_JavaLangNullPointerException_init();
+    @throw new_JavaLangNullPointerException_init();
   }
   hasCountryCodeSource_ = true;
-  JreStrongAssign(&countryCodeSource__, value);
+  countryCodeSource__ = value;
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clearCountryCodeSource {
   hasCountryCodeSource_ = false;
-  JreStrongAssign(&countryCodeSource__, JreLoadEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, UNSPECIFIED));
+  countryCodeSource__ = JreLoadEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, UNSPECIFIED);
   return self;
 }
 
@@ -237,55 +239,55 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)setPreferredDomesticCarrierCodeWithNSString:(NSString *)value {
   if (value == nil) {
-    @throw create_JavaLangNullPointerException_init();
+    @throw new_JavaLangNullPointerException_init();
   }
   hasPreferredDomesticCarrierCode_ = true;
-  JreStrongAssign(&preferredDomesticCarrierCode__, value);
+  preferredDomesticCarrierCode__ = value;
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clearPreferredDomesticCarrierCode {
   hasPreferredDomesticCarrierCode_ = false;
-  JreStrongAssign(&preferredDomesticCarrierCode__, @"");
+  preferredDomesticCarrierCode__ = @"";
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)clear {
-  [self clearCountryCode];
-  [self clearNationalNumber];
-  [self clearExtension];
-  [self clearItalianLeadingZero];
-  [self clearNumberOfLeadingZeros];
-  [self clearRawInput];
-  [self clearCountryCodeSource];
-  [self clearPreferredDomesticCarrierCode];
+  (void) [self clearCountryCode];
+  (void) [self clearNationalNumber];
+  (void) [self clearExtension];
+  (void) [self clearItalianLeadingZero];
+  (void) [self clearNumberOfLeadingZeros];
+  (void) [self clearRawInput];
+  (void) [self clearCountryCodeSource];
+  (void) [self clearPreferredDomesticCarrierCode];
   return self;
 }
 
 - (ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)mergeFromWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber:(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *)other {
   if ([((ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *) nil_chk(other)) hasCountryCode]) {
-    [self setCountryCodeWithInt:[other getCountryCode]];
+    (void) [self setCountryCodeWithInt:[other getCountryCode]];
   }
   if ([other hasNationalNumber]) {
-    [self setNationalNumberWithLong:[other getNationalNumber]];
+    (void) [self setNationalNumberWithLong:[other getNationalNumber]];
   }
   if ([other hasExtension]) {
-    [self setExtensionWithNSString:[other getExtension]];
+    (void) [self setExtensionWithNSString:[other getExtension]];
   }
   if ([other hasItalianLeadingZero]) {
-    [self setItalianLeadingZeroWithBoolean:[other isItalianLeadingZero]];
+    (void) [self setItalianLeadingZeroWithBoolean:[other isItalianLeadingZero]];
   }
   if ([other hasNumberOfLeadingZeros]) {
-    [self setNumberOfLeadingZerosWithInt:[other getNumberOfLeadingZeros]];
+    (void) [self setNumberOfLeadingZerosWithInt:[other getNumberOfLeadingZeros]];
   }
   if ([other hasRawInput]) {
-    [self setRawInputWithNSString:[other getRawInput]];
+    (void) [self setRawInputWithNSString:[other getRawInput]];
   }
   if ([other hasCountryCodeSource]) {
-    [self setCountryCodeSourceWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource:[other getCountryCodeSource]];
+    (void) [self setCountryCodeSourceWithComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource:[other getCountryCodeSource]];
   }
   if ([other hasPreferredDomesticCarrierCode]) {
-    [self setPreferredDomesticCarrierCodeWithNSString:[other getPreferredDomesticCarrierCode]];
+    (void) [self setPreferredDomesticCarrierCodeWithNSString:[other getPreferredDomesticCarrierCode]];
   }
   return self;
 }
@@ -319,33 +321,25 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (NSString *)description {
-  JavaLangStringBuilder *outputString = create_JavaLangStringBuilder_init();
-  [((JavaLangStringBuilder *) nil_chk([outputString appendWithNSString:@"Country Code: "])) appendWithInt:countryCode__];
-  [((JavaLangStringBuilder *) nil_chk([outputString appendWithNSString:@" National Number: "])) appendWithLong:nationalNumber__];
+  JavaLangStringBuilder *outputString = new_JavaLangStringBuilder_init();
+  (void) [((JavaLangStringBuilder *) nil_chk([outputString appendWithNSString:@"Country Code: "])) appendWithInt:countryCode__];
+  (void) [((JavaLangStringBuilder *) nil_chk([outputString appendWithNSString:@" National Number: "])) appendWithLong:nationalNumber__];
   if ([self hasItalianLeadingZero] && [self isItalianLeadingZero]) {
-    [outputString appendWithNSString:@" Leading Zero(s): true"];
+    (void) [outputString appendWithNSString:@" Leading Zero(s): true"];
   }
   if ([self hasNumberOfLeadingZeros]) {
-    [((JavaLangStringBuilder *) nil_chk([outputString appendWithNSString:@" Number of leading zeros: "])) appendWithInt:numberOfLeadingZeros__];
+    (void) [((JavaLangStringBuilder *) nil_chk([outputString appendWithNSString:@" Number of leading zeros: "])) appendWithInt:numberOfLeadingZeros__];
   }
   if ([self hasExtension]) {
-    [((JavaLangStringBuilder *) nil_chk([outputString appendWithNSString:@" Extension: "])) appendWithNSString:extension__];
+    (void) [((JavaLangStringBuilder *) nil_chk([outputString appendWithNSString:@" Extension: "])) appendWithNSString:extension__];
   }
   if ([self hasCountryCodeSource]) {
-    [((JavaLangStringBuilder *) nil_chk([outputString appendWithNSString:@" Country Code Source: "])) appendWithId:countryCodeSource__];
+    (void) [((JavaLangStringBuilder *) nil_chk([outputString appendWithNSString:@" Country Code Source: "])) appendWithId:countryCodeSource__];
   }
   if ([self hasPreferredDomesticCarrierCode]) {
-    [((JavaLangStringBuilder *) nil_chk([outputString appendWithNSString:@" Preferred Domestic Carrier Code: "])) appendWithNSString:preferredDomesticCarrierCode__];
+    (void) [((JavaLangStringBuilder *) nil_chk([outputString appendWithNSString:@" Preferred Domestic Carrier Code: "])) appendWithNSString:preferredDomesticCarrierCode__];
   }
   return [outputString description];
-}
-
-- (void)dealloc {
-  RELEASE_(extension__);
-  RELEASE_(rawInput__);
-  RELEASE_(countryCodeSource__);
-  RELEASE_(preferredDomesticCarrierCode__);
-  [super dealloc];
 }
 
 @end
@@ -354,12 +348,12 @@ void ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init(ComGoogleI18nPhonenum
   NSObject_init(self);
   self->countryCode__ = 0;
   self->nationalNumber__ = 0LL;
-  JreStrongAssign(&self->extension__, @"");
+  self->extension__ = @"";
   self->italianLeadingZero__ = false;
   self->numberOfLeadingZeros__ = 1;
-  JreStrongAssign(&self->rawInput__, @"");
-  JreStrongAssign(&self->preferredDomesticCarrierCode__, @"");
-  JreStrongAssign(&self->countryCodeSource__, JreLoadEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, UNSPECIFIED));
+  self->rawInput__ = @"";
+  self->preferredDomesticCarrierCode__ = @"";
+  self->countryCodeSource__ = JreLoadEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, UNSPECIFIED);
 }
 
 ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber *new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_init() {
@@ -388,17 +382,11 @@ ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18
 
 + (void)initialize {
   if (self == [ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource class]) {
-    size_t objSize = class_getInstanceSize(self);
-    size_t allocSize = 5 * objSize;
-    uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
-    id e;
-    id names[] = {
-      @"FROM_NUMBER_WITH_PLUS_SIGN", @"FROM_NUMBER_WITH_IDD", @"FROM_NUMBER_WITHOUT_PLUS_SIGN", @"FROM_DEFAULT_COUNTRY", @"UNSPECIFIED",
-    };
-    for (jint i = 0; i < 5; i++) {
-      ((void)(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
-      ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(e, names[i], i);
-    }
+    JreEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_NUMBER_WITH_PLUS_SIGN) = new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(JreEnumConstantName(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_class_(), 0), 0);
+    JreEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_NUMBER_WITH_IDD) = new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(JreEnumConstantName(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_class_(), 1), 1);
+    JreEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_NUMBER_WITHOUT_PLUS_SIGN) = new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(JreEnumConstantName(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_class_(), 2), 2);
+    JreEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, FROM_DEFAULT_COUNTRY) = new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(JreEnumConstantName(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_class_(), 3), 3);
+    JreEnum(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, UNSPECIFIED) = new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(JreEnumConstantName(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_class_(), 4), 4);
     J2OBJC_SET_INITIALIZED(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource)
   }
 }
@@ -407,6 +395,10 @@ ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *ComGoogleI18
 
 void ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *self, NSString *__name, jint __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
+}
+
+ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource *new_ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_initWithNSString_withInt_(NSString *__name, jint __ordinal) {
+  J2OBJC_NEW_IMPL(ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource, initWithNSString_withInt_, __name, __ordinal)
 }
 
 IOSObjectArray *ComGoogleI18nPhonenumbersPhonenumber_PhoneNumber_CountryCodeSource_values() {

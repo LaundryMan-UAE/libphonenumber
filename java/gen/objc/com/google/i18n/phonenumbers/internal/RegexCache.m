@@ -84,16 +84,11 @@ __attribute__((unused)) static ComGoogleI18nPhonenumbersInternalRegexCache_LRUCa
   return [((ComGoogleI18nPhonenumbersInternalRegexCache_LRUCache *) nil_chk(cache_)) containsKeyWithId:regex];
 }
 
-- (void)dealloc {
-  RELEASE_(cache_);
-  [super dealloc];
-}
-
 @end
 
 void ComGoogleI18nPhonenumbersInternalRegexCache_initWithInt_(ComGoogleI18nPhonenumbersInternalRegexCache *self, jint size) {
   NSObject_init(self);
-  JreStrongAssignAndConsume(&self->cache_, new_ComGoogleI18nPhonenumbersInternalRegexCache_LRUCache_initWithInt_(size));
+  self->cache_ = new_ComGoogleI18nPhonenumbersInternalRegexCache_LRUCache_initWithInt_(size);
 }
 
 ComGoogleI18nPhonenumbersInternalRegexCache *new_ComGoogleI18nPhonenumbersInternalRegexCache_initWithInt_(jint size) {
@@ -110,14 +105,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersInternalRegexCache)
 
 - (id)getWithId:(id)key {
   @synchronized(self) {
-    return JreRetainedLocalValue([((JavaUtilLinkedHashMap *) nil_chk(map_)) getWithId:key]);
+    return [((JavaUtilLinkedHashMap *) nil_chk(map_)) getWithId:key];
   }
 }
 
 - (void)putWithId:(id)key
            withId:(id)value {
   @synchronized(self) {
-    [((JavaUtilLinkedHashMap *) nil_chk(map_)) putWithId:key withId:value];
+    (void) [((JavaUtilLinkedHashMap *) nil_chk(map_)) putWithId:key withId:value];
   }
 }
 
@@ -127,17 +122,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersInternalRegexCache)
   }
 }
 
-- (void)dealloc {
-  RELEASE_(map_);
-  [super dealloc];
-}
-
 @end
 
 void ComGoogleI18nPhonenumbersInternalRegexCache_LRUCache_initWithInt_(ComGoogleI18nPhonenumbersInternalRegexCache_LRUCache *self, jint size) {
   NSObject_init(self);
   self->size_ = size;
-  JreStrongAssignAndConsume(&self->map_, new_ComGoogleI18nPhonenumbersInternalRegexCache_LRUCache_1_initWithComGoogleI18nPhonenumbersInternalRegexCache_LRUCache_withInt_withFloat_withBoolean_(self, size * 4 / 3 + 1, 0.75f, true));
+  self->map_ = new_ComGoogleI18nPhonenumbersInternalRegexCache_LRUCache_1_initWithComGoogleI18nPhonenumbersInternalRegexCache_LRUCache_withInt_withFloat_withBoolean_(self, size * 4 / 3 + 1, 0.75f, true);
 }
 
 ComGoogleI18nPhonenumbersInternalRegexCache_LRUCache *new_ComGoogleI18nPhonenumbersInternalRegexCache_LRUCache_initWithInt_(jint size) {
@@ -156,15 +146,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleI18nPhonenumbersInternalRegexCache_LRU
   return [self size] > this$0_->size_;
 }
 
-- (void)dealloc {
-  RELEASE_(this$0_);
-  [super dealloc];
-}
-
 @end
 
 void ComGoogleI18nPhonenumbersInternalRegexCache_LRUCache_1_initWithComGoogleI18nPhonenumbersInternalRegexCache_LRUCache_withInt_withFloat_withBoolean_(ComGoogleI18nPhonenumbersInternalRegexCache_LRUCache_1 *self, ComGoogleI18nPhonenumbersInternalRegexCache_LRUCache *outer$, jint x0, jfloat x1, jboolean x2) {
-  JreStrongAssign(&self->this$0_, outer$);
+  self->this$0_ = outer$;
   JavaUtilLinkedHashMap_initWithInt_withFloat_withBoolean_(self, x0, x1, x2);
 }
 
