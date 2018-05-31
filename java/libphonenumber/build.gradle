@@ -27,7 +27,6 @@ task translateLibPhoneNumber(type:Exec) {
 //    args '--mapping', file('mapping.properties').path
     args '--doc-comments'
     args '--nullability'
-    args '-use-arc'
     args '--strip-reflection'
     args '-d', file('../gen/objc').path
     args '-sourcepath', (sourceSets.main.allJava.srcDirs).join(':')
