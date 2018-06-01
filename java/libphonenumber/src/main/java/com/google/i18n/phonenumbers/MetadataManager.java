@@ -50,7 +50,7 @@ final class MetadataManager {
   static final MetadataLoader DEFAULT_METADATA_LOADER = new MetadataLoader() {
     @Override
     public InputStream loadMetadata(String metadataFileName) {
-      return MetadataManager.class.getResourceAsStream(metadataFileName);
+      return MetadataManager.class.getResourceAsStream("/" + metadataFileName);
     }
   };
 
