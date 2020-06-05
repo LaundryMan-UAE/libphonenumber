@@ -27,15 +27,16 @@ allprojects {
       }
     }
 
-    maven {
-      url 'https://bitbucket.org/laundrapp/maven-repo/raw/master/releases'
-      credentials {
-        username 'laundrapp'
-        password 'buck1ngh4m'
-        preemptive true
-      }
-    }
-
+maven {
+            credentials {
+                username LAUNDRAPP_BB_USERNAME
+                password LAUNDRAPP_BB_PASSWORD
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+            url LAUNDRAPP_BB_DISTRIBUTION
+        }
   }
 }
 
@@ -55,8 +56,8 @@ subprojects {
     mavenLocal()
 
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
-    maven { url "http://repo.maven.apache.org/maven2" }
-    maven { url "http://mvnrepository.com/artifact/" }
+    maven { url "https://repo.maven.apache.org/maven2" }
+    maven { url "https://mvnrepository.com/artifact/" }
   }
 
   configurations.all {
