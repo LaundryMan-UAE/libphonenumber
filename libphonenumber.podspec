@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = "LibPhoneNumber"
-  s.version          = '8.8.8-J2ObjC2.1.1'
+  s.version          = 'v8.8.8-J2ObjC-2.6'
   s.author           = { "Marcus Smith" => "marcus@laundrapp.com" }
-  s.source           = { :git => "https://github.com/hambroperks/libphonenumber.git", :tag => "v8.8.8-J2ObjC2.1.1" }
+  s.source           = { :git => "https://github.com/LaundryMan-UAE/libphonenumber.git", :tag => "v8.8.8-J2ObjC-2.6" }
   s.summary          = "Google's common Java, C++ and JavaScript library for parsing, formatting, storing and validating international phone numbers. Converted to Objective-C using J2ObjC."
   s.homepage         = "https://github.com/googlei18n/libphonenumber"
   s.license          = { :type => 'Apache License 2.0', :file => 'LICENSE' }
 
-  s.ios.deployment_target = '7.0'
+  s.ios.deployment_target = '9.2'
   s.requires_arc = false
 
   s.source_files = 'java/gen/objc/**/*.{h,m}'
