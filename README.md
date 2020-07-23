@@ -1,3 +1,40 @@
+:Objective-C Translation Instructions
+------------
+
+No build is required for Android.
+
+The library will need to be transpiled for use with iOS. To do this open up a co
+mmand line, clone the project, cd into the <project root>/java.
+
+Run the following:
+
+```
+cd carrier
+./gradlew translateCarrier
+cd ../internal/prefixmapper
+./gradlew translatePrefixMapper
+cd ../libphonenumber
+./gradlew translateLibPhoneNumber
+
+```
+Or alternatively run:
+
+```
+./gradlew translateAll
+```
+
+Once translated then check all the changed files into github.
+
+Open libphonenumber.podspec and replace the tag in the following line with the tag you will tag the commit with.
+
+```
+  s.source           = { :git => "https://github.com/LaundryMan-UAE/libphonenumber.git", :tag => "v8.8.8-J2ObjC-2.6-1" }
+```    
+
+Once checked in and tagged, copy the commit hash from the tagged commit and paste this into the customer-ios/Podfile entry for Protobuf-Javanano.
+
+
+
 <p align="right">
 <img src="https://travis-ci.org/googlei18n/libphonenumber.svg?branch=master">
 </p>
